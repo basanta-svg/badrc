@@ -137,7 +137,12 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
+  /* Android Chrome/WebView auto-boosts font sizes on some text blocks to
+     "improve legibility," which throws off layouts that pair fixed-size
+     elements (like the header logos) with nearby text — this disables
+     that inflation so type renders at the size actually specified. */
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   scroll-behavior: smooth;
 }
 
@@ -712,7 +717,14 @@ hr {
    header), including their mobile override, so this stays in step
    automatically at every breakpoint. */
 .hero--home {
+  /* 100vh on mobile browsers (Android Chrome especially) measures the
+     viewport as if the address bar/toolbar were hidden, so a plain
+     100vh hero is taller than what's actually visible and forces an
+     awkward extra scroll. 100dvh tracks the real, current visible area
+     instead — the min-height plain 100vh line is a fallback only, for
+     the handful of older engines that don't understand dvh yet. */
   min-height: calc(100vh - var(--header-top-height) - var(--header-bottom-height));
+  min-height: calc(100dvh - var(--header-top-height) - var(--header-bottom-height));
   display: flex;
   align-items: center;
   padding-block: var(--space-9);

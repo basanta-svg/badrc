@@ -49,6 +49,21 @@
         nav.style.top = headerBottom.getBoundingClientRect().bottom + 'px';
       }
 
+      if (willOpen) {
+        // The overlay is only ever hidden (opacity/visibility), never
+        // removed, so it keeps its scroll position between opens — if a
+        // visitor had scrolled down to reach a later link (or expanded a
+        // dropdown, pushing everything below it further down) the panel
+        // could reopen already scrolled past "Home" at the top. Reset
+        // both every time it's opened so it always starts from the top.
+        nav.scrollTop = 0;
+        document.querySelectorAll('.has-dropdown.is-expanded').forEach(function (el) {
+          el.classList.remove('is-expanded');
+          var link = el.querySelector(':scope > .primary-nav__link');
+          if (link) link.setAttribute('aria-expanded', 'false');
+        });
+      }
+
       nav.classList.toggle('is-open', willOpen);
       toggle.setAttribute('aria-expanded', String(willOpen));
       document.body.style.overflow = willOpen ? 'hidden' : '';

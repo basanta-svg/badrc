@@ -621,11 +621,11 @@ hr {
      .primary-nav fixed-overlay offset below. The bottom row is now a
      single line (toggle + language switcher only, no search bar to wrap). */
   :root {
-    --header-top-height: 6rem;
+    --header-top-height: 6.75rem;
     --header-bottom-height: 4rem;
   }
 
-  .header-top__logo img { width: 4.5rem; height: 4.5rem; }
+  .header-top__logo img { width: 5.5rem; height: 5.5rem; }
   .header-top__dzongkha { font-size: var(--fs-dzongkha-sm); white-space: nowrap; }
   .header-top__name { font-size: var(--fs-body); }
 
@@ -647,9 +647,14 @@ hr {
     visibility: hidden;
     transition: opacity var(--transition-base), transform var(--transition-base), visibility var(--transition-base);
     z-index: var(--z-overlay);
+    /* .primary-nav's base rule centres the nav row on desktop
+       (justify-content: center) — that must not carry over here, or the
+       whole menu block sits centred in the overlay instead of flush
+       left. */
+    justify-content: flex-start;
   }
   .primary-nav.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
-  .primary-nav__list { flex-direction: column; align-items: stretch; gap: 0; }
+  .primary-nav__list { flex-direction: column; align-items: stretch; gap: 0; width: 100%; }
   .primary-nav__list > li { border-bottom: var(--border-width) solid var(--border); }
   /* Inside the mobile overlay the nav sits on a light background, so reset
      the dark-bar link styling back to the standard on-paper look */
@@ -805,6 +810,20 @@ hr {
 @media (max-width: 640px) {
   .hero__title { font-size: var(--fs-h3); }
   .hero--compact .hero__title { font-size: var(--fs-h4); }
+}
+
+/* Section headers (the "Latest News" / "Domestic arbitration" / "Fee
+   schedule" style h2s throughout every page's body) are already all set
+   to the same size at the markup level (var(--fs-h3), with a couple of
+   deliberately-smaller var(--fs-h4) sub-section headings) — but as inline
+   styles scattered across 17 pages, they can't be brought down together
+   for mobile with a normal rule (inline always wins). This is the one
+   deliberate, narrowly-scoped use of !important on the whole site: on
+   small screens every <h2> inside <main> — whichever inline size it was
+   given — is forced to the same, smaller size, which also means anything
+   that had drifted out of sync reads as consistent again. */
+@media (max-width: 640px) {
+  main h2 { font-size: var(--fs-h4) !important; }
 }
 
 .hero__breadcrumb { position: relative; z-index: 1; margin-bottom: var(--space-6); }

@@ -326,8 +326,8 @@ hr {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--space-3) var(--space-6);
-  font-size: var(--fs-btn);
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--fs-btn-sm);
   font-weight: var(--fw-bold);
   letter-spacing: var(--ls-wide);
   text-transform: uppercase;
@@ -359,8 +359,11 @@ hr {
 [data-surface="dark"] .btn--secondary:hover { background: var(--white); color: var(--navy-dark); }
 .btn--ghost { background: transparent; color: inherit; border-color: transparent; text-transform: none; letter-spacing: var(--ls-normal); font-weight: var(--fw-medium); padding-inline: var(--space-2); }
 .btn--ghost:hover { color: var(--gold-dark); }
-.btn--sm { padding: var(--space-2) var(--space-4); font-size: var(--fs-btn-sm); }
+.btn--sm { padding: var(--space-1) var(--space-4); font-size: var(--fs-btn-sm); }
 .btn--block { width: 100%; justify-content: center; }
+@media (max-width: 640px) {
+  .btn { padding: var(--space-1) var(--space-4); }
+}
 
 /* -----------------------------------------------------------------------
    Site header — every page. Two-row masthead:
@@ -1138,44 +1141,76 @@ hr {
    Filter bar — Panels, Rules, Publications, News, Media Gallery, Careers,
    Search
    ----------------------------------------------------------------------- */
+/* Redesigned as a single-bordered, sectioned toolbar (each control in its
+   own cell, divided by hairlines) rather than a rounded floating card —
+   denser and closer to the site's utility/reference-page register than
+   the previous pill-chip, rounded-card treatment. */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-4);
-  padding: var(--space-5);
+  align-items: stretch;
   background: var(--white);
   border: var(--border-width) solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
 }
-.filter-bar__search { position: relative; flex: 1 1 16rem; }
+.filter-bar__search {
+  position: relative;
+  flex: 1 1 16rem;
+  display: flex;
+  align-items: center;
+  border-right: var(--border-width) solid var(--border);
+}
+.filter-bar__search svg { flex-shrink: 0; margin-left: var(--space-5); width: 1rem; height: 1rem; color: var(--ink-soft); }
 .filter-bar__search input {
-  width: 100%;
-  padding: var(--space-3) var(--space-4) var(--space-3) var(--space-9);
-  border: var(--border-width) solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--paper);
+  flex: 1;
+  min-width: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: var(--space-4) var(--space-5) var(--space-4) var(--space-3);
+  font-size: var(--fs-small);
 }
-.filter-bar__search svg { position: absolute; left: var(--space-4); top: 50%; translate: 0 -50%; width: 1.1rem; height: 1.1rem; color: var(--ink-soft); }
-.filter-bar__group { display: flex; align-items: center; gap: var(--space-2); }
+.filter-bar__search input:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: -2px; }
+.filter-bar__group {
+  display: flex;
+  align-items: center;
+  padding-inline: var(--space-5);
+  border-right: var(--border-width) solid var(--border);
+}
 .filter-bar select {
-  padding: var(--space-3) var(--space-4);
-  border: var(--border-width) solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--paper);
-}
-.filter-bar__chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-.chip {
-  padding: var(--space-2) var(--space-4);
-  border: var(--border-width) solid var(--border);
-  border-radius: var(--radius-pill);
-  background: var(--paper);
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: var(--space-4) var(--space-6) var(--space-4) 0;
   font-size: var(--fs-small);
   font-weight: var(--fw-medium);
   color: var(--ink);
 }
+.filter-bar select:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: -2px; }
+.filter-bar__chips { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-5); flex: 1 1 auto; }
+.chip {
+  padding: var(--space-1) var(--space-3);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  font-size: 0.6875rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+.chip:hover { border-color: var(--navy-primary); color: var(--navy-primary); }
 .chip[aria-pressed="true"] { background: var(--navy-primary); color: var(--white); border-color: var(--navy-primary); }
-.filter-results-count { font-size: var(--fs-small); color: var(--ink-soft); margin-top: var(--space-2); }
+.filter-results-count { font-size: var(--fs-small); color: var(--ink-soft); margin-top: var(--space-3); }
+@media (max-width: 768px) {
+  .filter-bar { flex-direction: column; }
+  .filter-bar__search, .filter-bar__group { width: 100%; border-right: none; border-bottom: var(--border-width) solid var(--border); }
+  .filter-bar__group { padding-block: var(--space-1); }
+  .filter-bar select { width: 100%; }
+  .filter-bar__chips { padding: var(--space-4) var(--space-5); }
+}
 
 .empty-state {
   text-align: center;
@@ -1232,13 +1267,67 @@ hr {
    paint a false "this is clickable" hover on the non-link usage. */
 a.doc-row:hover .doc-row__download { color: var(--gold-dark); }
 
-/* Featured Resources (Home) — a leaner variant of the shared doc-row:
-   no version/size columns (just type + download), a bolder/bigger title
-   as the primary hover target (colour-only feedback, not a background
-   tint across the whole row), and download-icon spacing to match. */
-.doc-list--home .doc-row { grid-template-columns: 1fr auto auto; }
-.doc-list--home .doc-row__title { font-size: var(--fs-body-lg); font-weight: var(--fw-bold); transition: color var(--transition-fast); }
-.doc-list--home a.doc-row:hover .doc-row__title { color: var(--gold-dark); }
+/* Resource row — Home's Featured Resources. A flex row rather than the
+   grid-based .doc-row: title/meta on the left, the type badge + download
+   link grouped together as one unit on the right. flex-wrap means that
+   whole "actions" unit drops to its own line as ONE piece on narrow
+   screens instead of the grid version's problem — title, badge and
+   download each becoming their own full-width stacked row, which read as
+   three disconnected blocks per item on mobile. */
+.resource-panel {
+  background: var(--white);
+  border: var(--border-width) solid var(--border);
+  padding: var(--space-7);
+}
+.resource-list { border-top: var(--border-width) solid var(--border); }
+.resource-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+  padding: var(--space-5) 0;
+  border-bottom: var(--border-width) solid var(--border);
+  text-decoration: none;
+  color: inherit;
+}
+.resource-row__info { flex: 1 1 14rem; min-width: 0; }
+.resource-row__title {
+  font-size: var(--fs-body-lg);
+  font-weight: var(--fw-bold);
+  color: var(--navy-primary);
+  transition: color var(--transition-fast);
+}
+.resource-row:hover .resource-row__title,
+.resource-row:focus-visible .resource-row__title { color: var(--gold-dark); }
+.resource-row__meta { margin-top: var(--space-1); font-size: var(--fs-small); color: var(--ink-soft); }
+.resource-row__actions { display: flex; align-items: center; gap: var(--space-4); flex-shrink: 0; }
+.resource-row__type {
+  font-size: 0.6875rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-wide);
+  padding: var(--space-1) var(--space-2);
+  background: var(--navy-primary);
+  color: var(--white);
+  white-space: nowrap;
+}
+.resource-row__download {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+  color: var(--navy-primary);
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  /* The panel's own padding plus the page container's padding was
+     leaving very little width for content on small phones — trim it. */
+  .resource-panel { padding: var(--space-5) var(--space-4); }
+}
+@media (max-width: 480px) {
+  .resource-row { padding-block: var(--space-4); }
+}
 
 @media (max-width: 768px) {
   .doc-row { grid-template-columns: 1fr; row-gap: var(--space-2); }
@@ -1331,6 +1420,38 @@ a.doc-row:hover .doc-row__download { color: var(--gold-dark); }
 .logo-strip__item { display: flex; align-items: center; justify-content: center; height: 5.5rem; filter: grayscale(1); opacity: 0.7; }
 .logo-strip__item:hover { filter: none; opacity: 1; }
 .logo-strip__item img { height: 100%; width: auto; max-width: 14rem; object-fit: contain; }
+/* The duplicate item set exists only to make the mobile marquee loop
+   seamless — keep it out of the flow (and off screen readers) everywhere
+   else. */
+.logo-strip__item[aria-hidden="true"] { display: none; }
+
+/* On narrow screens more than two partner logos no longer fit in a row
+   without wrapping awkwardly or shrinking illegibly small, so they become
+   a continuous auto-scrolling slider instead (paused on hover/focus, and
+   disabled for reduced-motion users). */
+@media (max-width: 640px) {
+  .logo-strip-viewport { overflow: hidden; }
+  .logo-strip {
+    flex-wrap: nowrap;
+    width: max-content;
+    justify-content: flex-start !important;
+    animation: logo-strip-scroll 18s linear infinite;
+  }
+  .logo-strip__item[aria-hidden="true"] { display: flex; }
+  .logo-strip-viewport:hover .logo-strip,
+  .logo-strip-viewport:focus-within .logo-strip {
+    animation-play-state: paused;
+  }
+}
+@keyframes logo-strip-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (max-width: 640px) and (prefers-reduced-motion: reduce) {
+  .logo-strip { animation: none; width: auto; flex-wrap: wrap; }
+  .logo-strip-viewport { overflow: visible; }
+  .logo-strip__item[aria-hidden="true"] { display: none; }
+}
 
 /* -----------------------------------------------------------------------
    Service list — Home ("Our Services"). Same content as the original two

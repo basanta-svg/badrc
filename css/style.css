@@ -373,9 +373,19 @@ hr {
    ----------------------------------------------------------------------- */
 .site-header {
   /* Only header-bottom (nav + language switcher) pins to the viewport on
-     scroll — header-top (logos/title) scrolls away with the page. */
-  position: relative;
-  z-index: var(--z-header);
+     scroll — header-top (logos/title) scrolls away with the page.
+     position: sticky only stays stuck within the bounds of its own
+     containing block, which by default would be this wrapper — and
+     .site-header is only ever as tall as header-top + header-bottom
+     combined, so header-bottom would run out of room and un-stick again
+     right after header-top scrolled past. display: contents removes
+     .site-header from the box tree so header-top/header-bottom lay out
+     as if they were direct children of <body> instead, giving
+     header-bottom the whole page to stay stuck against. It carries no
+     visual styling of its own (no background/border), so this is
+     layout-only — nothing to see here changes; header-top and
+     header-bottom keep their own z-index/backgrounds independently. */
+  display: contents;
 }
 
 .header-top {
@@ -756,51 +766,25 @@ hr {
   background: linear-gradient(180deg, rgba(6,31,46,0.42) 0%, rgba(6,31,46,0.65) 100%);
 }
 
-/* Hero background slider — Home only. A stack of full-bleed layers that
-   crossfade (see .hero__slide below), inside a wrapper that carries its
-   OWN separate, never-resetting zoom (see .hero__slides below). Splitting
-   the two like this is deliberate: the zoom used to live on each slide
-   individually and restart from scale(1) every time a new slide faded in,
-   which read as the zoom visibly "stopping" and re-starting at every
-   change. Putting the zoom on the shared wrapper instead means it keeps
-   drifting slowly in and out continuously — regardless of which photo is
-   currently fading in or out underneath it. Sits behind the ::before
-   scrim above (z-index: -1 vs. the scrim's 0), which sits behind the text
-   content (z-index: 1). .hero's own overflow: hidden clips the zoom. */
-.hero__slides {
+/* Hero video background — Home only. A local, muted, looping <video>
+   (see assets/images/Video) covering the hero the same way a background
+   photo would (object-fit: cover, no letterboxing). Sits behind the
+   .hero--photo::before scrim above (z-index: -1 vs. the scrim's 0), which
+   sits behind the text content (z-index: 1) — same stacking the old photo
+   slideshow used. pointer-events:none keeps it purely decorative; the
+   video itself is also tabindex="-1" and has no accessible name since it
+   carries no information not already in the surrounding page. */
+.hero__video-bg {
   position: absolute;
   inset: 0;
   z-index: -1;
-  animation: hero-bg-zoom 24s ease-in-out infinite alternate;
+  overflow: hidden;
+  pointer-events: none;
 }
-.hero__slide {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  animation: hero-slide-cycle 18s infinite;
-}
-/* Three slides sharing one 18s loop, each taking a staggered 6s turn. */
-.hero__slide:nth-child(1) { animation-delay: 0s; }
-.hero__slide:nth-child(2) { animation-delay: 6s; }
-.hero__slide:nth-child(3) { animation-delay: 12s; }
-@keyframes hero-slide-cycle {
-  0%    { opacity: 0; }
-  12%   { opacity: 1; }
-  92%   { opacity: 1; }
-  100%  { opacity: 0; }
-}
-/* ease-in-out + alternate makes this drift smoothly back and forth
-   between scale(1) and scale(1.12) forever, with no snap-back moment. */
-@keyframes hero-bg-zoom {
-  from { transform: scale(1); }
-  to   { transform: scale(1.12); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero__slides { animation: none; }
-  .hero__slide { animation: none; opacity: 0; }
-  .hero__slide:first-child { opacity: 1; }
+.hero__video-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero__grid {
@@ -810,6 +794,12 @@ hr {
   grid-template-columns: 1fr;
   gap: var(--space-9);
 }
+/* Home's hero keeps only a logo + title (see markup) — centred as a
+   single focal point, rather than the left-aligned heading+lede+CTA
+   block every interior page's compact hero still uses. */
+.hero--home .hero__grid { justify-items: center; text-align: center; }
+.hero__logo { display: block; width: 9rem; height: auto; margin: 0 auto var(--space-6); }
+@media (max-width: 640px) { .hero__logo { width: 6.5rem; } }
 
 .hero__eyebrow { color: var(--gold-light); }
 .hero__title {
@@ -819,12 +809,40 @@ hr {
   text-transform: uppercase;
   letter-spacing: var(--ls-nav);
 }
+.hero--home .hero__title { margin-top: 0; }
 .hero--compact .hero__title { font-size: var(--fs-h3); }
 .hero__lede { margin-top: var(--space-5); color: var(--white); max-width: 38rem; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-7); }
 @media (max-width: 640px) {
   .hero__title { font-size: var(--fs-h3); }
   .hero--compact .hero__title { font-size: var(--fs-h4); }
+}
+
+/* Home hero entrance — logo, title and lede fade/slide up in on page
+   load, each a beat behind the last. Runs once automatically (it's above
+   the fold, already in view, so this is a load-in animation rather than
+   the scroll-triggered [data-reveal] pattern used further down the
+   page). */
+.hero--home .hero__logo,
+.hero--home .hero__title,
+.hero--home .hero__lede {
+  opacity: 0;
+  animation: hero-content-in 0.9s ease forwards;
+}
+.hero--home .hero__logo { animation-delay: 0.1s; }
+.hero--home .hero__title { animation-delay: 0.35s; }
+.hero--home .hero__lede { animation-delay: 0.6s; }
+@keyframes hero-content-in {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero--home .hero__logo,
+  .hero--home .hero__title,
+  .hero--home .hero__lede {
+    opacity: 1;
+    animation: none;
+  }
 }
 
 /* Section headers (the "Latest News" / "Domestic arbitration" / "Fee
@@ -882,14 +900,22 @@ hr {
 .card__excerpt { color: var(--ink-soft); font-size: var(--fs-small); }
 .card__footer { margin-top: auto; padding-top: var(--space-3); font-size: var(--fs-small); font-weight: var(--fw-medium); color: var(--navy-primary); }
 
-/* Professional (panel) card — Panels & Professionals */
-.pro-card { text-align: left; }
-.pro-card__photo { aspect-ratio: 1; background: var(--paper-alt); border-radius: var(--radius-md); overflow: hidden; }
+/* Professional (panel) card — Panels & Professionals. Sharp corners
+   throughout (card, photo, tags) — no border-radius anywhere on this
+   component, unlike the default rounded .card. On .pro-card.card (the
+   Panels directory card) hover swaps the border to navy instead of the
+   generic .card's shadow-lift, since a lift reads oddly on square
+   corners. */
+.pro-card { text-align: left; border-radius: 0; }
+.pro-card.card { transition: border-color var(--transition-base); }
+.pro-card.card:hover { border-color: var(--navy-primary); box-shadow: none; transform: none; }
+.pro-card__photo { aspect-ratio: 1; background: var(--paper-alt); border-radius: 0; overflow: hidden; }
 .pro-card__photo img { width: 100%; height: 100%; object-fit: cover; }
 .pro-card__name { font-size: var(--fs-h6); margin-top: var(--space-4); }
 .pro-card__role { font-size: var(--fs-small); color: var(--gold-dark); font-weight: var(--fw-medium); }
 .pro-card__meta { font-size: var(--fs-small); color: var(--ink-soft); margin-top: var(--space-2); }
 .pro-card__tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+.pro-card__tags .tag { border-radius: 0; font-size: 0.625rem; }
 
 /* News card — Home's News & Events section. One shared card pattern for
    both news items and events: full-bleed background photograph, a navy
@@ -1138,62 +1164,214 @@ hr {
 .tag--event { background: var(--gold-primary); color: var(--navy-dark); border-color: var(--gold-primary); }
 
 /* -----------------------------------------------------------------------
+   Search hero — the compact "eyebrow + heading + lede + filter bar" intro
+   block used on Panels and Search, in place of a full dark .hero banner.
+   Scoped to .search-hero only — the shared .section--tight utility that
+   every other page's bands also use is untouched.
+   ----------------------------------------------------------------------- */
+.search-hero .breadcrumb { margin-bottom: var(--space-5); }
+.search-hero__intro { max-width: 40rem; }
+.search-hero .filter-bar { margin-top: var(--space-7); }
+
+/* -----------------------------------------------------------------------
    Filter bar — Panels, Rules, Publications, News, Media Gallery, Careers,
    Search
    ----------------------------------------------------------------------- */
-/* Redesigned as a single-bordered, sectioned toolbar (each control in its
-   own cell, divided by hairlines) rather than a rounded floating card —
-   denser and closer to the site's utility/reference-page register than
-   the previous pill-chip, rounded-card treatment. */
+/* A two-row toolbar card: search + dropdown pills + a Search button on
+   row one, a hairline-divided chip row (category label, chips, "Clear all
+   filters") below. Sharp corners throughout, matching the rest of the
+   site — no border-radius on the bar, its controls, the floating panel,
+   chips or tags; only shadow is used for elevation. Each
+   [data-filter-select] is progressively enhanced by Part 3b of script.js
+   into a .filter-trigger + .filter-panel pair; each [data-filter-search]
+   gets a clear (×) button; Part 3 also injects a "Clear all filters"
+   control and, below the bar, removable tags summarising active filters.
+   The plain <select>/<input> markup contract in the HTML is unchanged —
+   .filter-select__native just hides the source <select> once JS has
+   taken over. */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
-  align-items: stretch;
+  align-items: center;
+  gap: var(--space-3);
   background: var(--white);
   border: var(--border-width) solid var(--border);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
+  border-radius: 0;
+  padding: var(--space-4);
+  box-shadow: var(--shadow-sm);
 }
 .filter-bar__search {
   position: relative;
   flex: 1 1 16rem;
   display: flex;
   align-items: center;
-  border-right: var(--border-width) solid var(--border);
+  border: var(--border-width) solid var(--border);
+  border-radius: 0;
+  transition: border-color var(--transition-fast);
 }
-.filter-bar__search svg { flex-shrink: 0; margin-left: var(--space-5); width: 1rem; height: 1rem; color: var(--ink-soft); }
+.filter-bar__search:focus-within { border-color: var(--gold-dark); }
+.filter-bar__search svg { flex-shrink: 0; margin-left: var(--space-4); width: 1rem; height: 1rem; color: var(--ink-soft); }
 .filter-bar__search input {
   flex: 1;
   min-width: 0;
   border: none;
   border-radius: 0;
   background: transparent;
-  padding: var(--space-4) var(--space-5) var(--space-4) var(--space-3);
+  padding: var(--space-3) var(--space-4);
   font-size: var(--fs-small);
 }
-.filter-bar__search input:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: -2px; }
-.filter-bar__group {
+.filter-bar__search input:focus-visible { outline: none; }
+.filter-bar__search input::-webkit-search-cancel-button { display: none; }
+.filter-search-clear {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
-  padding-inline: var(--space-5);
-  border-right: var(--border-width) solid var(--border);
-}
-.filter-bar select {
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-right: var(--space-2);
+  padding: 0;
   border: none;
-  border-radius: 0;
   background: transparent;
-  padding: var(--space-4) var(--space-6) var(--space-4) 0;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.filter-search-clear svg { width: 0.9rem; height: 0.9rem; }
+.filter-search-clear:hover { color: var(--gold-dark); }
+.filter-search-clear[hidden] { display: none; }
+
+/* Dropdown pill (trigger) + floating panel — replaces the native select. */
+.filter-bar__group { position: relative; flex: 0 0 auto; }
+.filter-trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-width) solid var(--border);
+  border-radius: 0;
+  background: var(--white);
   font-size: var(--fs-small);
   font-weight: var(--fw-medium);
   color: var(--ink);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
 }
-.filter-bar select:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: -2px; }
-.filter-bar__chips { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-5); flex: 1 1 auto; }
-.chip {
-  padding: var(--space-1) var(--space-3);
+.filter-trigger:hover { border-color: var(--gold-dark); color: var(--gold-dark); }
+.filter-trigger:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: 2px; }
+/* Gold once a specific value is picked (persists while closed); the open
+   state layers the same treatment on top so it reads as one continuous
+   state rather than two competing looks. */
+.filter-trigger.has-value,
+.filter-trigger.is-open {
+  background: rgba(217, 154, 46, 0.14);
+  border-color: rgba(217, 154, 46, 0.5);
+  color: var(--navy-primary);
+  font-weight: var(--fw-bold);
+}
+.filter-trigger__chevron { width: 0.875rem; height: 0.875rem; color: var(--gold-dark); flex-shrink: 0; transition: transform var(--transition-fast); }
+.filter-trigger.is-open .filter-trigger__chevron { transform: rotate(180deg); }
+
+.filter-select__native {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.filter-panel {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  left: 0;
+  min-width: 14rem;
+  background: var(--white);
   border: var(--border-width) solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--paper);
+  border-radius: 0;
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-2);
+  z-index: 20;
+}
+.filter-panel__heading {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.filter-panel__list { display: flex; flex-direction: column; gap: 2px; list-style: none; }
+.filter-panel__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: 0;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.filter-panel__option:hover { background: var(--paper-alt); }
+.filter-panel__option:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: -2px; }
+.filter-panel__option.is-selected { background: var(--navy-primary); color: var(--white); font-weight: var(--fw-bold); }
+.filter-panel__option-count { font-size: var(--fs-small); color: var(--ink-soft); }
+.filter-panel__option-check { width: 1rem; height: 1rem; flex-shrink: 0; display: none; color: var(--white); }
+.filter-panel__option.is-selected .filter-panel__option-count { display: none; }
+.filter-panel__option.is-selected .filter-panel__option-check { display: block; }
+
+/* Search button — closes out row one next to the dropdown pills. */
+.filter-search-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: 0 0 auto;
+  padding: var(--space-3) var(--space-5);
+  border: var(--border-width) solid var(--navy-primary);
+  border-radius: 0;
+  background: var(--navy-primary);
+  color: var(--white);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+.filter-search-btn:hover { background: var(--navy-dark); border-color: var(--navy-dark); }
+.filter-search-btn:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: 2px; }
+.filter-search-btn svg { width: 0.9rem; height: 0.9rem; flex-shrink: 0; }
+
+/* Row two — always wraps onto its own line (flex-basis:100%) and gets a
+   hairline above it, whatever room row one's controls take up. */
+.filter-bar__chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  flex-basis: 100%;
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: var(--border-width) solid var(--border);
+}
+.filter-bar__chips-label {
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-right: var(--space-1);
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: var(--border-width) solid var(--border);
+  border-radius: 0;
+  background: var(--white);
   font-size: 0.6875rem;
   font-weight: var(--fw-bold);
   letter-spacing: var(--ls-wide);
@@ -1201,15 +1379,43 @@ hr {
   color: var(--ink-soft);
   transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
 }
+.chip::before {
+  content: "";
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.4;
+  flex-shrink: 0;
+}
 .chip:hover { border-color: var(--navy-primary); color: var(--navy-primary); }
 .chip[aria-pressed="true"] { background: var(--navy-primary); color: var(--white); border-color: var(--navy-primary); }
+.chip[aria-pressed="true"]::before { opacity: 1; }
+.filter-clear-all {
+  margin-left: auto;
+  padding: var(--space-2) var(--space-1);
+  border: none;
+  background: none;
+  font-size: 0.6875rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  cursor: pointer;
+}
+.filter-clear-all:hover { text-decoration: underline; }
+.filter-clear-all[hidden] { display: none; }
+
 .filter-results-count { font-size: var(--fs-small); color: var(--ink-soft); margin-top: var(--space-3); }
+
 @media (max-width: 768px) {
-  .filter-bar { flex-direction: column; }
-  .filter-bar__search, .filter-bar__group { width: 100%; border-right: none; border-bottom: var(--border-width) solid var(--border); }
-  .filter-bar__group { padding-block: var(--space-1); }
-  .filter-bar select { width: 100%; }
-  .filter-bar__chips { padding: var(--space-4) var(--space-5); }
+  .filter-bar { flex-direction: column; align-items: stretch; }
+  .filter-bar__group, .filter-trigger, .filter-search-btn { width: 100%; }
+  .filter-trigger { justify-content: space-between; }
+  .filter-search-btn { justify-content: center; }
+  .filter-panel { left: 0; right: 0; min-width: 0; }
+  .filter-bar__chips { flex-basis: auto; }
+  .filter-clear-all { margin-left: 0; flex-basis: 100%; text-align: left; padding-left: 0; }
 }
 
 .empty-state {

@@ -8,7 +8,7 @@
 <meta property="og:title" content="News &amp; Events | BADRC">
 <meta property="og:description" content="Latest announcements and events from BADRC.">
 <meta property="og:type" content="website">
-<link rel="icon" href="assets/images/badrc-logo.png" type="image/png">
+<link rel="icon" href="assets/images/logo/badrc-logo.png" type="image/png">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -18,7 +18,7 @@
   <div class="header-top">
     <div class="container header-top__inner">
       <a class="header-top__logo header-top__logo--left" href="index.html" aria-label="BADRC home">
-        <img src="assets/images/badrc-logo.png" alt="BADRC official emblem — a raven encircled by cloud and wave motifs, with the Centre's name in English and Dzongkha" width="112" height="112">
+        <img src="assets/images/logo/badrc-logo.png" alt="BADRC official emblem — a raven encircled by cloud and wave motifs, with the Centre's name in English and Dzongkha" width="112" height="112">
       </a>
       <a class="header-top__titles" href="index.html">
         <p class="header-top__dzongkha" lang="dz">འབྲུག་གི་གདམ་ཁ་ཅན་གྱི་འཁོན་འདུམ་ལྷེ་བ།།</p>
@@ -122,24 +122,54 @@
       <p class="filter-results-count" id="news-count"></p>
 
       <div class="grid grid--3" id="news-results" style="margin-top:var(--space-8)">
-        <article class="card" data-filter-item data-category="announcement" data-search="badrc updated arbitration rules" data-reveal>
-          <div class="card__body"><div class="card__meta"><span class="tag tag--gold">Announcement</span><time datetime="2026-07-02">[2 Jul 2026]</time></div><h3 class="card__title"><a href="news-article.html">[Headline: BADRC issues updated Arbitration Rules — placeholder]</a></h3><p class="card__excerpt">[Summary to be supplied.]</p></div>
-        </article>
-        <article class="card" data-filter-item data-category="training" data-search="regional mediation training programme" data-reveal>
-          <div class="card__body"><div class="card__meta"><span class="tag">Training</span><time datetime="2026-06-14">[14 Jun 2026]</time></div><h3 class="card__title"><a href="news-article.html">[Headline: Regional mediation training programme — placeholder]</a></h3><p class="card__excerpt">[Summary to be supplied.]</p></div>
-        </article>
-        <article class="card" data-filter-item data-category="mou" data-search="institutional cooperation update mou" data-reveal>
-          <div class="card__body"><div class="card__meta"><span class="tag">MoU</span><time datetime="2026-05-20">[20 May 2026]</time></div><h3 class="card__title"><a href="news-article.html">[Headline: Institutional cooperation update — placeholder]</a></h3><p class="card__excerpt">[Summary to be supplied.]</p></div>
-        </article>
-        <article class="card" data-filter-item data-category="conference" data-search="international adr conference thimphu" data-reveal>
-          <div class="card__body"><div class="card__meta"><span class="tag">Conference</span><time datetime="2026-04-18">[18 Apr 2026]</time></div><h3 class="card__title"><a href="news-article.html">[Headline: International ADR Conference, Thimphu — placeholder]</a></h3><p class="card__excerpt">[Summary to be supplied.]</p></div>
-        </article>
-        <article class="card" data-filter-item data-category="visit" data-search="delegation visit institutional exchange" data-reveal>
-          <div class="card__body"><div class="card__meta"><span class="tag">Institutional Visit</span><time datetime="2026-03-11">[11 Mar 2026]</time></div><h3 class="card__title"><a href="news-article.html">[Headline: Delegation visit — placeholder]</a></h3><p class="card__excerpt">[Summary to be supplied.]</p></div>
-        </article>
-        <article class="card" data-filter-item data-category="notice" data-search="public notice tender vacancy" data-reveal>
-          <div class="card__body"><div class="card__meta"><span class="tag">Notice</span><time datetime="2026-02-25">[25 Feb 2026]</time></div><h3 class="card__title"><a href="news-article.html">[Headline: Public notice — placeholder]</a></h3><p class="card__excerpt">[Summary to be supplied.]</p></div>
-        </article>
+        <a class="news-card" data-filter-item data-category="announcement" data-search="badrc updated arbitration rules" draggable="false" href="news-article.html" style="background-image:url('assets/images/taktshang.jpg')" data-reveal>
+          <span class="news-card__badge"><span class="tag tag--on-photo">Announcement</span></span>
+          <span class="news-card__body">
+            <time class="news-card__date" datetime="2026-07-02">2 July 2026</time>
+            <span class="news-card__title">[Headline: BADRC issues updated Arbitration Rules — placeholder]</span>
+            <span class="news-card__cta">Read more →</span>
+          </span>
+        </a>
+        <a class="news-card" data-filter-item data-category="training" data-search="regional mediation training programme" draggable="false" href="news-article.html" style="background-image:url('assets/images/thimphu.jpg')" data-reveal>
+          <span class="news-card__badge"><span class="tag tag--on-photo">Training</span></span>
+          <span class="news-card__body">
+            <time class="news-card__date" datetime="2026-06-14">14 June 2026</time>
+            <span class="news-card__title">[Headline: Regional mediation training programme — placeholder]</span>
+            <span class="news-card__cta">Read more →</span>
+          </span>
+        </a>
+        <a class="news-card" data-filter-item data-category="mou" data-search="institutional cooperation update mou" draggable="false" href="news-article.html" style="background-image:url('assets/images/trongsa-dzong.jpg')" data-reveal>
+          <span class="news-card__badge"><span class="tag tag--on-photo">MoU</span></span>
+          <span class="news-card__body">
+            <time class="news-card__date" datetime="2026-05-20">20 May 2026</time>
+            <span class="news-card__title">[Headline: Institutional cooperation update — placeholder]</span>
+            <span class="news-card__cta">Read more →</span>
+          </span>
+        </a>
+        <a class="news-card" data-filter-item data-category="conference" data-search="international adr conference thimphu" draggable="false" href="news-article.html" style="background-image:url('assets/images/taktshang.jpg')" data-reveal>
+          <span class="news-card__badge"><span class="tag tag--on-photo">Conference</span></span>
+          <span class="news-card__body">
+            <time class="news-card__date" datetime="2026-04-18">18 April 2026</time>
+            <span class="news-card__title">[Headline: International ADR Conference, Thimphu — placeholder]</span>
+            <span class="news-card__cta">Read more →</span>
+          </span>
+        </a>
+        <a class="news-card" data-filter-item data-category="visit" data-search="delegation visit institutional exchange" draggable="false" href="news-article.html" style="background-image:url('assets/images/thimphu.jpg')" data-reveal>
+          <span class="news-card__badge"><span class="tag tag--on-photo">Institutional Visit</span></span>
+          <span class="news-card__body">
+            <time class="news-card__date" datetime="2026-03-11">11 March 2026</time>
+            <span class="news-card__title">[Headline: Delegation visit — placeholder]</span>
+            <span class="news-card__cta">Read more →</span>
+          </span>
+        </a>
+        <a class="news-card" data-filter-item data-category="notice" data-search="public notice tender vacancy" draggable="false" href="news-article.html" style="background-image:url('assets/images/trongsa-dzong.jpg')" data-reveal>
+          <span class="news-card__badge"><span class="tag tag--on-photo">Notice</span></span>
+          <span class="news-card__body">
+            <time class="news-card__date" datetime="2026-02-25">25 February 2026</time>
+            <span class="news-card__title">[Headline: Public notice — placeholder]</span>
+            <span class="news-card__cta">Read more →</span>
+          </span>
+        </a>
       </div>
       <p class="empty-state" id="news-empty" hidden>No news items match your filters.</p>
       <div class="pagination" aria-label="News pagination"><span aria-current="page">1</span><a href="#">2</a><a href="#" aria-label="Next page">Next →</a></div>
@@ -150,21 +180,31 @@
     <div class="container">
       <p class="eyebrow">Upcoming Events</p>
       <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">Register to attend</h2>
-      <div class="stack" style="margin-top:var(--space-7)">
-        <div class="event-card">
-          <div class="event-card__date"><span class="event-card__day">[--]</span><span class="event-card__month">[Mon]</span></div>
-          <div style="flex:1;display:flex;justify-content:space-between;align-items:center;gap:var(--space-5);flex-wrap:wrap">
-            <div><h3 class="card__title" style="font-size:var(--fs-h6)">[Event title — placeholder]</h3><p class="card__meta">[Venue / format — to be supplied]</p></div>
-            <a class="btn btn--secondary btn--sm" href="contact.html">Register interest</a>
-          </div>
-        </div>
-        <div class="event-card">
-          <div class="event-card__date"><span class="event-card__day">[--]</span><span class="event-card__month">[Mon]</span></div>
-          <div style="flex:1;display:flex;justify-content:space-between;align-items:center;gap:var(--space-5);flex-wrap:wrap">
-            <div><h3 class="card__title" style="font-size:var(--fs-h6)">[Event title — placeholder]</h3><p class="card__meta">[Venue / format — to be supplied]</p></div>
-            <a class="btn btn--secondary btn--sm" href="contact.html">Register interest</a>
-          </div>
-        </div>
+      <div class="grid grid--2" style="margin-top:var(--space-7);max-width:40rem">
+        <a class="event-photo-card" href="contact.html" style="background-image:url('assets/images/BADRC placeholder.jpg')" data-reveal>
+          <span class="event-photo-card__date" aria-hidden="true">
+            <span class="event-photo-card__day">[--]</span>
+            <span class="event-photo-card__month">[Mon]</span>
+            <span class="event-photo-card__year">[----]</span>
+          </span>
+          <span class="event-photo-card__content">
+            <span class="event-photo-card__title">[Event title — placeholder]</span>
+            <span class="event-photo-card__meta">[Venue / format — to be supplied]</span>
+            <span class="event-photo-card__cta">Register interest →</span>
+          </span>
+        </a>
+        <a class="event-photo-card" href="contact.html" style="background-image:url('assets/images/BADRC placeholder.jpg')" data-reveal>
+          <span class="event-photo-card__date" aria-hidden="true">
+            <span class="event-photo-card__day">[--]</span>
+            <span class="event-photo-card__month">[Mon]</span>
+            <span class="event-photo-card__year">[----]</span>
+          </span>
+          <span class="event-photo-card__content">
+            <span class="event-photo-card__title">[Event title — placeholder]</span>
+            <span class="event-photo-card__meta">[Venue / format — to be supplied]</span>
+            <span class="event-photo-card__cta">Register interest →</span>
+          </span>
+        </a>
       </div>
       <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-top:var(--space-6)">Event registration currently routes to our general enquiry form; a dedicated registration flow is planned for a future release.</p>
     </div>
@@ -182,7 +222,7 @@
 
 <footer class="site-footer">
   <div class="container footer-top">
-    <div><span class="footer-brand__mark"><img src="assets/images/badrc-footer-logo.png" alt="BADRC official emblem — a raven encircled by cloud and wave motifs" width="112" height="112"></span><p style="color:rgba(255,255,255,0.75);font-size:var(--fs-small);max-width:22rem">Bhutan Alternative Dispute Resolution Centre — a statutory body established under the Alternative Dispute Resolution Act of Bhutan, 2013.</p></div>
+    <div><span class="footer-brand__mark"><img src="assets/images/logo/badrc-footer-logo.png" alt="BADRC official emblem — a raven encircled by cloud and wave motifs" width="112" height="112"></span><p style="color:rgba(255,255,255,0.75);font-size:var(--fs-small);max-width:22rem">Bhutan Alternative Dispute Resolution Centre — a statutory body established under the Alternative Dispute Resolution Act of Bhutan, 2013.</p></div>
     <div><h4 class="footer-heading">Services</h4><ul class="footer-links"><li><a href="arbitration.html">Arbitration</a></li><li><a href="mediation.html">Mediation</a></li><li><a href="panels.html">Panels &amp; Professionals</a></li><li><a href="rules.html">Rules &amp; Legislation</a></li></ul></div>
     <div><h4 class="footer-heading">Resources</h4><ul class="footer-links"><li><a href="publications.html">Publications</a></li><li><a href="cases-statistics.html">Cases &amp; Statistics</a></li><li><a href="media-gallery.html">Media &amp; Gallery</a></li><li><a href="careers.html">Careers &amp; Procurement</a></li></ul></div>
     <div><h4 class="footer-heading">Institution</h4><ul class="footer-links"><li><a href="about.html">About BADRC</a></li><li><a href="news.html">News &amp; Events</a></li><li><a href="international-cooperation.html">International Cooperation</a></li><li><a href="contact.html">Contact &amp; Enquiries</a></li></ul></div>

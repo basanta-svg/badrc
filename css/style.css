@@ -1796,6 +1796,20 @@ a.doc-row:hover .doc-row__download { color: var(--gold-dark); }
    Anything reusable across 2+ pages belongs in Part 3 instead.
    ========================================================================== */
 
+/* About (about.html): icon tile used above Vision/Mission cards, value
+   tiles and history stat tiles */
+.about-icon { width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--paper-alt); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+[data-surface="dark"] .about-icon { background: rgba(255,255,255,0.08); color: var(--gold-light); }
+
+/* About: history section stat callouts */
+.stat-tile { padding: var(--space-6); border: var(--border-width) solid var(--border); border-radius: var(--radius-md); background: var(--white); text-align: center; }
+.stat-tile__num { font-size: var(--fs-h3); font-weight: var(--fw-bold); color: var(--navy-primary); line-height: 1; margin-top: var(--space-4); }
+.stat-tile__label { margin-top: var(--space-2); font-size: var(--fs-small); color: var(--ink-soft); }
+
+/* About: core values tiles under Vision & Mission */
+.value-tile { padding: var(--space-6); border: var(--border-width) solid var(--border); border-radius: var(--radius-md); background: var(--white); text-align: center; }
+.value-tile__label { font-size: var(--fs-small); text-transform: uppercase; letter-spacing: var(--ls-wide); color: var(--gold-dark); margin-top: var(--space-4); }
+
 /* About (about.html): org chart list rendered as a simple nested tree */
 .org-chart { display: grid; gap: var(--space-4); }
 .org-chart__level { display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center; }
@@ -1833,3 +1847,16 @@ a.doc-row:hover .doc-row__download { color: var(--gold-dark); }
 /* 404 (404.html) */
 .error-page { text-align: center; padding-block: var(--space-12); }
 .error-page__code { font-size: 8rem; font-weight: var(--fw-bold); color: var(--gold-primary); line-height: 1; letter-spacing: var(--ls-tight); }
+
+/* -----------------------------------------------------------------------
+   Google Website Translator — every page with .lang-switcher (see PART 5
+   in js/script.js). The widget itself is only ever driven headlessly
+   through its hidden <select>; these rules suppress the UI chrome it
+   otherwise injects on its own (a top banner iframe that pushes the whole
+   page down, and a yellow highlight/underline on translated text) so the
+   site's own design is the only thing visitors see.
+   ----------------------------------------------------------------------- */
+.goog-te-banner-frame { display: none !important; }
+body { top: 0 !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; }
+#google_translate_element { display: none !important; }

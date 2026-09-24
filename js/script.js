@@ -636,13 +636,31 @@ function enhanceSelect(select, key, items, itemMatches) {
    PART 5 — LANGUAGE SWITCHER
    Used on: every page (header). Accessible toggle-button + menu pattern —
    the same shape as the mega-menu dropdowns, but for language selection.
-   Selecting a language updates the toggle's label and the active checkmark;
-   it does not yet translate page content (English is the only language
-   with real content today — see CONTENT-GAPS.md for the Dzongkha rollout
-   this markup/JS is structured to support without a rebuild).
+   Dzongkha, Hindi and Nepali are all wired to the Google Website
+   Translator widget each page loads (see the hidden
+   #google_translate_element + script tags near the end of <body>) —
+   picking one actually machine-translates the visible page. This is
+   machine translation, not an official BADRC translation — for Dzongkha
+   in particular (BADRC's own national-language content, once supplied —
+   see CONTENT-GAPS.md — should eventually replace this rather than sit
+   alongside it), but it's real, working translation today rather than a
+   "coming soon" placeholder.
+
+   TEMPORARILY DISABLED at the user's request — TRANSLATOR_ENABLED below
+   is false. The header icon/button and its dropdown stay fully in place
+   and interactive (opens/closes, picking a language still updates the
+   checkmark/label) — only the actual machine-translation call is skipped,
+   so picking a language is currently cosmetic. The Google Translate
+   <script> tags each page loads near the end of <body> still exist in the
+   HTML but are inert too (type="text/plain", not "text/javascript") — see
+   those pages, right before <script src="js/script.js">. Flip
+   TRANSLATOR_ENABLED back to true AND restore those two script tags'
+   type="text/javascript" to fully re-enable real translation.
    ========================================================================== */
 (function () {
   'use strict';
+
+  var TRANSLATOR_ENABLED = false;
 
   var switcher = document.querySelector('.lang-switcher');
   if (!switcher) return;
@@ -652,6 +670,58 @@ function enhanceSelect(select, key, items, itemMatches) {
   var label = switcher.querySelector('.lang-switcher__label');
   var options = Array.prototype.slice.call(switcher.querySelectorAll('.lang-switcher__option'));
   if (!toggle || !menu) return;
+
+  // Google's widget only understands its own language codes ('dz', 'hi',
+  // 'ne'); '' means "original" (English, the page's real language).
+  var GOOGLE_LANG = { EN: '', DZ: 'dz', HI: 'hi', NE: 'ne' };
+
+  function getCookie(name) {
+    var match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+    return match ? decodeURIComponent(match[1]) : '';
+  }
+
+  // Google's own widget reads/writes this cookie itself (format "/en/hi")
+  // to decide whether to auto-translate a freshly-loaded page — setting it
+  // here is what makes the chosen language persist across page navigations
+  // on a static, backend-less site.
+  function currentGoogleLang() {
+    var parts = getCookie('googtrans').split('/');
+    return parts[2] || '';
+  }
+
+  function setGoogleCookie(code) {
+    var value = code ? '/en/' + code : '';
+    var expiry = code ? '' : '; expires=Thu, 01 Jan 1970 00:00:00 UTC';
+    document.cookie = 'googtrans=' + value + '; path=/' + expiry;
+    document.cookie = 'googtrans=' + value + '; path=/; domain=' + location.hostname + expiry;
+  }
+
+  function applyGoogleTranslate(code) {
+    setGoogleCookie(code);
+    // The widget builds a real <select> once its script has finished
+    // loading (asynchronously) — driving it directly translates in place,
+    // no reload. Before that, or on a page that's never loaded the widget
+    // this session, falling back to a reload lets the cookie above do the
+    // work instead (Google's script auto-applies it on init).
+    var combo = document.querySelector('select.goog-te-combo');
+    if (combo) {
+      combo.value = code;
+      combo.dispatchEvent(new Event('change'));
+    } else {
+      location.reload();
+    }
+  }
+
+  function syncFromCurrentLanguage() {
+    var active = currentGoogleLang();
+    options.forEach(function (option) {
+      var code = option.getAttribute('data-lang-code');
+      var isActive = GOOGLE_LANG.hasOwnProperty(code) && GOOGLE_LANG[code] === active;
+      option.setAttribute('aria-current', String(isActive));
+      option.setAttribute('aria-checked', String(isActive));
+      if (isActive && label) label.textContent = code;
+    });
+  }
 
   function closeMenu() {
     menu.hidden = true;
@@ -682,12 +752,20 @@ function enhanceSelect(select, key, items, itemMatches) {
     option.addEventListener('click', function () {
       if (option.hasAttribute('disabled')) return;
 
-      options.forEach(function (o) { o.setAttribute('aria-current', 'false'); });
-      option.setAttribute('aria-current', 'true');
-      if (label) label.textContent = option.getAttribute('data-lang-code') || option.textContent.trim();
+      var code = option.getAttribute('data-lang-code');
       closeMenu();
+      if (TRANSLATOR_ENABLED && (GOOGLE_LANG[code] || '') === currentGoogleLang()) return; // already active
+
+      options.forEach(function (o) { o.setAttribute('aria-current', 'false'); o.setAttribute('aria-checked', 'false'); });
+      option.setAttribute('aria-current', 'true');
+      option.setAttribute('aria-checked', 'true');
+      if (label) label.textContent = code;
+
+      if (TRANSLATOR_ENABLED) applyGoogleTranslate(GOOGLE_LANG[code] || '');
     });
   });
+
+  if (TRANSLATOR_ENABLED) syncFromCurrentLanguage();
 })();
 
 

@@ -78,9 +78,9 @@
         </button>
         <ul class="lang-switcher__menu" id="lang-menu" role="menu" hidden>
           <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="EN" aria-current="true" aria-checked="true">English<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
-          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="DZ" aria-current="false" aria-checked="false" disabled title="Dzongkha content coming soon" lang="dz">རྫོང་ཁ<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
-          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="HI" aria-current="false" aria-checked="false" disabled title="Hindi content coming soon" lang="hi">हिन्दी<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
-          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="NE" aria-current="false" aria-checked="false" disabled title="Nepali content coming soon" lang="ne">नेपाली<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="DZ" aria-current="false" aria-checked="false" lang="dz">རྫོང་ཁ<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="HI" aria-current="false" aria-checked="false" lang="hi">हिन्दी<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="NE" aria-current="false" aria-checked="false" lang="ne">नेपाली<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
         </ul>
       </div>
     </div>
@@ -194,6 +194,21 @@
 
 <button class="back-to-top" type="button" aria-label="Back to top"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 
+<!-- Google Website Translator — powers the language switcher above
+     (Dzongkha, Hindi, Nepali). Hidden (display:none) — the visible
+     control is our own .lang-switcher; js/script.js drives this widget's
+     hidden <select> behind the scenes. See PART 5 in js/script.js. -->
+<div id="google_translate_element" style="display:none"></div>
+<script type="text/plain" data-disabled-reason="translator temporarily disabled — see js/script.js PART 5">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'dz,hi,ne',
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
+<script type="text/plain" data-disabled-reason="translator temporarily disabled — see js/script.js PART 5" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="js/script.js" defer></script>
 </body>
 </html>

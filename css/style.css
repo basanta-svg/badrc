@@ -638,6 +638,21 @@ hr {
 }
 .nav-toggle__box { width: 1.5rem; height: 1.5rem; }
 
+/* Hamburger → X morph. Each bar is its own <line> (see markup) so it can
+   move independently; transform-box/transform-origin center each bar on
+   itself (not the whole icon) so the rotation pivots in place instead of
+   swinging from the SVG's corner. Driven off aria-expanded, which
+   js/script.js already flips on open/close/Escape — no extra class or JS
+   needed. */
+.nav-toggle__bar {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform var(--transition-base), opacity var(--transition-fast);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar--top { transform: translateY(6px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar--mid { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar--bottom { transform: translateY(-6px) rotate(-45deg); }
+
 @media (max-width: 1024px) {
   /* Recalculated for the stacked mobile masthead — kept in step with the
      .primary-nav fixed-overlay offset below. The bottom row is now a
@@ -663,6 +678,9 @@ hr {
     left: 0;
     background: var(--paper);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
     padding: var(--space-6) var(--container-pad);
     transform: translateY(-8px);
     opacity: 0;
@@ -694,11 +712,65 @@ hr {
     color: var(--navy-primary);
     border-bottom: 2px solid var(--gold-primary);
   }
-  .dropdown { position: static; transform: none; box-shadow: none; border: none; opacity: 1; visibility: visible; display: none; padding-left: var(--space-4); }
-  .has-dropdown.is-expanded .dropdown { display: block; }
+  /* Mobile dropdown = an inline accordion under its parent link (not the
+     desktop floating panel), with a max-height transition so it
+     opens/closes smoothly (display:none can't be animated; the
+     container never holds more than a handful of links, so a generous
+     fixed max-height comfortably covers real content without a
+     JS-measured height). The parent link spans the full row (tap
+     target), but only the chevron itself moves — margin-left: auto pushes
+     just the icon to the row's right edge, leaving the label's own
+     position/gap untouched, same as the desktop trigger otherwise. */
+  .has-dropdown > .primary-nav__link { width: 100%; }
+  .primary-nav__chevron { margin-left: auto; }
+  .dropdown {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    opacity: 1;
+    visibility: visible;
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    touch-action: pan-y;
+    margin-left: var(--space-1);
+    padding: 0 0 0 var(--space-4);
+    border-left: 2px solid var(--border);
+    transition: max-height var(--transition-base);
+  }
+  .has-dropdown.is-expanded .dropdown { max-height: 20rem; }
+  .dropdown a {
+    padding: var(--space-3) var(--space-3);
+    font-size: var(--fs-small);
+    color: var(--ink-soft);
+    border-radius: 0;
+  }
+  .dropdown a:hover { background: var(--paper-alt); color: var(--navy-primary); }
   .nav-toggle { display: inline-flex; }
   .header-bottom__inner { justify-content: space-between; padding-block: var(--space-3); min-height: 0; }
   .lang-switcher__menu { right: 0; left: auto; }
+}
+
+@media (max-width: 640px) {
+  /* Stack the two header-top marks — Royal Government of Bhutan emblem
+     above, BADRC emblem + title below — instead of flanking the title
+     left/right. header-top__inner's DOM order stays
+     [logo--left, titles, logo--right]; only the visual order changes via
+     flex `order`, so no HTML edits and no accessibility/tab-order change. */
+  :root { --header-top-height: 11rem; }
+  .header-top__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding-block: var(--space-4);
+  }
+  .header-top__logo--right { order: -1; }
+  .header-top__logo--right img { width: 3.25rem; height: 3.25rem; }
+  .header-top__titles { order: 0; }
+  .header-top__logo--left { order: 1; }
+  .header-top__logo--left img { width: 4.5rem; height: 4.5rem; }
 }
 
 /* -----------------------------------------------------------------------

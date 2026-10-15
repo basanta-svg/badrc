@@ -10,9 +10,22 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/images/logo/badrc-logo.png" type="image/png">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/side-nav.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ========================= SIDE NAV (interior pages) =========================
+     Interior pages keep only the Portal shortcut (Home keeps the full
+     six-link rail pair — see index.html). Fixed to the right viewport
+     edge; see css/side-nav.css. -->
+<nav class="side-nav side-nav-right" aria-label="Portal">
+  <a href="publications.html" class="side-nav-link">
+    <svg class="side-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21V11a8 8 0 0 1 16 0v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 21v-7a3 3 0 0 1 6 0v7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    Portal
+  </a>
+</nav>
+
 
 <header class="site-header">
   <div class="header-top">
@@ -89,7 +102,7 @@
 
 <main id="main">
 
-  <section class="hero hero--compact" data-surface="dark">
+  <section class="hero hero--compact" data-surface="dark" data-side-nav-watch>
     <div class="container">
       <nav class="hero__breadcrumb breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Rules &amp; Legislation</li></ol></nav>
       <div class="hero__grid">
@@ -135,19 +148,21 @@
 
         <h2 class="doc-group-title" style="font-size:var(--fs-h5)">ADR Act &amp; Amendments</h2>
         <div class="doc-list">
-          <div class="doc-row" data-filter-item data-category="act" data-status="current" data-search="alternative dispute resolution act bhutan 2013"><div><div class="doc-row__title">Alternative Dispute Resolution Act of Bhutan, 2013</div><div class="doc-row__meta">Legislation · Current</div></div><div class="doc-row__version">Act, 2013</div><div class="doc-row__type">PDF</div><div class="doc-row__size">[size]</div><a class="doc-row__download" href="#" aria-label="Download the ADR Act of Bhutan 2013"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download</a></div>
-          <div class="doc-row" data-filter-item data-category="act" data-status="archived" data-search="adr act amendment placeholder"><div><div class="doc-row__title">[ADR Act Amendment — placeholder]</div><div class="doc-row__meta">Legislation · Archived</div></div><div class="doc-row__version">[v.]</div><div class="doc-row__type">PDF</div><div class="doc-row__size">[size]</div><a class="doc-row__download" href="#" aria-label="Download ADR Act Amendment (placeholder)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download</a></div>
+          <div class="doc-row" data-filter-item data-category="act" data-status="current" data-search="alternative dispute resolution act bhutan 2013"><div><div class="doc-row__title">ADR Act of Bhutan, 2013</div><div class="doc-row__meta">Legislation · Current</div></div><div class="doc-row__version">v1 · 14/03/2013</div><div class="doc-row__type">PDF</div><div class="doc-row__size">Drive</div><a class="doc-row__download" href="https://drive.google.com/drive/folders/1lLdzEDCDq-Uj8UYyDJmYjAFRELvY2DnQ?usp=sharing" target="_blank" rel="noopener" aria-label="Open the ADR Act of Bhutan 2013 folder"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Open</a></div>
+          <div class="doc-row" data-filter-item data-category="act" data-status="current" data-search="adr act amendment 2026"><div><div class="doc-row__title">ADR Act of Bhutan (Amended in 2026)</div><div class="doc-row__meta">Legislation · Current</div></div><div class="doc-row__version">v2 · 07/02/2026</div><div class="doc-row__type">PDF</div><div class="doc-row__size">Drive</div><a class="doc-row__download" href="https://drive.google.com/drive/folders/1lLdzEDCDq-Uj8UYyDJmYjAFRELvY2DnQ?usp=sharing" target="_blank" rel="noopener" aria-label="Open the ADR Amendment Act 2026 folder"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Open</a></div>
+          <div class="doc-row" data-filter-item data-category="act" data-status="archived" data-search="adr rules and regulations 2019"><div><div class="doc-row__title">ADR Rules and Regulations, 2019</div><div class="doc-row__meta">Legislation · Archived</div></div><div class="doc-row__version">v1 · 22/07/2019</div><div class="doc-row__type">PDF</div><div class="doc-row__size">Drive</div><a class="doc-row__download" href="https://drive.google.com/drive/folders/1eaW_OKx4be3Q7FdiekS_Fto5adiy5K24?usp=drive_link" target="_blank" rel="noopener" aria-label="Open the ADR Rules and Regulations 2019 folder"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Open</a></div>
         </div>
 
         <h2 class="doc-group-title" style="font-size:var(--fs-h5)">Arbitration Rules</h2>
         <div class="doc-list">
-          <div class="doc-row" data-filter-item data-category="arbitration-rules" data-status="current" data-search="badrc arbitration rules current"><div><div class="doc-row__title">BADRC Arbitration Rules</div><div class="doc-row__meta">Rules · Current</div></div><div class="doc-row__version">[v.] · [date]</div><div class="doc-row__type">PDF</div><div class="doc-row__size">[size]</div><a class="doc-row__download" href="#" aria-label="Download current BADRC Arbitration Rules"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download</a></div>
-          <div class="doc-row" data-filter-item data-category="arbitration-rules" data-status="archived" data-search="badrc arbitration rules archived previous"><div><div class="doc-row__title">BADRC Arbitration Rules (previous edition)</div><div class="doc-row__meta">Rules · Archived</div></div><div class="doc-row__version">[v.] · [date]</div><div class="doc-row__type">PDF</div><div class="doc-row__size">[size]</div><a class="doc-row__download" href="#" aria-label="Download archived BADRC Arbitration Rules"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download</a></div>
+          <div class="doc-row" data-filter-item data-category="arbitration-rules" data-status="current" data-search="badrc arbitration rules 2026 current"><div><div class="doc-row__title">BADRC Arbitration Rules, 2026</div><div class="doc-row__meta">Rules · Current</div></div><div class="doc-row__version">v2 · [effective date pending]</div><div class="doc-row__type">PDF</div><div class="doc-row__size">[size]</div><a class="doc-row__download" href="#" aria-label="Download current BADRC Arbitration Rules"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download</a></div>
+          <div class="doc-row" data-filter-item data-category="arbitration-rules" data-status="archived" data-search="badrc arbitration rules 2023 archived previous"><div><div class="doc-row__title">BADRC Arbitration Rules, 2023</div><div class="doc-row__meta">Rules · Archived</div></div><div class="doc-row__version">v1 · 01/07/2023</div><div class="doc-row__type">PDF</div><div class="doc-row__size">[size]</div><a class="doc-row__download" href="#" aria-label="Download archived BADRC Arbitration Rules 2023"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download</a></div>
         </div>
 
         <h2 class="doc-group-title" style="font-size:var(--fs-h5)">Mediation Rules</h2>
         <div class="doc-list">
-          <div class="doc-row" data-filter-item data-category="mediation-rules" data-status="current" data-search="badrc mediation rules current"><div><div class="doc-row__title">BADRC Mediation Rules</div><div class="doc-row__meta">Rules · Current</div></div><div class="doc-row__version">[v.] · [date]</div><div class="doc-row__type">PDF</div><div class="doc-row__size">[size]</div><a class="doc-row__download" href="#" aria-label="Download current BADRC Mediation Rules"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download</a></div>
+          <div class="doc-row" data-filter-item data-category="mediation-rules" data-status="current" data-search="badrc mediation rules 2026 current"><div><div class="doc-row__title">BADRC Mediation Rules, 2026</div><div class="doc-row__meta">Rules · Current</div></div><div class="doc-row__version">v2 · [effective date pending]</div><div class="doc-row__type">PDF</div><div class="doc-row__size">[size]</div><a class="doc-row__download" href="https://docs.google.com/document/d/180v22smjAJPKPQi-NlkAYc_nc-c_jw-Mgga-J9mfOk8/edit?tab=t.0" target="_blank" rel="noopener" aria-label="Open current BADRC Mediation Rules"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Open</a></div>
+          <div class="doc-row" data-filter-item data-category="mediation-rules" data-status="archived" data-search="badrc mediation rules 2023 archived"><div><div class="doc-row__title">BADRC Mediation Rules, 2023</div><div class="doc-row__meta">Rules · Archived</div></div><div class="doc-row__version">v1 · [effective date pending]</div><div class="doc-row__type">PDF</div><div class="doc-row__size">[size]</div><a class="doc-row__download" href="#" aria-label="Download archived BADRC Mediation Rules 2023"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download</a></div>
         </div>
 
         <h2 class="doc-group-title" style="font-size:var(--fs-h5)">Regulations &amp; Practice Notes</h2>
@@ -158,12 +173,20 @@
 
         <h2 class="doc-group-title" style="font-size:var(--fs-h5)">Forms &amp; Fee Schedules</h2>
         <div class="doc-list">
-          <div class="doc-row" data-filter-item data-category="forms" data-status="current" data-search="notice of arbitration form"><div><div class="doc-row__title">Notice of Arbitration (Form)</div><div class="doc-row__meta">Forms · Current</div></div><div class="doc-row__version">v1.0</div><div class="doc-row__type">DOCX</div><div class="doc-row__size">[size]</div><a class="doc-row__download" href="#" aria-label="Download Notice of Arbitration form"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download</a></div>
+          <div class="doc-row" data-filter-item data-category="forms" data-status="current" data-search="notice of arbitration form downloadable forms"><div><div class="doc-row__title">Notice of Arbitration &amp; downloadable forms</div><div class="doc-row__meta">Forms · Current</div></div><div class="doc-row__version">—</div><div class="doc-row__type">Drive</div><div class="doc-row__size">Folder</div><a class="doc-row__download" href="https://drive.google.com/drive/folders/1cEKv7ZtaRb244ffUssE-lfZf6lGpJSys?usp=sharing" target="_blank" rel="noopener" aria-label="Open the arbitration forms folder">Open →</a></div>
           <div class="doc-row" data-filter-item data-category="fees" data-status="current" data-search="fee schedule current"><div><div class="doc-row__title">BADRC Fee Schedule</div><div class="doc-row__meta">Fee Schedules · Current</div></div><div class="doc-row__version">[v.]</div><div class="doc-row__type">PDF</div><div class="doc-row__size">[size]</div><a class="doc-row__download" href="#" aria-label="Download current fee schedule"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download</a></div>
         </div>
 
       </div>
       <p class="empty-state" id="doc-empty" hidden>No documents match your filters. Try broadening your search.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight" style="background:var(--paper-alt)" id="model-clauses">
+    <div class="container">
+      <p class="eyebrow">Model Clauses</p>
+      <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">Arbitration &amp; mediation model clauses</h2>
+      <p class="lede" style="margin-top:var(--space-3)">Recommended clause text for incorporating BADRC arbitration or mediation into a contract. See the full text, with model clauses for arbitration, Arb-Med-Arb and mediation, on the <a href="arbitration.html#model-clauses">Arbitration</a> and <a href="mediation.html#model-clauses">Mediation</a> pages.</p>
     </div>
   </section>
 

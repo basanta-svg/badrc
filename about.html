@@ -10,9 +10,22 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/images/logo/badrc-logo.png" type="image/png">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/side-nav.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ========================= SIDE NAV (interior pages) =========================
+     Interior pages keep only the Portal shortcut (Home keeps the full
+     six-link rail pair — see index.html). Fixed to the right viewport
+     edge; see css/side-nav.css. -->
+<nav class="side-nav side-nav-right" aria-label="Portal">
+  <a href="publications.html" class="side-nav-link">
+    <svg class="side-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21V11a8 8 0 0 1 16 0v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 21v-7a3 3 0 0 1 6 0v7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    Portal
+  </a>
+</nav>
+
 
 <header class="site-header">
   <div class="header-top">
@@ -89,7 +102,7 @@
 
 <main id="main">
 
-  <section class="hero hero--compact" data-surface="dark">
+  <section class="hero hero--compact" data-surface="dark" data-side-nav-watch>
     <div class="container">
       <nav class="hero__breadcrumb breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">About BADRC</li></ol></nav>
       <div class="hero__grid">

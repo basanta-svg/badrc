@@ -10,9 +10,22 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/images/logo/badrc-logo.png" type="image/png">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/side-nav.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ========================= SIDE NAV (interior pages) =========================
+     Interior pages keep only the Portal shortcut (Home keeps the full
+     six-link rail pair — see index.html). Fixed to the right viewport
+     edge; see css/side-nav.css. -->
+<nav class="side-nav side-nav-right" aria-label="Portal">
+  <a href="publications.html" class="side-nav-link">
+    <svg class="side-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21V11a8 8 0 0 1 16 0v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 21v-7a3 3 0 0 1 6 0v7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    Portal
+  </a>
+</nav>
+
 
 <header class="site-header">
   <div class="header-top">
@@ -89,7 +102,7 @@
 
 <main id="main">
 
-  <section class="hero hero--compact" data-surface="dark">
+  <section class="hero hero--compact" data-surface="dark" data-side-nav-watch>
     <div class="container">
       <nav class="hero__breadcrumb breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Panels &amp; Professionals</li></ol></nav>
       <div class="hero__grid">
@@ -115,7 +128,9 @@
           <label class="visually-hidden" for="panel-role">Role</label>
           <select id="panel-role" data-filter-select data-filter-key="role">
             <option value="all">All roles</option>
-            <option value="arbitrator">Arbitrator</option>
+            <option value="domestic-arbitrator">Domestic arbitrator</option>
+            <option value="bhutanese-international-arbitrator">Bhutanese international arbitrator</option>
+            <option value="international-arbitrator">International arbitrator</option>
             <option value="mediator">Mediator</option>
           </select>
         </div>
@@ -138,10 +153,10 @@
 
       <div class="grid grid--4" id="panel-results" style="margin-top:var(--space-7)">
 
-        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-role="arbitrator" data-language="english" data-expertise="commercial" data-search="arbitrator commercial english placeholder name one">
+        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-role="domestic-arbitrator" data-language="english" data-expertise="commercial" data-search="domestic arbitrator commercial english placeholder name one">
           <div class="pro-card__photo" style="display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:var(--fs-small);text-align:center;padding:var(--space-3)">[Photo]</div>
           <h3 class="pro-card__name">[Arbitrator Name — placeholder]</h3>
-          <p class="pro-card__role">Arbitrator</p>
+          <p class="pro-card__role">Domestic Arbitrator</p>
           <p class="pro-card__meta">[Nationality] · English, Dzongkha</p>
           <div class="pro-card__tags"><span class="tag">Commercial</span><span class="tag">[XX yrs experience]</span></div>
           <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="#">View profile →</a>
@@ -156,10 +171,10 @@
           <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="#">View profile →</a>
         </div>
 
-        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-role="arbitrator" data-language="hindi" data-expertise="investment" data-search="arbitrator investment hindi placeholder name three">
+        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-role="international-arbitrator" data-language="hindi" data-expertise="investment" data-search="international arbitrator investment hindi placeholder name three">
           <div class="pro-card__photo" style="display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:var(--fs-small);text-align:center;padding:var(--space-3)">[Photo]</div>
           <h3 class="pro-card__name">[Arbitrator Name — placeholder]</h3>
-          <p class="pro-card__role">Arbitrator</p>
+          <p class="pro-card__role">International Arbitrator</p>
           <p class="pro-card__meta">[Nationality] · Hindi, English</p>
           <div class="pro-card__tags"><span class="tag">Investment</span><span class="tag">[XX yrs experience]</span></div>
           <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="#">View profile →</a>
@@ -174,10 +189,10 @@
           <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="#">View profile →</a>
         </div>
 
-        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-role="arbitrator" data-language="english" data-expertise="construction" data-search="arbitrator construction english placeholder name five">
+        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-role="bhutanese-international-arbitrator" data-language="english" data-expertise="construction" data-search="bhutanese international arbitrator construction english placeholder name five">
           <div class="pro-card__photo" style="display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:var(--fs-small);text-align:center;padding:var(--space-3)">[Photo]</div>
           <h3 class="pro-card__name">[Arbitrator Name — placeholder]</h3>
-          <p class="pro-card__role">Arbitrator</p>
+          <p class="pro-card__role">Bhutanese International Arbitrator</p>
           <p class="pro-card__meta">[Nationality] · English</p>
           <div class="pro-card__tags"><span class="tag">Construction</span><span class="tag">[XX yrs experience]</span></div>
           <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="#">View profile →</a>
@@ -192,10 +207,10 @@
           <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="#">View profile →</a>
         </div>
 
-        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-role="arbitrator" data-language="dzongkha" data-expertise="commercial" data-search="arbitrator commercial dzongkha placeholder name seven">
+        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-role="domestic-arbitrator" data-language="dzongkha" data-expertise="commercial" data-search="domestic arbitrator commercial dzongkha placeholder name seven">
           <div class="pro-card__photo" style="display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:var(--fs-small);text-align:center;padding:var(--space-3)">[Photo]</div>
           <h3 class="pro-card__name">[Arbitrator Name — placeholder]</h3>
-          <p class="pro-card__role">Arbitrator</p>
+          <p class="pro-card__role">Domestic Arbitrator</p>
           <p class="pro-card__meta">[Nationality] · Dzongkha, English</p>
           <div class="pro-card__tags"><span class="tag">Commercial</span><span class="tag">[XX yrs experience]</span></div>
           <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="#">View profile →</a>
@@ -214,7 +229,7 @@
 
       <p class="empty-state" id="panel-empty" hidden>No professionals match your filters. Try broadening your search.</p>
 
-      <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-top:var(--space-8)">All panel profiles shown are placeholders pending real BADRC-approved professional data (names, photographs, qualifications, approved contact details). No real individuals are represented above.</p>
+      <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-top:var(--space-8)">All panel profiles shown are placeholders pending real BADRC-approved professional data (names, photographs, qualifications, approved contact details — anything published here is limited to what is on file in each professional's CV). No real individuals are represented above. <a href="https://drive.google.com/drive/folders/18HrndiBgm3qTQ7ce7kRwjiy7cKZlYJC7?usp=sharing" target="_blank" rel="noopener">BADRC's internal profile data folder →</a></p>
     </div>
   </section>
 

@@ -10,9 +10,22 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/images/logo/badrc-logo.png" type="image/png">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/side-nav.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ========================= SIDE NAV (interior pages) =========================
+     Interior pages keep only the Portal shortcut (Home keeps the full
+     six-link rail pair — see index.html). Fixed to the right viewport
+     edge; see css/side-nav.css. -->
+<nav class="side-nav side-nav-right" aria-label="Portal">
+  <a href="publications.html" class="side-nav-link">
+    <svg class="side-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21V11a8 8 0 0 1 16 0v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 21v-7a3 3 0 0 1 6 0v7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    Portal
+  </a>
+</nav>
+
 
 <header class="site-header">
   <div class="header-top">
@@ -89,7 +102,7 @@
 
 <main id="main">
 
-  <section class="hero hero--compact" data-surface="dark">
+  <section class="hero hero--compact" data-surface="dark" data-side-nav-watch>
     <div class="container">
       <nav class="hero__breadcrumb breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">News &amp; Events</li></ol></nav>
       <div class="hero__grid">
@@ -122,51 +135,51 @@
       <p class="filter-results-count" id="news-count"></p>
 
       <div class="grid grid--3" id="news-results" style="margin-top:var(--space-8)">
-        <a class="news-card" data-filter-item data-category="announcement" data-search="badrc updated arbitration rules" draggable="false" href="news-article.html" style="background-image:url('assets/images/taktshang.jpg')" data-reveal>
-          <span class="news-card__badge"><span class="tag tag--on-photo">Announcement</span></span>
-          <span class="news-card__body">
-            <time class="news-card__date" datetime="2026-07-02">2 July 2026</time>
-            <span class="news-card__title">[Headline: BADRC issues updated Arbitration Rules — placeholder]</span>
-            <span class="news-card__cta">Read more →</span>
-          </span>
-        </a>
-        <a class="news-card" data-filter-item data-category="training" data-search="regional mediation training programme" draggable="false" href="news-article.html" style="background-image:url('assets/images/thimphu.jpg')" data-reveal>
-          <span class="news-card__badge"><span class="tag tag--on-photo">Training</span></span>
-          <span class="news-card__body">
-            <time class="news-card__date" datetime="2026-06-14">14 June 2026</time>
-            <span class="news-card__title">[Headline: Regional mediation training programme — placeholder]</span>
-            <span class="news-card__cta">Read more →</span>
-          </span>
-        </a>
-        <a class="news-card" data-filter-item data-category="mou" data-search="institutional cooperation update mou" draggable="false" href="news-article.html" style="background-image:url('assets/images/trongsa-dzong.jpg')" data-reveal>
-          <span class="news-card__badge"><span class="tag tag--on-photo">MoU</span></span>
-          <span class="news-card__body">
-            <time class="news-card__date" datetime="2026-05-20">20 May 2026</time>
-            <span class="news-card__title">[Headline: Institutional cooperation update — placeholder]</span>
-            <span class="news-card__cta">Read more →</span>
-          </span>
-        </a>
-        <a class="news-card" data-filter-item data-category="conference" data-search="international adr conference thimphu" draggable="false" href="news-article.html" style="background-image:url('assets/images/taktshang.jpg')" data-reveal>
+        <a class="news-card" data-filter-item data-category="conference" data-search="siac badrc conference trends practices international arbitration" draggable="false" href="news-article.html" style="background-image:url('assets/images/taktshang.jpg')" data-reveal>
           <span class="news-card__badge"><span class="tag tag--on-photo">Conference</span></span>
           <span class="news-card__body">
-            <time class="news-card__date" datetime="2026-04-18">18 April 2026</time>
-            <span class="news-card__title">[Headline: International ADR Conference, Thimphu — placeholder]</span>
+            <time class="news-card__date" datetime="2026-05-06">6–7 May 2026</time>
+            <span class="news-card__title">First-ever BADRC-SIAC Conference on Trends and Practices in International Arbitration</span>
             <span class="news-card__cta">Read more →</span>
           </span>
         </a>
-        <a class="news-card" data-filter-item data-category="visit" data-search="delegation visit institutional exchange" draggable="false" href="news-article.html" style="background-image:url('assets/images/thimphu.jpg')" data-reveal>
-          <span class="news-card__badge"><span class="tag tag--on-photo">Institutional Visit</span></span>
+        <a class="news-card" data-filter-item data-category="training" data-search="construction arbitration training white case terma linca" draggable="false" href="news-article.html" style="background-image:url('assets/images/thimphu.jpg')" data-reveal>
+          <span class="news-card__badge"><span class="tag tag--on-photo">Training</span></span>
           <span class="news-card__body">
-            <time class="news-card__date" datetime="2026-03-11">11 March 2026</time>
-            <span class="news-card__title">[Headline: Delegation visit — placeholder]</span>
+            <time class="news-card__date" datetime="2026-04-06">6–7 April 2026</time>
+            <span class="news-card__title">Construction Arbitration Training with White &amp; Case, Singapore</span>
             <span class="news-card__cta">Read more →</span>
           </span>
         </a>
-        <a class="news-card" data-filter-item data-category="notice" data-search="public notice tender vacancy" draggable="false" href="news-article.html" style="background-image:url('assets/images/trongsa-dzong.jpg')" data-reveal>
-          <span class="news-card__badge"><span class="tag tag--on-photo">Notice</span></span>
+        <a class="news-card" data-filter-item data-category="mou" data-search="memorandum of understanding singapore mediation centre mediation registry" draggable="false" href="news-article.html" style="background-image:url('assets/images/trongsa-dzong.jpg')" data-reveal>
+          <span class="news-card__badge"><span class="tag tag--on-photo">MoU</span></span>
           <span class="news-card__body">
-            <time class="news-card__date" datetime="2026-02-25">25 February 2026</time>
-            <span class="news-card__title">[Headline: Public notice — placeholder]</span>
+            <time class="news-card__date" datetime="2025">2025</time>
+            <span class="news-card__title">MoU signed with the Singapore Mediation Centre to establish a Mediation Registry</span>
+            <span class="news-card__cta">Read more →</span>
+          </span>
+        </a>
+        <a class="news-card" data-filter-item data-category="training" data-search="mediation training certification programme singapore mediation centre" draggable="false" href="news-article.html" style="background-image:url('assets/images/taktshang.jpg')" data-reveal>
+          <span class="news-card__badge"><span class="tag tag--on-photo">Training</span></span>
+          <span class="news-card__body">
+            <time class="news-card__date" datetime="2025">2025</time>
+            <span class="news-card__title">Mediation Training and Certification Programme, with the Singapore Mediation Centre</span>
+            <span class="news-card__cta">Read more →</span>
+          </span>
+        </a>
+        <a class="news-card" data-filter-item data-category="mou" data-search="memorandum of understanding indian council of arbitration" draggable="false" href="news-article.html" style="background-image:url('assets/images/thimphu.jpg')" data-reveal>
+          <span class="news-card__badge"><span class="tag tag--on-photo">MoU</span></span>
+          <span class="news-card__body">
+            <time class="news-card__date" datetime="2024">2024</time>
+            <span class="news-card__title">MoU signed with the Indian Council of Arbitration</span>
+            <span class="news-card__cta">Read more →</span>
+          </span>
+        </a>
+        <a class="news-card" data-filter-item data-category="conference" data-search="workshop strengthening bhutan adr landscape regional collaboration" draggable="false" href="news-article.html" style="background-image:url('assets/images/trongsa-dzong.jpg')" data-reveal>
+          <span class="news-card__badge"><span class="tag tag--on-photo">Workshop</span></span>
+          <span class="news-card__body">
+            <time class="news-card__date" datetime="2024-10">October 2024</time>
+            <span class="news-card__title">Workshop on Strengthening Bhutan's ADR Landscape: Regional Collaboration and Professional Excellence</span>
             <span class="news-card__cta">Read more →</span>
           </span>
         </a>

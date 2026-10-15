@@ -10,9 +10,22 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/images/logo/badrc-logo.png" type="image/png">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/side-nav.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ========================= SIDE NAV (interior pages) =========================
+     Interior pages keep only the Portal shortcut (Home keeps the full
+     six-link rail pair — see index.html). Fixed to the right viewport
+     edge; see css/side-nav.css. -->
+<nav class="side-nav side-nav-right" aria-label="Portal">
+  <a href="publications.html" class="side-nav-link">
+    <svg class="side-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21V11a8 8 0 0 1 16 0v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 21v-7a3 3 0 0 1 6 0v7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    Portal
+  </a>
+</nav>
+
 
 <header class="site-header">
   <div class="header-top">
@@ -89,7 +102,7 @@
 
 <main id="main">
 
-  <section class="hero hero--compact" data-surface="dark">
+  <section class="hero hero--compact" data-surface="dark" data-side-nav-watch>
     <div class="container">
       <nav class="hero__breadcrumb breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Policies &amp; Legal Notices</li></ol></nav>
       <div class="hero__grid">
@@ -107,52 +120,98 @@
       <div class="accordion" data-accordion-open-first>
 
         <div class="accordion__item" id="privacy">
-          <h2><button class="accordion__trigger" aria-expanded="false" aria-controls="pol-privacy" id="pol-privacy-trigger">Privacy Policy</button></h2>
+          <h2><button class="accordion__trigger" aria-expanded="false" aria-controls="pol-privacy" id="pol-privacy-trigger">Privacy Policy<span class="accordion__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button></h2>
           <div class="accordion__panel" id="pol-privacy" role="region" aria-labelledby="pol-privacy-trigger" aria-hidden="true"><div class="accordion__panel-inner">
-            <p>[BADRC's privacy policy — to be supplied and reviewed by legal counsel. This placeholder covers, at minimum: what personal data is collected via enquiry/registration forms, how it is used, how long it is retained, and how individuals may exercise any applicable rights.]</p>
-            <p>No confidential case data is ever collected via public-facing forms on this site.</p>
+            <p style="font-size:var(--fs-small);color:var(--ink-soft)">Last updated: [Date]</p>
+            <p>BADRC is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your personal information when you visit our website.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">1. Information we collect</h3>
+            <p><strong>Personal data you provide:</strong> When you contact us, register an account, or subscribe to our services, we may collect personal information such as your first and last name, email address, phone number, and postal address.</p>
+            <p><strong>Usage data:</strong> We automatically collect information when you visit our website, including your IP address, browser type, pages visited, time and date of visit, and diagnostic data.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">2. How we use your information</h3>
+            <p>We use your personal data to: provide and maintain our service; manage your account and registration; contact you with updates or security information; manage your requests and inquiries; and analyze usage trends and improve our service.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">3. Data sharing</h3>
+            <p>We may share your information with service providers, affiliates, or business partners who assist us in operating our website and providing our services. We require these parties to honor this Privacy Policy.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">4. Data retention</h3>
+            <p>We retain your personal data only as long as necessary to fulfill the purposes outlined in this policy, comply with legal obligations, resolve disputes, and enforce our agreements.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">5. Data security</h3>
+            <p>We implement reasonable security safeguards to protect your information against unauthorized access, disclosure, or modification.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">6. Your rights</h3>
+            <p>Depending on your jurisdiction, you may have the right to access, correct, or request deletion of your personal data. Contact us at [Contact Email] to exercise these rights.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">7. Changes to this policy</h3>
+            <p>We may update this Privacy Policy. Changes will be posted on this page with an updated date.</p>
+            <p style="margin-top:var(--space-5)">No confidential case data is ever collected via public-facing forms on this site.</p>
           </div></div>
         </div>
 
         <div class="accordion__item" id="cookies">
-          <h2><button class="accordion__trigger" aria-expanded="false" aria-controls="pol-cookies" id="pol-cookies-trigger">Cookie Notice</button></h2>
+          <h2><button class="accordion__trigger" aria-expanded="false" aria-controls="pol-cookies" id="pol-cookies-trigger">Cookie Notice<span class="accordion__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button></h2>
           <div class="accordion__panel" id="pol-cookies" role="region" aria-labelledby="pol-cookies-trigger" aria-hidden="true"><div class="accordion__panel-inner">
-            <p>[Cookie notice — to be supplied once analytics or other cookie-setting integrations are added. This site currently sets no tracking cookies; the markup is structured to support a client-controlled analytics account being added in future without requiring a rebuild.]</p>
+            <p>BADRC uses cookies to enhance your browsing experience. By continuing to use our website, you consent to our use of cookies as described in this notice.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">What are cookies?</h3>
+            <p>Cookies are small text files stored on your device when you visit a website.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">How we use cookies</h3>
+            <p><strong>Necessary cookies:</strong> essential for the website to function properly. <strong>Functional cookies:</strong> enable enhanced functionality and personalization. <strong>Analytical cookies:</strong> help us understand how visitors interact with our site to improve performance.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">Managing your preferences</h3>
+            <p>You can manage cookie settings through your browser or our cookie banner. Disabling certain cookies may affect website functionality.</p>
           </div></div>
         </div>
 
         <div class="accordion__item" id="terms">
-          <h2><button class="accordion__trigger" aria-expanded="false" aria-controls="pol-terms" id="pol-terms-trigger">Terms of Use</button></h2>
+          <h2><button class="accordion__trigger" aria-expanded="false" aria-controls="pol-terms" id="pol-terms-trigger">Terms of Use<span class="accordion__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button></h2>
           <div class="accordion__panel" id="pol-terms" role="region" aria-labelledby="pol-terms-trigger" aria-hidden="true"><div class="accordion__panel-inner">
-            <p>[Terms governing use of this website — to be supplied and legally reviewed.]</p>
+            <p style="font-size:var(--fs-small);color:var(--ink-soft)">Last updated: 2026</p>
+            <p>By accessing and using the BADRC website, you agree to be bound by these Terms of Use.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">1. Use of the site</h3>
+            <p>The content is for general information purposes only. You agree to use the site only for lawful purposes.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">2. Disclaimer of warranty</h3>
+            <p>The information on this site is provided "AS IS." BADRC does not warrant the accuracy, completeness, or reliability of any information.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">3. Limitation of liability</h3>
+            <p>In no event shall BADRC be liable for any direct, indirect, incidental, consequential, or other damages arising out of your use of this site.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">4. Copyright and other notices</h3>
+            <p>All content on this site is the property of BADRC. You may not copy, modify, or remove copyright notices without prior written consent.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">5. Third-party links</h3>
+            <p>Links to third-party websites are provided for convenience. BADRC does not endorse or control the content of linked sites, and you access them at your own risk.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">6. Jurisdictional restrictions</h3>
+            <p>The information on this site is not intended for distribution to any person or entity in any jurisdiction where such distribution would be contrary to law or regulation.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">7. Governing law</h3>
+            <p>Your use of this site is governed by the laws of Bhutan.</p>
           </div></div>
         </div>
 
         <div class="accordion__item" id="accessibility">
-          <h2><button class="accordion__trigger" aria-expanded="false" aria-controls="pol-access" id="pol-access-trigger">Accessibility Statement</button></h2>
+          <h2><button class="accordion__trigger" aria-expanded="false" aria-controls="pol-access" id="pol-access-trigger">Accessibility Statement<span class="accordion__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button></h2>
           <div class="accordion__panel" id="pol-access" role="region" aria-labelledby="pol-access-trigger" aria-hidden="true"><div class="accordion__panel-inner">
-            <p>This site is designed to conform to WCAG 2.1 Level AA, including keyboard navigation, sufficient colour contrast, alt text on images, labelled form fields, logical heading order, semantic landmarks, and visible focus states. If you encounter an accessibility barrier, please contact us via the <a href="contact.html">Contact page</a>.</p>
+            <p>The vision of BADRC is to foster justice through impartial and accessible processes. We believe that meaningful access to justice is a universal right. We strive to ensure our digital presence is accessible to all individuals, regardless of their physical or technical abilities. We are continually refining our site to meet international accessibility standards, ensuring that the "breath" of dialogue is available to every citizen and partner.</p>
+            <p style="margin-top:var(--space-5)">This site is designed to conform to WCAG 2.1 Level AA, including keyboard navigation, sufficient colour contrast, alt text on images, labelled form fields, logical heading order, semantic landmarks, and visible focus states. If you encounter an accessibility barrier, please contact us via the <a href="contact.html">Contact page</a>.</p>
           </div></div>
         </div>
 
         <div class="accordion__item" id="copyright">
-          <h2><button class="accordion__trigger" aria-expanded="false" aria-controls="pol-copyright" id="pol-copyright-trigger">Copyright Notice</button></h2>
+          <h2><button class="accordion__trigger" aria-expanded="false" aria-controls="pol-copyright" id="pol-copyright-trigger">Copyright Notice<span class="accordion__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button></h2>
           <div class="accordion__panel" id="pol-copyright" role="region" aria-labelledby="pol-copyright-trigger" aria-hidden="true"><div class="accordion__panel-inner">
-            <p>© 2026 Bhutan Alternative Dispute Resolution Centre. All rights reserved. [Further copyright and reproduction terms to be supplied.]</p>
+            <p>© [2026] BADRC. All rights reserved.</p>
+            <p>All content on this website, including text, graphics, logos, and images, is the property of BADRC and is protected by copyright laws. You may not reproduce, distribute, modify, or create derivative works without prior written consent from BADRC.</p>
           </div></div>
         </div>
 
         <div class="accordion__item" id="disclaimer">
-          <h2><button class="accordion__trigger" aria-expanded="false" aria-controls="pol-disclaimer" id="pol-disclaimer-trigger">Disclaimer</button></h2>
+          <h2><button class="accordion__trigger" aria-expanded="false" aria-controls="pol-disclaimer" id="pol-disclaimer-trigger">Disclaimer<span class="accordion__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button></h2>
           <div class="accordion__panel" id="pol-disclaimer" role="region" aria-labelledby="pol-disclaimer-trigger" aria-hidden="true"><div class="accordion__panel-inner">
-            <p>Content on this site is provided for general information and does not constitute legal advice. Statistics and figures marked as placeholders are illustrative only and do not represent confirmed BADRC data. [Full disclaimer text to be supplied.]</p>
+            <p>The information provided on the BADRC website is for general informational purposes only. It is not legal, financial, or professional advice.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">No warranty</h3>
+            <p>BADRC makes no warranties about the accuracy, completeness, or suitability of the information on this site. Your use is at your own risk.</p>
+            <h3 style="font-size:var(--fs-h6);margin-top:var(--space-5)">No liability</h3>
+            <p>To the fullest extent permitted by law, BADRC shall not be liable for any damages arising from your use of this website.</p>
           </div></div>
         </div>
 
         <div class="accordion__item" id="retention">
-          <h2><button class="accordion__trigger" aria-expanded="false" aria-controls="pol-retention" id="pol-retention-trigger">Document Retention</button></h2>
+          <h2><button class="accordion__trigger" aria-expanded="false" aria-controls="pol-retention" id="pol-retention-trigger">Document Retention<span class="accordion__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button></h2>
           <div class="accordion__panel" id="pol-retention" role="region" aria-labelledby="pol-retention-trigger" aria-hidden="true"><div class="accordion__panel-inner">
-            <p>[Information on how long case-related and administrative documents are retained by BADRC — to be supplied per applicable Bhutanese law and BADRC's internal policy.]</p>
+            <p>In accordance with our core value of sustainability, BADRC maintains a rigorous document-retention policy to ensure that solutions are practical and enduring.</p>
+            <p style="margin-top:var(--space-4)"><strong>Case records:</strong> official case files, including arbitral awards and settlement agreements, are retained in secure, confidential archives for the period required by the ADR Act to support long-term legal certainty.</p>
+            <p style="margin-top:var(--space-4)"><strong>Integrity of data:</strong> our record-keeping systems are designed to reflect stability, ensuring that institutional data is retrievable, accurate, and protected against unauthorized access.</p>
+            <p style="margin-top:var(--space-4)"><strong>Confidentiality:</strong> once the mandatory retention period has expired, documents are disposed of through secure methods that preserve the privacy and dignity of all involved parties.</p>
           </div></div>
         </div>
 

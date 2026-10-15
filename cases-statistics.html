@@ -10,9 +10,22 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/images/logo/badrc-logo.png" type="image/png">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/side-nav.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ========================= SIDE NAV (interior pages) =========================
+     Interior pages keep only the Portal shortcut (Home keeps the full
+     six-link rail pair — see index.html). Fixed to the right viewport
+     edge; see css/side-nav.css. -->
+<nav class="side-nav side-nav-right" aria-label="Portal">
+  <a href="publications.html" class="side-nav-link">
+    <svg class="side-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21V11a8 8 0 0 1 16 0v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 21v-7a3 3 0 0 1 6 0v7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    Portal
+  </a>
+</nav>
+
 
 <header class="site-header">
   <div class="header-top">
@@ -89,7 +102,7 @@
 
 <main id="main">
 
-  <section class="hero hero--compact" data-surface="dark">
+  <section class="hero hero--compact" data-surface="dark" data-side-nav-watch>
     <div class="container">
       <nav class="hero__breadcrumb breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Cases &amp; Statistics</li></ol></nav>
       <div class="hero__grid">
@@ -105,34 +118,47 @@
   <section class="section" style="background:rgba(46,125,79,0.06);padding-block:var(--space-6)">
     <div class="container" style="display:flex;gap:var(--space-4);align-items:flex-start">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="10" stroke="#2E7D4F" stroke-width="2"/><path d="M12 8v5m0 3h.01" stroke="#2E7D4F" stroke-width="2" stroke-linecap="round"/></svg>
-      <p style="color:var(--ink);font-size:var(--fs-small)"><strong>Confidentiality notice:</strong> only non-confidential, aggregate figures are published on this page. No party names, case numbers, or details capable of identifying any individual dispute are ever disclosed here.</p>
+      <p style="color:var(--ink);font-size:var(--fs-small)"><strong>Confidentiality notice:</strong> in strict compliance with the ADR Act, BADRC procedural rules, and the core institutional value of Trust and Confidentiality, no confidential case details, party names, contract specifics, or non-public proceeding records are disclosed on this page — only non-confidential, aggregate figures are published here.</p>
     </div>
   </section>
 
   <section class="section section--flush-top">
     <div class="container">
       <p class="eyebrow">Annual Caseload</p>
-      <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">Cases administered by year <em style="font-style:normal;font-size:var(--fs-small);color:var(--ink-soft)">[illustrative placeholder data]</em></h2>
-      <div class="bar-chart" style="margin-top:var(--space-8)" role="img" aria-label="Bar chart of BADRC caseload by year, all values placeholders pending real BADRC statistics">
-        <div class="bar-chart__col"><span class="bar-chart__value">[--]</span><div class="bar-chart__bar" style="height:35%"></div><span class="bar-chart__label">[Year]</span></div>
-        <div class="bar-chart__col"><span class="bar-chart__value">[--]</span><div class="bar-chart__bar" style="height:55%"></div><span class="bar-chart__label">[Year]</span></div>
-        <div class="bar-chart__col"><span class="bar-chart__value">[--]</span><div class="bar-chart__bar" style="height:48%"></div><span class="bar-chart__label">[Year]</span></div>
-        <div class="bar-chart__col"><span class="bar-chart__value">[--]</span><div class="bar-chart__bar" style="height:72%"></div><span class="bar-chart__label">[Year]</span></div>
-        <div class="bar-chart__col"><span class="bar-chart__value">[--]</span><div class="bar-chart__bar" style="height:90%"></div><span class="bar-chart__label">[Year]</span></div>
+      <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">Cases administered by year</h2>
+      <p class="lede" style="margin-top:var(--space-3)">Since its inception in 2018, BADRC has administered over 300+ cases to date — 327 domestic arbitration cases, plus its first international arbitration case in 2025.</p>
+      <div class="bar-chart" style="margin-top:var(--space-8)" role="img" aria-label="Bar chart of BADRC domestic arbitration caseload by year, 2018 to 2026">
+        <div class="bar-chart__col"><span class="bar-chart__value">35</span><div class="bar-chart__bar" style="height:73%"></div><span class="bar-chart__label">2018</span></div>
+        <div class="bar-chart__col"><span class="bar-chart__value">47</span><div class="bar-chart__bar" style="height:98%"></div><span class="bar-chart__label">2019</span></div>
+        <div class="bar-chart__col"><span class="bar-chart__value">43</span><div class="bar-chart__bar" style="height:90%"></div><span class="bar-chart__label">2020</span></div>
+        <div class="bar-chart__col"><span class="bar-chart__value">34</span><div class="bar-chart__bar" style="height:71%"></div><span class="bar-chart__label">2021</span></div>
+        <div class="bar-chart__col"><span class="bar-chart__value">40</span><div class="bar-chart__bar" style="height:83%"></div><span class="bar-chart__label">2022</span></div>
+        <div class="bar-chart__col"><span class="bar-chart__value">48</span><div class="bar-chart__bar" style="height:100%"></div><span class="bar-chart__label">2023</span></div>
+        <div class="bar-chart__col"><span class="bar-chart__value">35</span><div class="bar-chart__bar" style="height:73%"></div><span class="bar-chart__label">2024</span></div>
+        <div class="bar-chart__col"><span class="bar-chart__value">26<br>+1 IA</span><div class="bar-chart__bar" style="height:54%"></div><span class="bar-chart__label">2025</span></div>
+        <div class="bar-chart__col"><span class="bar-chart__value">19</span><div class="bar-chart__bar" style="height:40%"></div><span class="bar-chart__label">2026</span></div>
       </div>
-      <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-top:var(--space-4)">[All figures above are illustrative placeholders. Real annual caseload data to be supplied by BADRC.]</p>
+      <div class="data-table--scroll" style="margin-top:var(--space-7)">
+        <table class="data-table">
+          <thead><tr><th scope="col">Particulars</th><th scope="col">2018</th><th scope="col">2019</th><th scope="col">2020</th><th scope="col">2021</th><th scope="col">2022</th><th scope="col">2023</th><th scope="col">2024</th><th scope="col">2025</th><th scope="col">2026</th><th scope="col">Total</th></tr></thead>
+          <tbody>
+            <tr><td>Total cases registered (Domestic Arbitration)</td><td>35</td><td>47</td><td>43</td><td>34</td><td>40</td><td>48</td><td>35</td><td>26</td><td>19</td><td>327</td></tr>
+            <tr><td>Total cases registered (International Arbitration)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
   <section class="section section--tight" style="background:var(--paper-alt)">
     <div class="container">
       <p class="eyebrow">Sectoral Breakdown</p>
-      <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">Disputes by sector <em style="font-style:normal;font-size:var(--fs-small);color:var(--ink-soft)">[illustrative placeholder data]</em></h2>
-      <div class="grid grid--4" style="margin-top:var(--space-7)">
-        <div class="card" style="padding:var(--space-5)"><h3 style="font-size:var(--fs-h4);color:var(--gold-dark)">[--]%</h3><p class="card__excerpt">Construction &amp; Infrastructure</p></div>
-        <div class="card" style="padding:var(--space-5)"><h3 style="font-size:var(--fs-h4);color:var(--gold-dark)">[--]%</h3><p class="card__excerpt">Commercial &amp; Trade</p></div>
-        <div class="card" style="padding:var(--space-5)"><h3 style="font-size:var(--fs-h4);color:var(--gold-dark)">[--]%</h3><p class="card__excerpt">Finance &amp; Investment</p></div>
-        <div class="card" style="padding:var(--space-5)"><h3 style="font-size:var(--fs-h4);color:var(--gold-dark)">[--]%</h3><p class="card__excerpt">Other sectors</p></div>
+      <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">Disputes by sector</h2>
+      <p class="lede" style="margin-top:var(--space-3)">BADRC's caseload is heavily concentrated in public infrastructure and commercial procurement.</p>
+      <div class="grid grid--3" style="margin-top:var(--space-7)">
+        <div class="card" style="padding:var(--space-5)" data-reveal><p class="eyebrow">Primary sectors</p><p class="card__excerpt" style="margin-top:var(--space-3)">Construction disputes and the public procurement of goods and services form the overwhelming majority of matters.</p></div>
+        <div class="card" style="padding:var(--space-5)" data-reveal><p class="eyebrow">Secondary categories</p><p class="card__excerpt" style="margin-top:var(--space-3)">Commercial sales of goods, rental disputes, and breach of partnership agreements.</p></div>
+        <div class="card" style="padding:var(--space-5)" data-reveal><p class="eyebrow">Institutional context</p><p class="card__excerpt" style="margin-top:var(--space-3)">The majority of registered cases involve disputes over public procurement contracts between government agencies and private contractors.</p></div>
       </div>
     </div>
   </section>
@@ -149,18 +175,18 @@
             <tr><td>Share resolved by settlement before award</td><td>[--]%</td></tr>
           </tbody>
         </table>
-        <p style="font-size:var(--fs-small);color:var(--ink-soft)">[All figures are placeholders pending BADRC-supplied statistics.]</p>
+        <p style="font-size:var(--fs-small);color:var(--ink-soft)">[Case-processing time figures are placeholders pending BADRC-supplied statistics.]</p>
       </div>
       <div class="stack" data-reveal>
         <p class="eyebrow">Domestic vs. International</p>
         <h2 style="font-size:var(--fs-h3)">Case origin split</h2>
         <table class="data-table" style="margin-top:var(--space-4)">
           <tbody>
-            <tr><td>Domestic disputes</td><td>[--]%</td></tr>
-            <tr><td>International / cross-border disputes</td><td>[--]%</td></tr>
+            <tr><td>Domestic arbitration (327 cases)</td><td>99.7%</td></tr>
+            <tr><td>International arbitration (1 case)</td><td>0.3%</td></tr>
           </tbody>
         </table>
-        <p style="font-size:var(--fs-small);color:var(--ink-soft)">[All figures are placeholders pending BADRC-supplied statistics.]</p>
+        <p style="font-size:var(--fs-small);color:var(--ink-soft)">Figures derived from the annual caseload table above (2018–2026).</p>
       </div>
     </div>
   </section>

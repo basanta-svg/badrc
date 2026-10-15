@@ -10,9 +10,22 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/images/logo/badrc-logo.png" type="image/png">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/side-nav.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ========================= SIDE NAV (interior pages) =========================
+     Interior pages keep only the Portal shortcut (Home keeps the full
+     six-link rail pair — see index.html). Fixed to the right viewport
+     edge; see css/side-nav.css. -->
+<nav class="side-nav side-nav-right" aria-label="Portal">
+  <a href="publications.html" class="side-nav-link">
+    <svg class="side-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21V11a8 8 0 0 1 16 0v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 21v-7a3 3 0 0 1 6 0v7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    Portal
+  </a>
+</nav>
+
 
 <header class="site-header">
   <div class="header-top">
@@ -89,7 +102,7 @@
 
 <main id="main">
 
-  <section class="hero hero--compact" data-surface="dark">
+  <section class="hero hero--compact" data-surface="dark" data-side-nav-watch>
     <div class="container">
       <nav class="hero__breadcrumb breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Mediation &amp; Negotiated Settlement</li></ol></nav>
       <div class="hero__grid">
@@ -107,7 +120,7 @@
     <div class="container">
       <p class="eyebrow">Overview</p>
       <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">Our mediation services</h2>
-      <p class="lede" style="margin-top:var(--space-3)">BADRC administers commercial mediations for domestic and cross-border disputes, and offers negotiated-settlement facilitation for parties who wish to resolve disputes without a formal adjudicative process. [Further service detail — to be supplied.]</p>
+      <p class="lede" style="margin-top:var(--space-3)">Mediation and Negotiated Settlement at BADRC are voluntary and confidential processes designed to help parties move beyond deadlock toward mutually acceptable resolutions. While arbitration focuses on a binding determination, our mediation services emphasize flow — the restorative power of dialogue, where hardened positions soften and communication begins to circulate again. These services are ideal for parties who wish to resolve their differences in a way that is less adversarial, more cost-effective, and deeply protective of ongoing professional or personal relationships.</p>
     </div>
   </section>
 
@@ -115,11 +128,11 @@
     <div class="container">
       <p class="eyebrow">Commencement Guidance</p>
       <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">How to commence mediation</h2>
+      <p class="lede" style="margin-top:var(--space-3)">Starting a mediation is an invitation to transition from hostility to harmony. To commence a process:</p>
       <div class="process-steps" style="margin-top:var(--space-8)">
-        <div class="process-step" data-reveal><h3 style="font-size:var(--fs-h6)">Submit a Request for Mediation</h3><p>File the Request for Mediation together with the required fee, per the BADRC Mediation Rules.</p></div>
-        <div class="process-step" data-reveal><h3 style="font-size:var(--fs-h6)">Mediator appointment</h3><p>BADRC assists the parties in selecting a mutually acceptable mediator from its panel, or appoints one where the parties cannot agree.</p></div>
-        <div class="process-step" data-reveal><h3 style="font-size:var(--fs-h6)">Mediation sessions</h3><p>The mediator facilitates joint and separate sessions to help the parties explore a mutually acceptable resolution.</p></div>
-        <div class="process-step" data-reveal><h3 style="font-size:var(--fs-h6)">Settlement agreement</h3><p>Where agreement is reached, the parties execute a settlement agreement, which may be recorded to support enforcement.</p></div>
+        <div class="process-step" data-reveal><h3 style="font-size:var(--fs-h6)">Initial inquiry</h3><p>Contact the BADRC Registrar to discuss whether your dispute is suitable for mediation or a supported negotiated settlement.</p></div>
+        <div class="process-step" data-reveal><h3 style="font-size:var(--fs-h6)">Request for Mediation</h3><p>Submit a formal request form. If the other party has not yet agreed to mediate, the Centre can act as a Messenger of Peace (the Magpie) to invite them into the process.</p></div>
+        <div class="process-step" data-reveal><h3 style="font-size:var(--fs-h6)">Agreement to mediate</h3><p>Once both parties consent, the Registrar facilitates the signing of a formal Mediation Agreement, ensuring all participants understand the ground rules of confidentiality and neutrality.</p></div>
       </div>
       <a class="btn btn--primary" style="margin-top:var(--space-8)" href="contact.html">Start Your Mediation Enquiry</a>
     </div>
@@ -133,19 +146,38 @@
         <p>Parties may nominate a mediator jointly from the BADRC panel, or request BADRC to propose suitable candidates based on subject-matter expertise, language and availability. See the <a href="panels.html">Panels &amp; Professionals</a> directory.</p>
       </div>
       <div class="stack" data-reveal>
-        <p class="eyebrow">Settlement &amp; Enforcement</p>
-        <h2 style="font-size:var(--fs-h3)">Making settlements stick</h2>
-        <p>[Guidance on recording and enforcing mediated settlement agreements under applicable Bhutanese law and any relevant international instruments — to be supplied.]</p>
+        <p class="eyebrow">Mediation Rules</p>
+        <h2 style="font-size:var(--fs-h3)">Governing document</h2>
+        <p>Mediation proceedings at BADRC are governed by the BADRC Mediation Rules. <a href="https://docs.google.com/document/d/180v22smjAJPKPQi-NlkAYc_nc-c_jw-Mgga-J9mfOk8/edit?tab=t.0" target="_blank" rel="noopener">Read the Mediation Rules document →</a></p>
       </div>
     </div>
   </section>
 
-  <section class="section section--tight" style="background:var(--paper-alt)">
+  <section class="section section--tight" style="background:var(--paper-alt)" id="model-clauses">
     <div class="container">
       <p class="eyebrow">Model Clauses</p>
-      <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">Standard BADRC mediation clause</h2>
-      <pre class="clause-block" style="margin-top:var(--space-6)">"In the event of any dispute arising out of or in connection with this contract, the parties shall first seek to resolve the dispute through mediation administered by the Bhutan Alternative Dispute Resolution Centre (BADRC) in accordance with the Mediation Rules of BADRC for the time being in force, before resorting to arbitration or litigation."</pre>
-      <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-top:var(--space-4)">[Model clause text is illustrative and pending final legal review by BADRC before publication.]</p>
+      <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">Mediation only</h2>
+      <p class="lede" style="margin-top:var(--space-3)">In the event of any dispute arising out of or relating to this contract, or the breach thereof, the parties agree first to try in good faith to settle the dispute by mediation administered by the Bhutan ADR Centre, in accordance with their Mediation Rules ("BADRC Mediation Rules") for the time being in force, before resorting to arbitration, litigation, or some other dispute resolution procedure.</p>
+      <pre class="clause-block" style="margin-top:var(--space-6)">The Mediation shall consist of sole/ _____ numbers of Mediators.
+
+The seat of Mediation shall be…………………………………………………………
+
+The Language of the Mediation shall be _________.
+
+The mediation process and settlement Agreement, if any, shall be governed by, construed and take effect in accordance with the substantive law of __________.</pre>
+
+      <h3 style="font-size:var(--fs-h5);margin-top:var(--space-9)">Mediation and arbitration</h3>
+      <p class="lede" style="margin-top:var(--space-3)">For parties who wish mediation to be the first step, with arbitration as the fallback if settlement is not reached.</p>
+      <pre class="clause-block" style="margin-top:var(--space-6)">In the event of a dispute arising out of or relating to this contract, including any question regarding its existence, validity or termination, the parties shall first seek settlement of that dispute by mediation in accordance with the Bhutan ADR Rules, which Rules are deemed to be incorporated by reference into this clause.
+
+If the dispute is not settled by mediation within [ …….] days of the commencement of the mediation, or such further period as the parties shall agree in writing, the dispute shall be referred to and finally resolved by arbitration under the BADRC Arbitration Rules, which Rules are deemed to be incorporated by reference into this clause.
+
+The language to be used in the mediation and in the arbitration shall be [ ].
+The governing law of the contract shall be the substantive law of [ ].
+
+In any arbitration commenced pursuant to this clause:
+(a) the number of arbitrators shall be [one/three]; and
+(b) the seat, or legal place, of arbitration shall be [City and/or Country].</pre>
     </div>
   </section>
 
@@ -174,17 +206,21 @@
   </section>
 
   <section class="section section--tight" style="background:var(--paper-alt)">
-    <div class="container" style="max-width:48rem">
-      <p class="eyebrow">Frequently Asked Questions</p>
+    <div class="container">
+      <p class="eyebrow"><span class="eyebrow__num">01</span>Frequently Asked Questions</p>
       <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">Mediation FAQ</h2>
-      <div class="accordion" style="margin-top:var(--space-6)">
+      <div class="accordion" style="margin-top:var(--space-8);max-width:48rem">
         <div class="accordion__item">
-          <h3><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-m1" id="faq-m1-trigger">Is mediation confidential?</button></h3>
-          <div class="accordion__panel" id="faq-m1" role="region" aria-labelledby="faq-m1-trigger" aria-hidden="true"><div class="accordion__panel-inner">Yes. BADRC mediation is conducted on a confidential, without-prejudice basis. [Detail to be supplied.]</div></div>
+          <h3><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-m1" id="faq-m1-trigger">Is mediation confidential?<span class="accordion__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button></h3>
+          <div class="accordion__panel" id="faq-m1" role="region" aria-labelledby="faq-m1-trigger" aria-hidden="true"><div class="accordion__panel-inner">Yes. Confidentiality is a core value, ensuring parties can speak freely without fear that their words will be used against them in court.</div></div>
         </div>
         <div class="accordion__item">
-          <h3><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-m2" id="faq-m2-trigger">What happens if mediation does not result in settlement?</button></h3>
-          <div class="accordion__panel" id="faq-m2" role="region" aria-labelledby="faq-m2-trigger" aria-hidden="true"><div class="accordion__panel-inner">Parties remain free to pursue arbitration or other remedies. [Detail to be supplied.]</div></div>
+          <h3><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-m2" id="faq-m2-trigger">What if we can't agree?<span class="accordion__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button></h3>
+          <div class="accordion__panel" id="faq-m2" role="region" aria-labelledby="faq-m2-trigger" aria-hidden="true"><div class="accordion__panel-inner">Mediation is voluntary. If a settlement is not reached, parties remain free to pursue arbitration or litigation.</div></div>
+        </div>
+        <div class="accordion__item">
+          <h3><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-m3" id="faq-m3-trigger">How does mediation support GNH?<span class="accordion__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button></h3>
+          <div class="accordion__panel" id="faq-m3" role="region" aria-labelledby="faq-m3-trigger" aria-hidden="true"><div class="accordion__panel-inner">By focusing on Harmony and Compassion, mediation reduces social friction and preserves the communal "habit of dialogue" central to Bhutanese values.</div></div>
         </div>
       </div>
     </div>

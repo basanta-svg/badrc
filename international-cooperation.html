@@ -10,9 +10,22 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/images/logo/badrc-logo.png" type="image/png">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/side-nav.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ========================= SIDE NAV (interior pages) =========================
+     Interior pages keep only the Portal shortcut (Home keeps the full
+     six-link rail pair — see index.html). Fixed to the right viewport
+     edge; see css/side-nav.css. -->
+<nav class="side-nav side-nav-right" aria-label="Portal">
+  <a href="publications.html" class="side-nav-link">
+    <svg class="side-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21V11a8 8 0 0 1 16 0v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 21v-7a3 3 0 0 1 6 0v7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    Portal
+  </a>
+</nav>
+
 
 <header class="site-header">
   <div class="header-top">
@@ -89,7 +102,7 @@
 
 <main id="main">
 
-  <section class="hero hero--compact" data-surface="dark">
+  <section class="hero hero--compact" data-surface="dark" data-side-nav-watch>
     <div class="container">
       <nav class="hero__breadcrumb breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">International Cooperation</li></ol></nav>
       <div class="hero__grid">
@@ -108,7 +121,11 @@
       <div class="stack" data-reveal>
         <p class="eyebrow">Institutional Partnerships</p>
         <h2 style="font-size:var(--fs-h3)">Working with peer institutions</h2>
-        <p>BADRC collaborates with arbitral and mediation institutions across the region and beyond to exchange practice knowledge, support capacity building, and refer cases where appropriate. [Detail on specific partnerships to be supplied and confirmed by BADRC before publication.]</p>
+        <ul class="stack stack--sm" style="margin-top:var(--space-2)">
+          <li>Singapore International Arbitration Centre (SIAC)</li>
+          <li>Singapore Mediation Centre</li>
+          <li>Indian Council of Arbitration (ICA)</li>
+        </ul>
       </div>
       <div class="stack" data-reveal>
         <p class="eyebrow">Memberships</p>
@@ -123,10 +140,9 @@
       <p class="eyebrow">Memoranda of Understanding</p>
       <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">MoUs &amp; formal agreements</h2>
       <div class="doc-list" style="margin-top:var(--space-6)">
-        <div class="doc-row"><div><div class="doc-row__title">[MoU with partner institution — placeholder, pending confirmation]</div><div class="doc-row__meta">Memorandum of Understanding</div></div><div class="doc-row__version">[Year]</div><div class="doc-row__type">PDF</div><div class="doc-row__size">[size]</div><a class="doc-row__download" href="#" aria-label="Download MoU summary (placeholder)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download</a></div>
-        <div class="doc-row"><div><div class="doc-row__title">[MoU with partner institution — placeholder, pending confirmation]</div><div class="doc-row__meta">Memorandum of Understanding</div></div><div class="doc-row__version">[Year]</div><div class="doc-row__type">PDF</div><div class="doc-row__size">[size]</div><a class="doc-row__download" href="#" aria-label="Download MoU summary (placeholder)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download</a></div>
+        <div class="doc-row"><div><div class="doc-row__title">MoU with the Indian Council of Arbitration</div><div class="doc-row__meta">A framework for cooperation in promoting arbitration and mediation, facilitating knowledge exchange, capacity-building and institutional collaboration between the two organisations.</div></div><div class="doc-row__version">2024</div></div>
+        <div class="doc-row"><div><div class="doc-row__title">MoU with the Singapore Mediation Centre</div><div class="doc-row__meta">Establishes a Mediation Registry within BADRC and facilitates the training and professional development of mediators in Bhutan.</div></div><div class="doc-row__version">2025</div></div>
       </div>
-      <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-top:var(--space-4)">No MoU or partnership is represented as confirmed until BADRC provides verified details — the rows above are structural placeholders only.</p>
     </div>
   </section>
 
@@ -134,7 +150,7 @@
     <div class="container">
       <p class="eyebrow">Conventions</p>
       <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">International instruments</h2>
-      <p class="lede" style="margin-top:var(--space-3)">[Overview of relevant international conventions relating to enforcement of awards and settlements, and Bhutan's status with respect to them — to be supplied and legally verified before publication.]</p>
+      <p class="lede" style="margin-top:var(--space-3)">BADRC is party to the New York Convention, supporting the enforcement of foreign arbitral awards.</p>
     </div>
   </section>
 
@@ -142,11 +158,15 @@
     <div class="container">
       <p class="eyebrow">Regional Initiatives</p>
       <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">Building ADR capacity in the region</h2>
-      <p class="lede" style="margin-top:var(--space-3);color:rgba(255,255,255,0.8)">[Description of regional capacity-building initiatives, joint training programmes, and knowledge exchange — to be supplied.]</p>
-      <div class="logo-strip" style="margin-top:var(--space-8)">
-        <div class="logo-strip__item" style="filter:none;opacity:1;color:rgba(255,255,255,0.6)">[Partner logo]</div>
-        <div class="logo-strip__item" style="filter:none;opacity:1;color:rgba(255,255,255,0.6)">[Partner logo]</div>
-        <div class="logo-strip__item" style="filter:none;opacity:1;color:rgba(255,255,255,0.6)">[Partner logo]</div>
+      <div class="grid grid--2" style="margin-top:var(--space-8)">
+        <div class="stack" data-reveal>
+          <h3 style="font-size:var(--fs-h6);color:var(--white)">Regional ecosystem strengthening</h3>
+          <p style="color:rgba(255,255,255,0.8)">BADRC engages in regional workshops and consultations to promote cross-border commercial confidence, reduce transaction friction, and support economic development across South Asia.</p>
+        </div>
+        <div class="stack" data-reveal>
+          <h3 style="font-size:var(--fs-h6);color:var(--white)">Academic &amp; professional development networks</h3>
+          <p style="color:rgba(255,255,255,0.8)">Collaboration with international faculty, regional experts, and the ADR Clinic at Jigme Singye Wangchuck (JSW) School of Law ensures continuous knowledge exchange and international exposure for emerging practitioners. Workshops, conferences, and trainings on ADR provided to government lawyers, private practitioners, and the judiciary bring together key players at the centre of the ADR ecosystem in Bhutan.</p>
+        </div>
       </div>
     </div>
   </section>

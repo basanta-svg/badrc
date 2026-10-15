@@ -895,8 +895,9 @@ function enhanceSelect(select, key, items, itemMatches) {
 
 /* ==========================================================================
    PART 8 — SIDE NAV
-   Used on: Home only ([data-side-nav-watch], the hero section the side
-   rails sit over). css/side-nav.css already collapses .side-nav-link to
+   Used on: every page that marks its hero with [data-side-nav-watch] (the
+   section the side rails sit over as the page loads). css/side-nav.css
+   already collapses .side-nav-link to
    icon-only under 900px; this adds the same collapse at ANY width once
    the hero has scrolled out of view, via an IntersectionObserver toggling
    .side-nav-compact on <body> (see the matching CSS rules alongside the

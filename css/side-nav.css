@@ -1,8 +1,10 @@
-/* Fixed side navigation — home page only (index.html). Replaces the usual
-   .site-header (logos, ticker, primary nav, language switcher) with two
-   vertical rails pinned to the left/right viewport edges, so the hero
-   photo runs full-bleed behind them instead of sitting under a masthead.
-   Uses the same navy/gold tokens defined in css/style.css (:root). */
+/* Fixed side navigation — every page. Two vertical rails pinned to the
+   left/right viewport edges, position:fixed so they sit over page content
+   regardless of whether that page keeps the usual .site-header masthead
+   (every interior page) or drops it (Home only — see .home-no-header
+   below, which also lets the hero run full-bleed behind the rails instead
+   of sitting under a masthead). Uses the same navy/gold tokens defined in
+   css/style.css (:root). */
 
 .side-nav {
   position: fixed;
@@ -64,7 +66,8 @@
 }
 
 .side-nav-link:hover,
-.side-nav-link:focus-visible {
+.side-nav-link:focus-visible,
+.side-nav-link[aria-current="page"] {
   background: var(--gold-primary);
   color: var(--navy-dark);
   transform: scaleX(1.06);

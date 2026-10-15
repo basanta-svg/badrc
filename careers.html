@@ -14,6 +14,8 @@
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
 
+
+
 <header class="site-header">
   <div class="header-top">
     <div class="container header-top__inner">
@@ -46,23 +48,23 @@
       </div>
     </div>
     <div class="container header-bottom__inner">
-      <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle menu"><svg class="nav-toggle__box" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle menu"><svg class="nav-toggle__box" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line class="nav-toggle__bar nav-toggle__bar--top" x1="4" y1="6" x2="20" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line class="nav-toggle__bar nav-toggle__bar--mid" x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line class="nav-toggle__bar nav-toggle__bar--bottom" x1="4" y1="18" x2="20" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     <nav class="primary-nav" id="primary-nav" aria-label="Primary">
       <ul class="primary-nav__list">
         <li><a class="primary-nav__link" href="index.html">Home</a></li>
         <li><a class="primary-nav__link" href="about.html">About</a></li>
         <li class="has-dropdown">
-          <a class="primary-nav__link" href="arbitration.html" aria-haspopup="true" aria-expanded="false">Arbitration</a>
+          <a class="primary-nav__link" href="arbitration.html" aria-haspopup="true" aria-expanded="false">Arbitration<svg class="primary-nav__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <div class="dropdown"><a href="arbitration.html">Overview</a><a href="arbitration.html#commencing">Commencing a Case</a><a href="arbitration.html#model-clauses">Model Clauses</a><a href="arbitration.html#fees">Fees &amp; Forms</a><a href="arbitration.html#faq">FAQ</a></div>
         </li>
         <li class="has-dropdown">
-          <a class="primary-nav__link" href="mediation.html" aria-haspopup="true" aria-expanded="false">Mediation</a>
+          <a class="primary-nav__link" href="mediation.html" aria-haspopup="true" aria-expanded="false">Mediation<svg class="primary-nav__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <div class="dropdown"><a href="mediation.html">Overview</a><a href="mediation.html#commencing">Commencing Mediation</a><a href="mediation.html#appointment">Mediator Appointment</a><a href="mediation.html#fees">Fees &amp; Forms</a></div>
         </li>
         <li><a class="primary-nav__link" href="panels.html">Panels</a></li>
         <li><a class="primary-nav__link" href="rules.html">Rules &amp; Legislation</a></li>
         <li class="has-dropdown">
-          <a class="primary-nav__link" href="publications.html" aria-haspopup="true" aria-expanded="false">Resources</a>
+          <a class="primary-nav__link" href="publications.html" aria-haspopup="true" aria-expanded="false">Resources<svg class="primary-nav__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <div class="dropdown"><a href="publications.html">Publications</a><a href="cases-statistics.html">Cases &amp; Statistics</a><a href="media-gallery.html">Media &amp; Gallery</a></div>
         </li>
         <li><a class="primary-nav__link" href="news.html">News &amp; Events</a></li>
@@ -78,9 +80,9 @@
         </button>
         <ul class="lang-switcher__menu" id="lang-menu" role="menu" hidden>
           <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="EN" aria-current="true" aria-checked="true">English<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
-          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="DZ" aria-current="false" aria-checked="false" disabled title="Dzongkha content coming soon" lang="dz">རྫོང་ཁ<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
-          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="HI" aria-current="false" aria-checked="false" disabled title="Hindi content coming soon" lang="hi">हिन्दी<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
-          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="NE" aria-current="false" aria-checked="false" disabled title="Nepali content coming soon" lang="ne">नेपाली<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="DZ" aria-current="false" aria-checked="false" lang="dz">རྫོང་ཁ<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="HI" aria-current="false" aria-checked="false" lang="hi">हिन्दी<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="NE" aria-current="false" aria-checked="false" lang="ne">नेपाली<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
         </ul>
       </div>
     </div>
@@ -161,8 +163,8 @@
       <p style="font-size:var(--fs-small);color:rgba(255,255,255,0.75);margin-top:var(--space-2)">+975 2 XXX XXX</p>
       <p style="font-size:var(--fs-small);color:rgba(255,255,255,0.75);margin-top:var(--space-2);margin-bottom:var(--space-5)">info@badrc.bt</p>
       <div class="footer-social">
-        <a href="#" aria-label="BADRC on Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1Z" fill="currentColor"/></svg></a>
-        <a href="#" aria-label="BADRC on LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="9" width="3" height="10" fill="currentColor"/><circle cx="5.5" cy="5.5" r="1.6" fill="currentColor"/><path d="M11 9h3v1.6c.6-1 1.7-1.8 3.2-1.8 2.4 0 3.8 1.6 3.8 4.6V19h-3v-5.1c0-1.4-.5-2.3-1.7-2.3-1 0-1.6.7-1.8 1.3-.1.3-.1.6-.1 1V19h-3V9Z" fill="currentColor"/></svg></a>
+        <a href="https://www.facebook.com/p/Bhutan-ADR-Centre-100089551991211/" target="_blank" rel="noopener" aria-label="BADRC on Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1Z" fill="currentColor"/></svg></a>
+        <a href="https://www.linkedin.com/company/bhutan-adr-centre/posts/" target="_blank" rel="noopener" aria-label="BADRC on LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="9" width="3" height="10" fill="currentColor"/><circle cx="5.5" cy="5.5" r="1.6" fill="currentColor"/><path d="M11 9h3v1.6c.6-1 1.7-1.8 3.2-1.8 2.4 0 3.8 1.6 3.8 4.6V19h-3v-5.1c0-1.4-.5-2.3-1.7-2.3-1 0-1.6.7-1.8 1.3-.1.3-.1.6-.1 1V19h-3V9Z" fill="currentColor"/></svg></a>
         <a href="#" aria-label="BADRC on X"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4l7 8.5L4.4 20H7l5-5.8L16 20h4l-7.4-8.9L19.6 4H17l-4.6 5.4L8 4H4Z" fill="currentColor"/></svg></a>
       </div>
     </div>
@@ -174,8 +176,23 @@
   </div>
 </footer>
 
-<button class="back-to-top" type="button" aria-label="Back to top"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<a class="back-to-top" href="portal.html" aria-label="Go to the Portal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21V11a8 8 0 0 1 16 0v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 21v-7a3 3 0 0 1 6 0v7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>Portal</span></a>
 
+<!-- Google Website Translator — powers the language switcher above
+     (Dzongkha, Hindi, Nepali). Hidden (display:none) — the visible
+     control is our own .lang-switcher; js/script.js drives this widget's
+     hidden <select> behind the scenes. See PART 5 in js/script.js. -->
+<div id="google_translate_element" style="display:none"></div>
+<script type="text/plain" data-disabled-reason="translator temporarily disabled — see js/script.js PART 5">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'dz,hi,ne',
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
+<script type="text/plain" data-disabled-reason="translator temporarily disabled — see js/script.js PART 5" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="js/script.js" defer></script>
 </body>
 </html>

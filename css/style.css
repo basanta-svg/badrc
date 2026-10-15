@@ -537,6 +537,10 @@ hr {
 
 .has-dropdown { position: relative; }
 .has-dropdown > .primary-nav__link { display: inline-flex; align-items: center; gap: var(--space-1); }
+.primary-nav__chevron { width: 13px; height: 13px; flex-shrink: 0; transition: transform var(--transition-fast); }
+.has-dropdown:hover .primary-nav__chevron,
+.has-dropdown:focus-within .primary-nav__chevron,
+.has-dropdown > .primary-nav__link[aria-expanded="true"] .primary-nav__chevron { transform: rotate(180deg); }
 .dropdown {
   position: absolute;
   top: 100%;
@@ -634,6 +638,21 @@ hr {
 }
 .nav-toggle__box { width: 1.5rem; height: 1.5rem; }
 
+/* Hamburger → X morph. Each bar is its own <line> (see markup) so it can
+   move independently; transform-box/transform-origin center each bar on
+   itself (not the whole icon) so the rotation pivots in place instead of
+   swinging from the SVG's corner. Driven off aria-expanded, which
+   js/script.js already flips on open/close/Escape — no extra class or JS
+   needed. */
+.nav-toggle__bar {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform var(--transition-base), opacity var(--transition-fast);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar--top { transform: translateY(6px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar--mid { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar--bottom { transform: translateY(-6px) rotate(-45deg); }
+
 @media (max-width: 1024px) {
   /* Recalculated for the stacked mobile masthead — kept in step with the
      .primary-nav fixed-overlay offset below. The bottom row is now a
@@ -659,6 +678,9 @@ hr {
     left: 0;
     background: var(--paper);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
     padding: var(--space-6) var(--container-pad);
     transform: translateY(-8px);
     opacity: 0;
@@ -690,11 +712,65 @@ hr {
     color: var(--navy-primary);
     border-bottom: 2px solid var(--gold-primary);
   }
-  .dropdown { position: static; transform: none; box-shadow: none; border: none; opacity: 1; visibility: visible; display: none; padding-left: var(--space-4); }
-  .has-dropdown.is-expanded .dropdown { display: block; }
+  /* Mobile dropdown = an inline accordion under its parent link (not the
+     desktop floating panel), with a max-height transition so it
+     opens/closes smoothly (display:none can't be animated; the
+     container never holds more than a handful of links, so a generous
+     fixed max-height comfortably covers real content without a
+     JS-measured height). The parent link spans the full row (tap
+     target), but only the chevron itself moves — margin-left: auto pushes
+     just the icon to the row's right edge, leaving the label's own
+     position/gap untouched, same as the desktop trigger otherwise. */
+  .has-dropdown > .primary-nav__link { width: 100%; }
+  .primary-nav__chevron { margin-left: auto; }
+  .dropdown {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    opacity: 1;
+    visibility: visible;
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    touch-action: pan-y;
+    margin-left: var(--space-1);
+    padding: 0 0 0 var(--space-4);
+    border-left: 2px solid var(--border);
+    transition: max-height var(--transition-base);
+  }
+  .has-dropdown.is-expanded .dropdown { max-height: 20rem; }
+  .dropdown a {
+    padding: var(--space-3) var(--space-3);
+    font-size: var(--fs-small);
+    color: var(--ink-soft);
+    border-radius: 0;
+  }
+  .dropdown a:hover { background: var(--paper-alt); color: var(--navy-primary); }
   .nav-toggle { display: inline-flex; }
   .header-bottom__inner { justify-content: space-between; padding-block: var(--space-3); min-height: 0; }
   .lang-switcher__menu { right: 0; left: auto; }
+}
+
+@media (max-width: 640px) {
+  /* Stack the two header-top marks — Royal Government of Bhutan emblem
+     above, BADRC emblem + title below — instead of flanking the title
+     left/right. header-top__inner's DOM order stays
+     [logo--left, titles, logo--right]; only the visual order changes via
+     flex `order`, so no HTML edits and no accessibility/tab-order change. */
+  :root { --header-top-height: 11rem; }
+  .header-top__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding-block: var(--space-4);
+  }
+  .header-top__logo--right { order: -1; }
+  .header-top__logo--right img { width: 3.25rem; height: 3.25rem; }
+  .header-top__titles { order: 0; }
+  .header-top__logo--left { order: 1; }
+  .header-top__logo--left img { width: 4.5rem; height: 4.5rem; }
 }
 
 /* -----------------------------------------------------------------------
@@ -742,7 +818,26 @@ hr {
   align-items: center;
   padding-block: var(--space-9);
 }
-.hero--compact { padding-block: var(--space-9) var(--space-8); }
+/* Full viewport height on load, same calc as .hero--home: subtract the
+   masthead's own height (header-top scrolls away, only header-bottom
+   stays sticky, but both occupy the viewport on first paint) so the
+   compact hero fills exactly what's left below it, at any breakpoint. */
+.hero--compact {
+  min-height: calc(100vh - var(--header-top-height) - var(--header-bottom-height));
+  min-height: calc(100dvh - var(--header-top-height) - var(--header-bottom-height));
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-9) var(--space-8);
+}
+
+/* Home drops the usual masthead entirely (body.home-no-header — see
+   index.html) so .hero--home has no header-top/header-bottom height to
+   subtract; it simply fills the full viewport instead. Formerly lived in
+   the now-removed css/side-nav.css alongside the side-nav rails. */
+.home-no-header .hero--home {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
 
 /* Photographic hero background — Home, About, International Cooperation
    (the narrative/institutional pages; reference/utility pages keep the
@@ -1542,7 +1637,9 @@ a.doc-row:hover .doc-row__download { color: var(--gold-dark); }
 /* -----------------------------------------------------------------------
    Accordion — FAQ pattern: Arbitration, Mediation, Policies
    ----------------------------------------------------------------------- */
-.accordion { border-top: var(--border-width) solid var(--border); }
+.eyebrow__num { color: var(--gold-primary); margin-right: var(--space-2); }
+
+.accordion { display: flex; flex-direction: column; }
 .accordion__item { border-bottom: var(--border-width) solid var(--border); }
 .accordion__trigger {
   width: 100%;
@@ -1550,22 +1647,43 @@ a.doc-row:hover .doc-row__download { color: var(--gold-dark); }
   justify-content: space-between;
   align-items: center;
   gap: var(--space-4);
-  padding: var(--space-5) 0;
+  padding: var(--space-4) 0;
   background: none;
   border: none;
   text-align: left;
-  font-size: var(--fs-body-lg);
-  font-weight: var(--fw-medium);
-  color: var(--navy-primary);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-bold);
+  color: var(--ink);
+  transition: color var(--transition-fast);
 }
-.accordion__icon { flex-shrink: 0; width: 1.25rem; height: 1.25rem; transition: transform var(--transition-fast); }
+.accordion__trigger:hover { color: var(--navy-primary); }
+.accordion__icon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  transition: transform var(--transition-fast);
+}
 .accordion__trigger[aria-expanded="true"] .accordion__icon { transform: rotate(45deg); }
 .accordion__panel {
   overflow: hidden;
   max-height: 0;
   transition: max-height var(--transition-base) ease;
 }
-.accordion__panel-inner { padding-bottom: var(--space-5); color: var(--ink-soft); }
+.accordion__panel-inner { padding-bottom: var(--space-4); color: var(--ink-soft); font-size: var(--fs-small); }
+
+/* Two-column layout — Arbitration FAQ. Items are split into two explicit
+   .accordion__col groups in the markup (rather than relying on CSS
+   multi-column auto-balancing) so a panel expanding never reflows items
+   across columns mid-transition. */
+.accordion--grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--space-9); align-items: start; }
+.accordion--grid .accordion__col { display: flex; flex-direction: column; }
+@media (max-width: 640px) {
+  .accordion--grid { grid-template-columns: 1fr; }
+}
 
 /* -----------------------------------------------------------------------
    Forms — Contact enquiry form, footer newsletter form, header search
@@ -1701,21 +1819,18 @@ a.doc-row:hover .doc-row__download { color: var(--gold-dark); }
 .cta-band h2, .cta-band h3 { color: var(--white); }
 
 /* -----------------------------------------------------------------------
-   Timeline — About page milestones
+   Milestones — About page institutional milestones. Vertical timeline
+   with the rule and markers on the left edge, content to its right.
    ----------------------------------------------------------------------- */
-.timeline { position: relative; border-left: var(--border-width) solid var(--border); padding-left: var(--space-6); }
-.timeline__item { position: relative; padding-bottom: var(--space-8); }
-.timeline__item:last-child { padding-bottom: 0; }
-.timeline__item::before {
-  content: "";
-  position: absolute;
-  left: calc(-1 * var(--space-6) - 5px);
-  top: 0.35rem;
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: var(--gold-primary);
-}
-.timeline__year { font-weight: var(--fw-bold); color: var(--navy-primary); }
+.milestones-alt { position: relative; }
+.milestones-alt::before { content: ""; position: absolute; left: 0.4rem; top: 0.3rem; bottom: 0; width: 2px; background: var(--border); }
+.milestone-entry { position: relative; width: 100%; padding-bottom: var(--space-8); padding-left: var(--space-7); text-align: left; }
+.milestone-entry:last-child { padding-bottom: 0; }
+.milestone-entry::before { content: ""; position: absolute; top: 0.3rem; left: -0.15rem; width: 14px; height: 14px; border-radius: 50%; background: var(--gold-primary); border: 3px solid var(--paper); box-shadow: 0 0 0 2px var(--navy-primary); }
+.milestone-entry__year { margin: 0; font-size: var(--fs-h6); font-weight: var(--fw-bold); color: var(--navy-primary); }
+.milestone-entry p { margin: var(--space-2) 0 0; color: var(--ink-soft); }
+.milestone-entry p:first-of-type { margin-top: var(--space-2); }
+.milestone-entry strong { color: var(--ink); }
 
 /* -----------------------------------------------------------------------
    Site footer — every page
@@ -1761,24 +1876,57 @@ a.doc-row:hover .doc-row__download { color: var(--gold-dark); }
 }
 
 /* -----------------------------------------------------------------------
-   Back-to-top — every page
+   Floating Portal button — every page. Reuses the former back-to-top
+   button's position and scroll-triggered visibility (class name kept as
+   .back-to-top to avoid touching this rule's few dependents), but is now
+   a pill-shaped link to the Portal (publications.html) carrying the
+   portal doorway icon plus a visible "Portal" label, not a bare
+   scroll-to-top icon-only circle.
    ----------------------------------------------------------------------- */
 .back-to-top {
   position: fixed;
   right: var(--space-6);
   bottom: var(--space-6);
-  width: 3rem; height: 3rem;
-  border-radius: 50%;
+  height: 3rem;
+  padding-inline: var(--space-5);
+  border-radius: var(--radius-pill);
   background: var(--navy-primary);
   color: var(--white);
   border: none;
   display: none;
   align-items: center;
   justify-content: center;
+  gap: var(--space-2);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-nav);
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
   box-shadow: var(--shadow-md);
   z-index: var(--z-overlay);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  background: var(--gold-primary);
+  color: var(--navy-dark);
 }
 .back-to-top.is-visible { display: inline-flex; }
+
+/* Smaller on mobile — same pill shape, scaled down so it sits comfortably
+   in the corner without crowding page content on narrow screens. */
+@media (max-width: 640px) {
+  .back-to-top {
+    right: var(--space-4);
+    bottom: var(--space-4);
+    height: 2.25rem;
+    padding-inline: var(--space-3);
+    gap: var(--space-1);
+    font-size: var(--fs-btn-sm);
+  }
+  .back-to-top svg { width: 14px; height: 14px; }
+}
 
 /* -----------------------------------------------------------------------
    Simple bar chart — Cases & Statistics
@@ -1795,6 +1943,25 @@ a.doc-row:hover .doc-row__download { color: var(--gold-dark); }
    Kept minimal; each block below names the exact page(s) it belongs to.
    Anything reusable across 2+ pages belongs in Part 3 instead.
    ========================================================================== */
+
+/* About (about.html): icon tile used above Vision/Mission cards, value
+   tiles and history stat tiles */
+.about-icon { width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--paper-alt); color: var(--gold-dark); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+[data-surface="dark"] .about-icon { background: rgba(255,255,255,0.08); color: var(--gold-light); }
+
+/* About: history section stat callouts */
+.stat-tile { padding: var(--space-6); border: var(--border-width) solid var(--border); border-radius: var(--radius-md); background: var(--white); text-align: center; }
+.stat-tile__num { font-size: var(--fs-h3); font-weight: var(--fw-bold); color: var(--navy-primary); line-height: 1; margin-top: var(--space-4); }
+.stat-tile__label { margin-top: var(--space-2); font-size: var(--fs-small); color: var(--ink-soft); }
+
+/* About: core values tiles under Vision & Mission */
+.value-tile { padding: var(--space-6); border: var(--border-width) solid var(--border); border-radius: var(--radius-md); background: var(--white); text-align: center; }
+.value-tile__label { font-size: var(--fs-small); text-transform: uppercase; letter-spacing: var(--ls-wide); color: var(--gold-dark); margin-top: var(--space-4); }
+
+/* About: staff directory — circular photo frame on a centred card */
+.staff-card__photo { width: 11rem; height: 11rem; border-radius: 0; background: var(--paper-alt); display: flex; align-items: center; justify-content: center; color: var(--ink-soft); font-size: var(--fs-small); text-align: center; border: 3px solid var(--paper-alt); overflow: hidden; }
+.staff-card__photo img { width: 100%; height: 100%; object-fit: cover; }
+.staff-card__role { font-size: var(--fs-small); color: var(--gold-dark); font-weight: var(--fw-medium); }
 
 /* About (about.html): org chart list rendered as a simple nested tree */
 .org-chart { display: grid; gap: var(--space-4); }
@@ -1833,3 +2000,16 @@ a.doc-row:hover .doc-row__download { color: var(--gold-dark); }
 /* 404 (404.html) */
 .error-page { text-align: center; padding-block: var(--space-12); }
 .error-page__code { font-size: 8rem; font-weight: var(--fw-bold); color: var(--gold-primary); line-height: 1; letter-spacing: var(--ls-tight); }
+
+/* -----------------------------------------------------------------------
+   Google Website Translator — every page with .lang-switcher (see PART 5
+   in js/script.js). The widget itself is only ever driven headlessly
+   through its hidden <select>; these rules suppress the UI chrome it
+   otherwise injects on its own (a top banner iframe that pushes the whole
+   page down, and a yellow highlight/underline on translated text) so the
+   site's own design is the only thing visitors see.
+   ----------------------------------------------------------------------- */
+.goog-te-banner-frame { display: none !important; }
+body { top: 0 !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; }
+#google_translate_element { display: none !important; }

@@ -1,8 +1,10 @@
-/* Fixed side navigation — home page only (index.html). Replaces the usual
-   .site-header (logos, ticker, primary nav, language switcher) with two
-   vertical rails pinned to the left/right viewport edges, so the hero
-   photo runs full-bleed behind them instead of sitting under a masthead.
-   Uses the same navy/gold tokens defined in css/style.css (:root). */
+/* Fixed side navigation — Home page only (index.html). Two vertical rails
+   pinned to the left/right viewport edges, so the hero photo runs
+   full-bleed behind them. Uses the same navy/gold tokens defined in
+   css/style.css (:root). The Home-only full-height-hero override this
+   file used to carry (.home-no-header .hero--home) now lives in
+   style.css itself, since it must survive regardless of whether this
+   stylesheet is linked. */
 
 .side-nav {
   position: fixed;
@@ -64,7 +66,8 @@
 }
 
 .side-nav-link:hover,
-.side-nav-link:focus-visible {
+.side-nav-link:focus-visible,
+.side-nav-link[aria-current="page"] {
   background: var(--gold-primary);
   color: var(--navy-dark);
   transform: scaleX(1.06);
@@ -106,15 +109,6 @@
     opacity: 1;
     animation: none;
   }
-}
-
-/* Hero fills the full viewport on the home page now that the masthead is
-   gone — style.css's .hero--home normally subtracts the header-top/
-   header-bottom heights from its min-height so the hero fits below them;
-   there's no header to fit below here. */
-.home-no-header .hero--home {
-  min-height: 100vh;
-  min-height: 100dvh;
 }
 
 /* Icon-only rails — collapses labels to a stack of icon-only squares,

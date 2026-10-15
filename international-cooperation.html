@@ -14,6 +14,8 @@
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
 
+
+
 <header class="site-header">
   <div class="header-top">
     <div class="container header-top__inner">
@@ -46,23 +48,23 @@
       </div>
     </div>
     <div class="container header-bottom__inner">
-      <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle menu"><svg class="nav-toggle__box" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle menu"><svg class="nav-toggle__box" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line class="nav-toggle__bar nav-toggle__bar--top" x1="4" y1="6" x2="20" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line class="nav-toggle__bar nav-toggle__bar--mid" x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line class="nav-toggle__bar nav-toggle__bar--bottom" x1="4" y1="18" x2="20" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     <nav class="primary-nav" id="primary-nav" aria-label="Primary">
       <ul class="primary-nav__list">
         <li><a class="primary-nav__link" href="index.html">Home</a></li>
         <li><a class="primary-nav__link" href="about.html">About</a></li>
         <li class="has-dropdown">
-          <a class="primary-nav__link" href="arbitration.html" aria-haspopup="true" aria-expanded="false">Arbitration</a>
+          <a class="primary-nav__link" href="arbitration.html" aria-haspopup="true" aria-expanded="false">Arbitration<svg class="primary-nav__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <div class="dropdown"><a href="arbitration.html">Overview</a><a href="arbitration.html#commencing">Commencing a Case</a><a href="arbitration.html#model-clauses">Model Clauses</a><a href="arbitration.html#fees">Fees &amp; Forms</a><a href="arbitration.html#faq">FAQ</a></div>
         </li>
         <li class="has-dropdown">
-          <a class="primary-nav__link" href="mediation.html" aria-haspopup="true" aria-expanded="false">Mediation</a>
+          <a class="primary-nav__link" href="mediation.html" aria-haspopup="true" aria-expanded="false">Mediation<svg class="primary-nav__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <div class="dropdown"><a href="mediation.html">Overview</a><a href="mediation.html#commencing">Commencing Mediation</a><a href="mediation.html#appointment">Mediator Appointment</a><a href="mediation.html#fees">Fees &amp; Forms</a></div>
         </li>
         <li><a class="primary-nav__link" href="panels.html">Panels</a></li>
         <li><a class="primary-nav__link" href="rules.html">Rules &amp; Legislation</a></li>
         <li class="has-dropdown">
-          <a class="primary-nav__link" href="publications.html" aria-haspopup="true" aria-expanded="false">Resources</a>
+          <a class="primary-nav__link" href="publications.html" aria-haspopup="true" aria-expanded="false">Resources<svg class="primary-nav__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <div class="dropdown"><a href="publications.html">Publications</a><a href="cases-statistics.html">Cases &amp; Statistics</a><a href="media-gallery.html">Media &amp; Gallery</a></div>
         </li>
         <li><a class="primary-nav__link" href="news.html">News &amp; Events</a></li>
@@ -78,9 +80,9 @@
         </button>
         <ul class="lang-switcher__menu" id="lang-menu" role="menu" hidden>
           <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="EN" aria-current="true" aria-checked="true">English<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
-          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="DZ" aria-current="false" aria-checked="false" disabled title="Dzongkha content coming soon" lang="dz">རྫོང་ཁ<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
-          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="HI" aria-current="false" aria-checked="false" disabled title="Hindi content coming soon" lang="hi">हिन्दी<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
-          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="NE" aria-current="false" aria-checked="false" disabled title="Nepali content coming soon" lang="ne">नेपाली<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="DZ" aria-current="false" aria-checked="false" lang="dz">རྫོང་ཁ<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="HI" aria-current="false" aria-checked="false" lang="hi">हिन्दी<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+          <li role="none"><button type="button" class="lang-switcher__option" role="menuitemradio" data-lang-code="NE" aria-current="false" aria-checked="false" lang="ne">नेपाली<svg class="lang-switcher__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
         </ul>
       </div>
     </div>
@@ -108,7 +110,11 @@
       <div class="stack" data-reveal>
         <p class="eyebrow">Institutional Partnerships</p>
         <h2 style="font-size:var(--fs-h3)">Working with peer institutions</h2>
-        <p>BADRC collaborates with arbitral and mediation institutions across the region and beyond to exchange practice knowledge, support capacity building, and refer cases where appropriate. [Detail on specific partnerships to be supplied and confirmed by BADRC before publication.]</p>
+        <ul class="stack stack--sm" style="margin-top:var(--space-2)">
+          <li>Singapore International Arbitration Centre (SIAC)</li>
+          <li>Singapore Mediation Centre</li>
+          <li>Indian Council of Arbitration (ICA)</li>
+        </ul>
       </div>
       <div class="stack" data-reveal>
         <p class="eyebrow">Memberships</p>
@@ -123,10 +129,9 @@
       <p class="eyebrow">Memoranda of Understanding</p>
       <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">MoUs &amp; formal agreements</h2>
       <div class="doc-list" style="margin-top:var(--space-6)">
-        <div class="doc-row"><div><div class="doc-row__title">[MoU with partner institution — placeholder, pending confirmation]</div><div class="doc-row__meta">Memorandum of Understanding</div></div><div class="doc-row__version">[Year]</div><div class="doc-row__type">PDF</div><div class="doc-row__size">[size]</div><a class="doc-row__download" href="#" aria-label="Download MoU summary (placeholder)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download</a></div>
-        <div class="doc-row"><div><div class="doc-row__title">[MoU with partner institution — placeholder, pending confirmation]</div><div class="doc-row__meta">Memorandum of Understanding</div></div><div class="doc-row__version">[Year]</div><div class="doc-row__type">PDF</div><div class="doc-row__size">[size]</div><a class="doc-row__download" href="#" aria-label="Download MoU summary (placeholder)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download</a></div>
+        <div class="doc-row"><div><div class="doc-row__title">MoU with the Indian Council of Arbitration</div><div class="doc-row__meta">A framework for cooperation in promoting arbitration and mediation, facilitating knowledge exchange, capacity-building and institutional collaboration between the two organisations.</div></div><div class="doc-row__version">2024</div></div>
+        <div class="doc-row"><div><div class="doc-row__title">MoU with the Singapore Mediation Centre</div><div class="doc-row__meta">Establishes a Mediation Registry within BADRC and facilitates the training and professional development of mediators in Bhutan.</div></div><div class="doc-row__version">2025</div></div>
       </div>
-      <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-top:var(--space-4)">No MoU or partnership is represented as confirmed until BADRC provides verified details — the rows above are structural placeholders only.</p>
     </div>
   </section>
 
@@ -134,7 +139,7 @@
     <div class="container">
       <p class="eyebrow">Conventions</p>
       <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">International instruments</h2>
-      <p class="lede" style="margin-top:var(--space-3)">[Overview of relevant international conventions relating to enforcement of awards and settlements, and Bhutan's status with respect to them — to be supplied and legally verified before publication.]</p>
+      <p class="lede" style="margin-top:var(--space-3)">BADRC is party to the New York Convention, supporting the enforcement of foreign arbitral awards.</p>
     </div>
   </section>
 
@@ -142,11 +147,15 @@
     <div class="container">
       <p class="eyebrow">Regional Initiatives</p>
       <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">Building ADR capacity in the region</h2>
-      <p class="lede" style="margin-top:var(--space-3);color:rgba(255,255,255,0.8)">[Description of regional capacity-building initiatives, joint training programmes, and knowledge exchange — to be supplied.]</p>
-      <div class="logo-strip" style="margin-top:var(--space-8)">
-        <div class="logo-strip__item" style="filter:none;opacity:1;color:rgba(255,255,255,0.6)">[Partner logo]</div>
-        <div class="logo-strip__item" style="filter:none;opacity:1;color:rgba(255,255,255,0.6)">[Partner logo]</div>
-        <div class="logo-strip__item" style="filter:none;opacity:1;color:rgba(255,255,255,0.6)">[Partner logo]</div>
+      <div class="grid grid--2" style="margin-top:var(--space-8)">
+        <div class="stack" data-reveal>
+          <h3 style="font-size:var(--fs-h6);color:var(--white)">Regional ecosystem strengthening</h3>
+          <p style="color:rgba(255,255,255,0.8)">BADRC engages in regional workshops and consultations to promote cross-border commercial confidence, reduce transaction friction, and support economic development across South Asia.</p>
+        </div>
+        <div class="stack" data-reveal>
+          <h3 style="font-size:var(--fs-h6);color:var(--white)">Academic &amp; professional development networks</h3>
+          <p style="color:rgba(255,255,255,0.8)">Collaboration with international faculty, regional experts, and the ADR Clinic at Jigme Singye Wangchuck (JSW) School of Law ensures continuous knowledge exchange and international exposure for emerging practitioners. Workshops, conferences, and trainings on ADR provided to government lawyers, private practitioners, and the judiciary bring together key players at the centre of the ADR ecosystem in Bhutan.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -178,8 +187,23 @@
   </div>
 </footer>
 
-<button class="back-to-top" type="button" aria-label="Back to top"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<a class="back-to-top" href="portal.html" aria-label="Go to the Portal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21V11a8 8 0 0 1 16 0v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 21v-7a3 3 0 0 1 6 0v7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>Portal</span></a>
 
+<!-- Google Website Translator — powers the language switcher above
+     (Dzongkha, Hindi, Nepali). Hidden (display:none) — the visible
+     control is our own .lang-switcher; js/script.js drives this widget's
+     hidden <select> behind the scenes. See PART 5 in js/script.js. -->
+<div id="google_translate_element" style="display:none"></div>
+<script type="text/plain" data-disabled-reason="translator temporarily disabled — see js/script.js PART 5">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'dz,hi,ne',
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
+<script type="text/plain" data-disabled-reason="translator temporarily disabled — see js/script.js PART 5" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="js/script.js" defer></script>
 </body>
 </html>

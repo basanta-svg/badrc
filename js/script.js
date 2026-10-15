@@ -3,7 +3,7 @@
    Single consolidated script for the whole site (all 17 pages share this
    one file). Organised into seven parts:
      1. NAV        — mobile menu toggle, dropdown handling, sticky header,
-                     back-to-top (every page)
+                     the floating Portal button (every page)
      2. REVEAL     — scroll-reveal animation, reduced-motion aware (every
                      page that uses [data-reveal] elements)
      3. FILTER     — search/filter engine for Panels, Rules, Publications,
@@ -16,10 +16,10 @@
                      ?q= URL parameter (e.g. when linked from 404.html)
      7. SLIDER      — generic prev/next scroll + mouse drag for
                      [data-slider] card rows (Home's News)
-     8. SIDE NAV    — collapses the Home page's fixed side rails to
-                     icon-only once the hero is scrolled past (css/
-                     side-nav.css already does this by viewport width;
-                     this adds it by scroll position too, at any width)
+     8. SIDE NAV    — collapses Home's fixed side rails to icon-only once
+                     the hero is scrolled past (css/side-nav.css already
+                     does this by viewport width; this adds it by scroll
+                     position too, at any width)
    The header notice ticker is hover-to-pause only (CSS, no JS) — see the
    note at the end of this file. The Home hero's background video is
    CSS-only too (see css/style.css,
@@ -114,15 +114,14 @@
     }, { passive: true });
   }
 
-  // Back-to-top button
-  var backToTop = document.querySelector('.back-to-top');
-  if (backToTop) {
+  // Floating Portal button — a plain link (no click handler needed), just
+  // shown/hidden the same way the old back-to-top button was: appears once
+  // the visitor has scrolled past the fold.
+  var portalButton = document.querySelector('.back-to-top');
+  if (portalButton) {
     window.addEventListener('scroll', function () {
-      backToTop.classList.toggle('is-visible', window.scrollY > 600);
+      portalButton.classList.toggle('is-visible', window.scrollY > 600);
     }, { passive: true });
-    backToTop.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-    });
   }
 })();
 
@@ -895,13 +894,12 @@ function enhanceSelect(select, key, items, itemMatches) {
 
 /* ==========================================================================
    PART 8 — SIDE NAV
-   Used on: every page that marks its hero with [data-side-nav-watch] (the
-   section the side rails sit over as the page loads). css/side-nav.css
-   already collapses .side-nav-link to
-   icon-only under 900px; this adds the same collapse at ANY width once
-   the hero has scrolled out of view, via an IntersectionObserver toggling
-   .side-nav-compact on <body> (see the matching CSS rules alongside the
-   900px media query in side-nav.css).
+   Used on: Home only ([data-side-nav-watch], the hero section the side
+   rails sit over — see index.html; other pages no longer carry the side
+   rails). css/side-nav.css already collapses .side-nav-link to icon-only
+   under 900px; this adds the same collapse at ANY width once the hero has
+   scrolled out of view, via an IntersectionObserver toggling
+   .side-nav-compact on <body>.
    ========================================================================== */
 (function () {
   'use strict';

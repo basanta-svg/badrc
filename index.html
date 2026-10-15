@@ -16,13 +16,12 @@
 <body class="home-no-header">
 <a class="skip-link" href="#main">Skip to main content</a>
 
-<!-- ========================= SIDE NAV (every page) =========================
+<!-- ========================= SIDE NAV (Home only) =========================
      Two fixed vertical rails pinned to the left/right viewport edges (see
-     css/side-nav.css) — position:fixed, so they sit happily over any page
-     regardless of whether that page keeps the usual .site-header masthead
-     or (Home only) drops it. Order follows the six items requested:
-     Panels, News & Events, Contact on the left; Portal, Arbitration,
-     Mediation on the right. -->
+     css/side-nav.css). Other pages keep just the single floating Portal
+     button (see the bottom of <body>); Home keeps the full set. Order
+     follows the six items requested: Panels, News & Events, Contact on
+     the left; Resources, Arbitration, Mediation on the right. -->
 <nav class="side-nav side-nav-left" aria-label="Quick links">
   <a href="panels.html" class="side-nav-link">
     <svg class="side-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1" stroke="currentColor" stroke-width="2"/><rect x="14" y="4" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="14" y="14" width="7" height="6" rx="1" stroke="currentColor" stroke-width="2"/></svg>
@@ -40,8 +39,8 @@
 
 <nav class="side-nav side-nav-right" aria-label="More quick links">
   <a href="publications.html" class="side-nav-link">
-    <svg class="side-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21V11a8 8 0 0 1 16 0v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 21v-7a3 3 0 0 1 6 0v7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-    Portal
+    <svg class="side-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h9l4 4v14H6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M15 3v4h4M9 12h6M9 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    Resources
   </a>
   <a href="arbitration.html" class="side-nav-link">
     <svg class="side-nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.5 6.5 18 10l-7.5 7.5-3.5-3.5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M3 21h8M12.5 4.5l3-3 4 4-3 3M17 8l3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -377,9 +376,7 @@
   </div>
 </footer>
 
-<button class="back-to-top" type="button" aria-label="Back to top">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-</button>
+<a class="back-to-top" href="portal.html" aria-label="Go to the Portal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21V11a8 8 0 0 1 16 0v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 21v-7a3 3 0 0 1 6 0v7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>Portal</span></a>
 
 <script src="js/script.js" defer></script>
 </body>

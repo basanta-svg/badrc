@@ -19,18 +19,40 @@
    Used on: every page. Single source of truth for all design values.
    ========================================================================== */
 
+/* Neue Montreal — BADRC primary typeface (Brand Guidelines 2026). Files in
+   fonts/. NOTE: the supplied files carry a Demo/Trial licence (see
+   Befonts-License.txt) — buy a web licence before public launch. */
+@font-face { font-family: 'Neue Montreal'; font-weight: 300; font-style: normal; font-display: swap; src: url('../fonts/neuemontreal-light.otf') format('opentype'); }
+@font-face { font-family: 'Neue Montreal'; font-weight: 300; font-style: italic; font-display: swap; src: url('../fonts/neuemontreal-lightitalic.otf') format('opentype'); }
+@font-face { font-family: 'Neue Montreal'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/neuemontreal-regular.otf') format('opentype'); }
+@font-face { font-family: 'Neue Montreal'; font-weight: 400; font-style: italic; font-display: swap; src: url('../fonts/neuemontreal-italic.otf') format('opentype'); }
+@font-face { font-family: 'Neue Montreal'; font-weight: 500; font-style: normal; font-display: swap; src: url('../fonts/neuemontreal-medium.otf') format('opentype'); }
+@font-face { font-family: 'Neue Montreal'; font-weight: 500; font-style: italic; font-display: swap; src: url('../fonts/neuemontreal-mediumitalic.otf') format('opentype'); }
+@font-face { font-family: 'Neue Montreal'; font-weight: 700; font-style: normal; font-display: swap; src: url('../fonts/neuemontreal-bold.otf') format('opentype'); }
+@font-face { font-family: 'Neue Montreal'; font-weight: 700; font-style: italic; font-display: swap; src: url('../fonts/neuemontreal-bolditalic.otf') format('opentype'); }
+
 :root {
-  /* Colour — sampled from assets/images/logo.png (the BADRC raven mark) */
-  --navy-primary: #0B3A57;   /* dominant navy in the mark */
-  --navy-dark:    #061F2E;   /* darkest navy — full-bleed dark sections */
-  --navy-mid:     #12496A;   /* mid navy, tints/borders on dark surfaces */
-  --gold-primary: #D99A2E;   /* dominant gold/mustard in the mark */
-  --gold-light:   #E8B85C;   /* lighter gold — hover / secondary accent */
-  --gold-dark:    #B67A1B;   /* darker gold — text-on-paper accent, AA-safe */
+  /* Colour — official BADRC Brand Guidelines 2026 (assets/images/brand elements).
+     Variable names are kept from the earlier palette so existing rules still
+     apply; values now map to the brand colours. */
+  --navy-primary: #273A81;   /* Royal Navy — primary brand colour */
+  --navy-dark:    #1C222A;   /* Deep Slate — dark backgrounds, footer */
+  --navy-mid:     #1A3F5C;   /* Steel Midnight — panels, borders on dark */
+  --ocean-blue:   #186093;   /* Ocean Blue — links, subheadings, charts */
+  --crimson:      #C83B32;   /* Crimson — calls-to-action, dividers, alerts */
+  --crimson-dark: #A92F27;   /* Crimson hover (darker, keeps AA with white) */
+  --gold-primary: #D6A529;   /* Golden Amber — decorative accents, icons */
+  --gold-light:   #E3BC55;   /* lighter amber — accent text on dark */
+  --gold-dark:    #8A6510;   /* deep amber — accent text on paper, AA-safe */
+
+  /* Brand gradients */
+  --grad-ocean-sky: linear-gradient(135deg, #1A3F5C 0%, #186093 100%);
+  --grad-trust-harmony: linear-gradient(135deg, #D6A529 0%, #C83B32 50%, #186093 100%);
+  --grad-peaceful-action: linear-gradient(135deg, #186093 0%, #C83B32 100%);
 
   --paper:        #FFFFFF;   /* neutral background — site base colour */
   --paper-alt:    #EFEAE0;   /* slightly deeper paper, for section banding */
-  --ink:          #1A1D21;   /* neutral near-black text */
+  --ink:          #1C222A;   /* neutral near-black text */
   --ink-soft:     #4A4F55;   /* secondary text on paper */
   --border:       #DCD6C9;   /* neutral hairline on paper */
   --border-dark:  rgba(247, 244, 238, 0.18); /* hairline on navy */
@@ -39,8 +61,12 @@
   --success: #2E7D4F;
   --error:   #B3261E;
 
-  /* Type — Helvetica system stack only, no web fonts */
-  --font-base: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /* Type — Neue Montreal is the brand primary (self-hosted from fonts/ via @font-face above). Helvetica is the fallback.
+     Cinzel (formal documents/certificates) and Italianno (award
+     certificates/invitations) are secondary, reserved faces. */
+  --font-base: 'Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-formal: 'Cinzel', Georgia, serif;
+  --font-script: 'Italianno', cursive;
 
   --fw-regular: 400;
   --fw-medium: 500;
@@ -104,9 +130,9 @@
   --radius-lg: 8px;
   --radius-pill: 999px;
 
-  --shadow-sm: 0 1px 2px rgba(6, 31, 46, 0.08);
-  --shadow-md: 0 4px 16px rgba(6, 31, 46, 0.12);
-  --shadow-lg: 0 12px 40px rgba(6, 31, 46, 0.18);
+  --shadow-sm: 0 1px 2px rgba(28, 34, 42, 0.08);
+  --shadow-md: 0 4px 16px rgba(28, 34, 42, 0.12);
+  --shadow-lg: 0 12px 40px rgba(28, 34, 42, 0.18);
 
   --border-width: 1px;
 
@@ -187,8 +213,8 @@ h4 { font-size: var(--fs-h4); letter-spacing: var(--ls-heading); }
 h5 { font-size: var(--fs-h5); letter-spacing: var(--ls-normal); }
 h6 { font-size: var(--fs-h6); letter-spacing: var(--ls-normal); }
 
-a { color: var(--navy-primary); text-decoration-color: var(--gold-primary); text-underline-offset: 0.15em; }
-a:hover { color: var(--gold-dark); }
+a { color: var(--ocean-blue); text-decoration-color: var(--gold-primary); text-underline-offset: 0.15em; }
+a:hover { color: var(--navy-primary); }
 
 button, input, select, textarea { font-family: inherit; font-size: inherit; color: inherit; }
 
@@ -338,17 +364,17 @@ hr {
   white-space: nowrap;
 }
 .btn--primary {
-  background: var(--gold-primary);
-  color: var(--navy-dark);
-  border-color: var(--gold-primary);
+  background: var(--crimson);
+  color: var(--white);
+  border-color: var(--crimson);
 }
-.btn--primary:hover { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy-dark); }
+.btn--primary:hover { background: var(--crimson-dark); border-color: var(--crimson-dark); color: var(--white); }
 /* [data-surface="dark"] a:hover (see PART 2, Base) outranks .btn--primary's
    own hover colour by specificity when a primary button sits in a dark
    section (Hero, CTA band, footer) — pin it back to navy so the label
    never shifts colour on hover, in or out of a dark surface. */
 [data-surface="dark"] .btn--primary,
-[data-surface="dark"] .btn--primary:hover { color: var(--navy-dark); }
+[data-surface="dark"] .btn--primary:hover { color: var(--white); }
 .btn--secondary {
   background: transparent;
   color: var(--navy-primary);
@@ -422,7 +448,7 @@ hr {
 /* Dzongkha rendering of the Centre's name, stacked directly above the
    English title (no English "Royal Government of Bhutan" eyebrow line —
    the RGoB emblem itself carries that). No explicit font-family override
-   on the Dzongkha line: the Helvetica stack has no Tibetan glyphs, so the
+   on the Dzongkha line: the Latin stack has no Tibetan glyphs, so the
    browser transparently substitutes the platform's own Dzongkha/Tibetan
    font per character, same as any other system-font fallback. Both lines
    share one font-size token so neither script dominates the other. */
@@ -858,7 +884,7 @@ hr {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(180deg, rgba(6,31,46,0.42) 0%, rgba(6,31,46,0.65) 100%);
+  background: linear-gradient(180deg, rgba(28,34,42,0.42) 0%, rgba(28,34,42,0.65) 100%);
 }
 
 /* Hero video background — Home only. A local, muted, looping <video>
@@ -991,7 +1017,7 @@ hr {
 .card__title { font-size: var(--fs-h5); }
 .card__title a { color: inherit; text-decoration: none; }
 .card__title a::after { content: ""; position: absolute; inset: 0; }
-.card__title a:hover { color: var(--gold-dark); }
+.card__title a:hover { color: var(--navy-primary); }
 .card__excerpt { color: var(--ink-soft); font-size: var(--fs-small); }
 .card__footer { margin-top: auto; padding-top: var(--space-3); font-size: var(--fs-small); font-weight: var(--fw-medium); color: var(--navy-primary); }
 
@@ -1042,7 +1068,7 @@ hr {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(180deg, rgba(6,31,46,0) 20%, rgba(6,31,46,0.95) 100%);
+  background: linear-gradient(180deg, rgba(28,34,42,0) 20%, rgba(28,34,42,0.95) 100%);
 }
 .news-card__badge {
   position: absolute;
@@ -1157,7 +1183,7 @@ hr {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(180deg, rgba(6,31,46,0) 45%, rgba(6,31,46,0.92) 100%);
+  background: linear-gradient(180deg, rgba(28,34,42,0) 45%, rgba(28,34,42,0.92) 100%);
 }
 .event-photo-card__date {
   position: absolute;
@@ -1244,7 +1270,7 @@ hr {
   color: var(--navy-primary);
   border: var(--border-width) solid var(--border);
 }
-.tag--gold { background: rgba(217,154,46,0.14); color: var(--gold-dark); border-color: rgba(217,154,46,0.35); }
+.tag--gold { background: rgba(214,165,41,0.14); color: var(--gold-dark); border-color: rgba(214,165,41,0.35); }
 .tag--navy { background: var(--navy-primary); color: var(--white); border-color: var(--navy-primary); }
 /* Badges on photographic cards (news/event) — square corners (no pill
    radius) and taller than the base .tag, so they read as a distinct,
@@ -1255,7 +1281,7 @@ hr {
   padding-block: var(--space-2);
   font-size: 0.625rem;
 }
-.tag--on-photo { background: rgba(6,31,46,0.8); color: var(--white); border-color: rgba(255,255,255,0.35); }
+.tag--on-photo { background: rgba(28,34,42,0.8); color: var(--white); border-color: rgba(255,255,255,0.35); }
 .tag--event { background: var(--gold-primary); color: var(--navy-dark); border-color: var(--gold-primary); }
 
 /* -----------------------------------------------------------------------
@@ -1359,8 +1385,8 @@ hr {
    state rather than two competing looks. */
 .filter-trigger.has-value,
 .filter-trigger.is-open {
-  background: rgba(217, 154, 46, 0.14);
-  border-color: rgba(217, 154, 46, 0.5);
+  background: rgba(214, 165, 41, 0.14);
+  border-color: rgba(214, 165, 41, 0.5);
   color: var(--navy-primary);
   font-weight: var(--fw-bold);
 }
@@ -1835,7 +1861,7 @@ a.doc-row:hover .doc-row__download { color: var(--gold-dark); }
 /* -----------------------------------------------------------------------
    Site footer — every page
    ----------------------------------------------------------------------- */
-.site-footer { background: var(--navy-dark); color: rgba(255,255,255,0.85); }
+.site-footer { background: var(--navy-dark); color: rgba(255,255,255,0.85); border-top: 4px solid transparent; border-image: var(--grad-trust-harmony) 1; }
 .footer-top { padding-block: var(--space-10); display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1.2fr; gap: var(--space-8); }
 /* Matches .header-top__logo img — same mark, same size, top and bottom. */
 .footer-brand__mark { width: 7rem; height: 7rem; margin-bottom: var(--space-4); }

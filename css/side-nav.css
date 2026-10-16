@@ -1,6 +1,6 @@
 /* Fixed side navigation — Home page only (index.html). Two vertical rails
    pinned to the left/right viewport edges, so the hero photo runs
-   full-bleed behind them. Uses the same navy/gold tokens defined in
+   full-bleed behind them. Uses the same brand tokens defined in
    css/style.css (:root). The Home-only full-height-hero override this
    file used to carry (.home-no-header .hero--home) now lives in
    style.css itself, since it must survive regardless of whether this

@@ -51,10 +51,10 @@
   --grad-peaceful-action: linear-gradient(135deg, #186093 0%, #C83B32 100%);
 
   --paper:        #FFFFFF;   /* neutral background — site base colour */
-  --paper-alt:    #EFEAE0;   /* slightly deeper paper, for section banding */
+  --paper-alt:    #EEF1F8;   /* pale Royal Navy tint — section banding */
   --ink:          #1C222A;   /* neutral near-black text */
   --ink-soft:     #4A4F55;   /* secondary text on paper */
-  --border:       #DCD6C9;   /* neutral hairline on paper */
+  --border:       #D3D9E8;   /* cool hairline on paper */
   --border-dark:  rgba(247, 244, 238, 0.18); /* hairline on navy */
   --white:        #FFFFFF;
 
@@ -314,7 +314,7 @@ hr {
 }
 
 [data-surface="dark"] {
-  background: var(--navy-dark);
+  background: var(--navy-primary);
   color: var(--white);
 }
 [data-surface="dark"] h1,
@@ -821,7 +821,7 @@ hr {
      this, .hero's own opaque background paints OVER the slides and the
      photo never appears. */
   isolation: isolate;
-  background: var(--navy-dark);
+  background: var(--navy-primary);
   color: var(--white);
   overflow: hidden;
 }
@@ -1861,7 +1861,7 @@ a.doc-row:hover .doc-row__download { color: var(--gold-dark); }
 /* -----------------------------------------------------------------------
    Site footer — every page
    ----------------------------------------------------------------------- */
-.site-footer { background: var(--navy-dark); color: rgba(255,255,255,0.85); border-top: 4px solid transparent; border-image: var(--grad-trust-harmony) 1; }
+.site-footer { background: var(--navy-primary); color: rgba(255,255,255,0.85); border-top: 4px solid transparent; border-image: var(--grad-trust-harmony) 1; }
 .footer-top { padding-block: var(--space-10); display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1.2fr; gap: var(--space-8); }
 /* Matches .header-top__logo img — same mark, same size, top and bottom. */
 .footer-brand__mark { width: 7rem; height: 7rem; margin-bottom: var(--space-4); }

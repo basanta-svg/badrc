@@ -821,7 +821,7 @@ hr {
      this, .hero's own opaque background paints OVER the slides and the
      photo never appears. */
   isolation: isolate;
-  background: var(--navy-primary);
+  background: var(--grad-ocean-sky);
   color: var(--white);
   overflow: hidden;
 }

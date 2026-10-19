@@ -26,9 +26,6 @@
         <p class="header-top__dzongkha" lang="dz">འབྲུག་གི་གདམ་ཁ་ཅན་གྱི་འཁོན་འདུམ་ལྷེ་བ།།</p>
         <p class="header-top__name">Bhutan Alternative Dispute Resolution Centre</p>
       </a>
-      <span class="header-top__logo header-top__logo--right">
-        <img src="assets/images/royal-government-of-bhutan-logo.png" alt="Emblem of the Royal Government of Bhutan" width="112" height="112">
-      </span>
     </div>
   </div>
   <div class="header-bottom">
@@ -52,7 +49,10 @@
     <nav class="primary-nav" id="primary-nav" aria-label="Primary">
       <ul class="primary-nav__list">
         <li><a class="primary-nav__link" href="index.html">Home</a></li>
-        <li><a class="primary-nav__link" href="about.html" aria-current="page">About</a></li>
+        <li class="has-dropdown">
+          <a class="primary-nav__link" href="about.html" aria-current="page" aria-haspopup="true" aria-expanded="false">About<svg class="primary-nav__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="dropdown"><a href="about.html">Overview</a><a href="about.html#mandate">Mandate &amp; Legal Basis</a><a href="about.html#history">History</a><a href="about.html#governance">Governance</a><a href="about.html#secretariat">Secretariat</a><a href="about.html#reports">Annual Reports</a><a href="about.html#journey">Our Journey</a></div>
+        </li>
         <li class="has-dropdown">
           <a class="primary-nav__link" href="arbitration.html" aria-haspopup="true" aria-expanded="false">Arbitration<svg class="primary-nav__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <div class="dropdown"><a href="arbitration.html">Overview</a><a href="arbitration.html#commencing">Commencing a Case</a><a href="arbitration.html#model-clauses">Model Clauses</a><a href="arbitration.html#fees">Fees &amp; Forms</a><a href="arbitration.html#faq">FAQ</a></div>
@@ -62,7 +62,10 @@
           <div class="dropdown"><a href="mediation.html">Overview</a><a href="mediation.html#commencing">Commencing Mediation</a><a href="mediation.html#appointment">Mediator Appointment</a><a href="mediation.html#fees">Fees &amp; Forms</a></div>
         </li>
         <li><a class="primary-nav__link" href="panels.html">Panels</a></li>
-        <li><a class="primary-nav__link" href="rules.html">Rules &amp; Legislation</a></li>
+        <li class="has-dropdown">
+          <a class="primary-nav__link" href="rules.html" aria-haspopup="true" aria-expanded="false">Rules &amp; Legislation<svg class="primary-nav__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="dropdown"><a href="rules.html">Overview</a><a href="rules.html#act">ADR Act &amp; Amendments</a><a href="rules.html#arbitration-rules">Arbitration Rules</a><a href="rules.html#mediation-rules">Mediation Rules</a><a href="rules.html#regulations">Regulations &amp; Practice Notes</a><a href="rules.html#forms-fees">Forms &amp; Fee Schedules</a><a href="rules.html#model-clauses">Model Clauses</a></div>
+        </li>
         <li class="has-dropdown">
           <a class="primary-nav__link" href="publications.html" aria-haspopup="true" aria-expanded="false">Resources<svg class="primary-nav__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <div class="dropdown"><a href="publications.html">Publications</a><a href="cases-statistics.html">Cases &amp; Statistics</a><a href="media-gallery.html">Media &amp; Gallery</a></div>
@@ -105,7 +108,7 @@
   </section>
   <div class="wave-divider wave-divider--navy-to-paper" aria-hidden="true"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0,32 C240,80 480,0 720,28 C960,56 1200,88 1440,40 L1440,90 L0,90 Z"/></svg></div>
 
-  <section class="section section--flush-top">
+  <section id="mandate" class="section section--flush-top">
     <div class="container">
       <div class="stack" data-reveal style="max-width:44rem">
         <p class="eyebrow">Mandate &amp; Legal Basis</p>
@@ -131,7 +134,7 @@
     </div>
   </section>
 
-  <section class="section section--tight" style="background:var(--paper-alt)">
+  <section id="history" class="section section--tight" style="background:var(--paper-alt)">
     <div class="container grid grid--2" style="align-items:center;gap:var(--space-9)">
       <div class="stack" data-reveal>
         <p class="eyebrow">History</p>
@@ -198,7 +201,7 @@
     </div>
   </section>
 
-  <section class="section">
+  <section id="governance" class="section">
     <div class="container">
       <p class="eyebrow">Organisational Structure &amp; Governance</p>
       <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">How BADRC is governed</h2>
@@ -248,7 +251,7 @@
     </div>
   </section>
 
-  <section class="section section--tight" style="background:var(--navy-primary)" data-surface="dark">
+  <section class="section section--tight" style="background:var(--ocean-blue)" data-surface="dark">
     <div class="container grid grid--2" style="align-items:center;gap:var(--space-9)">
       <div data-reveal style="display:flex;justify-content:center">
         <div style="width:100%;max-width:20rem;aspect-ratio:1;border-radius:0;background:var(--navy-dark);border:3px solid var(--gold-primary);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);font-size:var(--fs-small);text-align:center;padding:var(--space-6)">[Portrait of the Secretary General — to be supplied]</div>
@@ -262,7 +265,7 @@
     </div>
   </section>
 
-  <section class="section">
+  <section id="secretariat" class="section">
     <div class="container">
       <p class="eyebrow">Staff Directory</p>
       <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">Secretariat</h2>
@@ -306,7 +309,7 @@
     </div>
   </section>
 
-  <section class="section section--tight" style="background:var(--paper-alt)">
+  <section id="reports" class="section section--tight" style="background:var(--paper-alt)">
     <div class="container">
       <p class="eyebrow">Annual Reports</p>
       <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">Institutional reporting</h2>
@@ -329,7 +332,7 @@
     </div>
   </section>
 
-  <section class="section">
+  <section id="journey" class="section">
     <div class="container">
       <p class="eyebrow">Institutional Milestones</p>
       <h2 style="font-size:var(--fs-h3);margin-top:var(--space-3)">Our journey</h2>
@@ -426,7 +429,6 @@
   </div>
   <div class="container footer-bottom">
     <div class="footer-rgob"><span>An agency under the Royal Government of Bhutan</span></div>
-    <nav class="footer-legal" aria-label="Legal"><a href="policies.html#privacy">Privacy Policy</a><a href="policies.html#accessibility">Accessibility</a><a href="policies.html#terms">Terms of Use</a><a href="policies.html">All Policies</a></nav>
     <p>© 2026 Bhutan Alternative Dispute Resolution Centre. All rights reserved.</p>
   </div>
 </footer>

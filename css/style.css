@@ -1859,7 +1859,7 @@ a.doc-row:hover .doc-row__download { color: var(--gold-dark); }
 /* -----------------------------------------------------------------------
    Site footer — every page
    ----------------------------------------------------------------------- */
-.site-footer { background: var(--navy-mid); color: rgba(255,255,255,0.85); border-top: 4px solid transparent; border-image: var(--grad-trust-harmony) 1; }
+.site-footer { background: url("../assets/images/brand/footer-pattern.png") center top / 900px auto repeat, var(--navy-mid); color: rgba(255,255,255,0.85); border-top: 4px solid transparent; border-image: var(--grad-trust-harmony) 1; }
 .footer-top { padding-block: var(--space-10); display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1.2fr; gap: var(--space-8); }
 /* Matches .header-top__logo img — same mark, same size, top and bottom. */
 .footer-brand__mark { width: 7rem; height: 7rem; margin-bottom: var(--space-4); }
@@ -2152,6 +2152,7 @@ section[id], h2[id] { scroll-margin-top: 6rem; }
   .pro-card .btn.btn--ghost.btn--sm { align-self: end; }
 }
 
-/* Institutional Partners (International Cooperation) — larger heading, full-colour logos */
-.partners-section__title { display: block; text-align: center; font-size: 1.5rem; letter-spacing: 0.12em; }
+/* Institutional Partners (Home + International Cooperation) — larger heading, full-colour logos */
+/* Same look as the site's section headers (h2 at --fs-h3, navy, bold, sentence case) */
+.partners-section__title { text-align: center; font-size: var(--fs-h3); letter-spacing: var(--ls-heading); line-height: var(--lh-heading); }
 .partners-section .logo-strip__item { filter: none; opacity: 1; }

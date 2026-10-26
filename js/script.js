@@ -230,8 +230,9 @@
         if (key === excludeSelectKey) return;
         var val = state.selects[key];
         if (val && val !== 'all') {
-          var itemVal = normalise(item.getAttribute('data-' + key));
-          if (itemVal !== normalise(val)) selectMatch = false;
+          // data-* may hold several space-separated values (e.g. a person's languages)
+          var itemVals = normalise(item.getAttribute('data-' + key)).split(/\s+/);
+          if (itemVals.indexOf(normalise(val)) === -1) selectMatch = false;
         }
       });
       if (!selectMatch) return false;
@@ -293,6 +294,8 @@
       chipsRow.appendChild(clearAllBtn);
     }
 
+    var renderRecs = null;
+
     function apply() {
       var visibleCount = 0;
       items.forEach(function (item) {
@@ -304,6 +307,7 @@
       if (emptyState) emptyState.hidden = visibleCount !== 0;
       if (countEl) countEl.textContent = visibleCount + (visibleCount === 1 ? ' result' : ' results');
       if (clearAllBtn) clearAllBtn.hidden = activeFilters().length === 0;
+      if (renderRecs) renderRecs(visibleCount);
 
       updateSelectCounts();
     }
@@ -343,7 +347,210 @@
         apply();
         searchInput.focus();
       });
-      bar.insertBefore(searchBtn, chipsRow || null);
+      // Joined to the field as one control: [ icon | input | clear | Search ].
+      if (searchWrap) searchWrap.appendChild(searchBtn); else bar.insertBefore(searchBtn, chipsRow || null);
+
+      // Opt-in (data-filter-suggest on the bar): a suggestion dropdown under
+      // the search field while typing, and "did you mean" / popular-search
+      // recommendations in the empty state when nothing matches.
+      if (bar.hasAttribute('data-filter-suggest') && searchWrap) {
+        var sugList = document.createElement('ul');
+        sugList.className = 'filter-suggest';
+        sugList.id = 'filter-suggest-' + Math.random().toString(36).slice(2, 8);
+        sugList.setAttribute('role', 'listbox');
+        sugList.hidden = true;
+        searchWrap.appendChild(sugList);
+        searchInput.setAttribute('role', 'combobox');
+        searchInput.setAttribute('aria-autocomplete', 'list');
+        searchInput.setAttribute('aria-expanded', 'false');
+        searchInput.setAttribute('aria-controls', sugList.id);
+        searchInput.setAttribute('autocomplete', 'off');
+
+        var titleOf = function (item) {
+          var t = item.querySelector('.pro-card__name, h3, h2');
+          return t ? t.textContent.trim() : '';
+        };
+        var subOf = function (item) {
+          var r = item.querySelector('.pro-card__meta');
+          var first = r ? r.innerHTML.split(/<br\s*\/?>/i)[0] : '';
+          var tmp = document.createElement('span');
+          tmp.innerHTML = first;
+          return tmp.textContent.trim();
+        };
+        var cap = function (w) { return w.charAt(0).toUpperCase() + w.slice(1); };
+
+        // Distinct expertise terms with how many items carry each.
+        var terms = {};
+        items.forEach(function (item) {
+          var e = normalise(item.getAttribute('data-expertise'));
+          if (e) terms[e] = (terms[e] || 0) + 1;
+        });
+        var termList = Object.keys(terms).sort(function (a, b) { return terms[b] - terms[a]; });
+
+        var suggestionsFor = function (q) {
+          var out = [];
+          if (!q) {
+            termList.forEach(function (t) {
+              out.push({ label: cap(t), sub: terms[t] + ' professionals', value: t });
+            });
+            return out.slice(0, 6);
+          }
+          var tokens = q.split(/\s+/);
+          termList.forEach(function (t) {
+            if (t.indexOf(q) !== -1) out.push({ label: cap(t), sub: terms[t] + ' professionals', value: t, score: 4 });
+          });
+          items.forEach(function (item) {
+            var title = titleOf(item);
+            var tl = normalise(title);
+            var hay = normalise(item.getAttribute('data-search') || item.textContent);
+            var score = 0;
+            if (tl.indexOf(q) === 0) score = 3;
+            else if (tl.indexOf(q) !== -1) score = 2;
+            else if (tokens.every(function (t) { return hay.indexOf(t) !== -1; })) score = 1;
+            if (score) out.push({ label: title, sub: subOf(item), value: title, score: score });
+          });
+          out.sort(function (a, b) { return b.score - a.score; });
+          return out.slice(0, 6);
+        };
+
+        var sugActive = -1;
+        var closeSuggest = function () {
+          sugList.hidden = true;
+          sugActive = -1;
+          searchInput.setAttribute('aria-expanded', 'false');
+          searchInput.removeAttribute('aria-activedescendant');
+        };
+        var setActive = function (i) {
+          var opts = sugList.querySelectorAll('[role="option"]');
+          if (!opts.length) return;
+          sugActive = (i + opts.length) % opts.length;
+          Array.prototype.forEach.call(opts, function (o, n) {
+            o.classList.toggle('is-active', n === sugActive);
+            o.setAttribute('aria-selected', String(n === sugActive));
+          });
+          searchInput.setAttribute('aria-activedescendant', opts[sugActive].id);
+        };
+        var commit = function (value) {
+          searchInput.value = value;
+          state.search = normalise(value);
+          searchClearBtn.hidden = !value;
+          closeSuggest();
+          apply();
+        };
+        var openSuggest = function () {
+          var q = normalise(searchInput.value);
+          var list = suggestionsFor(q);
+          sugList.innerHTML = '';
+          if (!list.length) { closeSuggest(); return; }
+          var head = document.createElement('li');
+          head.className = 'filter-suggest__head';
+          head.setAttribute('role', 'presentation');
+          head.textContent = q ? 'Recommendations' : 'Suggested searches';
+          sugList.appendChild(head);
+          list.forEach(function (sug, n) {
+            var li = document.createElement('li');
+            li.id = sugList.id + '-' + n;
+            li.className = 'filter-suggest__item';
+            li.setAttribute('role', 'option');
+            li.setAttribute('aria-selected', 'false');
+            var a = document.createElement('strong');
+            a.textContent = sug.label;
+            var b = document.createElement('span');
+            b.textContent = sug.sub;
+            li.appendChild(a);
+            li.appendChild(b);
+            li.addEventListener('mousedown', function (e) { e.preventDefault(); });
+            li.addEventListener('click', function () { commit(sug.value); });
+            sugList.appendChild(li);
+          });
+          sugList.hidden = false;
+          sugActive = -1;
+          searchInput.setAttribute('aria-expanded', 'true');
+        };
+
+        searchInput.addEventListener('input', openSuggest);
+        searchInput.addEventListener('focus', openSuggest);
+        searchInput.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowDown') { e.preventDefault(); if (sugList.hidden) openSuggest(); setActive(sugActive + 1); }
+          else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(sugActive - 1); }
+          else if (e.key === 'Escape') { closeSuggest(); }
+          else if (e.key === 'Enter') {
+            e.preventDefault();
+            var act = sugList.querySelectorAll('[role="option"]')[sugActive];
+            if (act && !sugList.hidden) act.click(); else commit(searchInput.value);
+          }
+        });
+        document.addEventListener('click', function (e) {
+          if (!searchWrap.contains(e.target)) closeSuggest();
+        });
+        // The Search button commits the typed query and closes the list.
+        searchBtn.addEventListener('click', function () { commit(searchInput.value); });
+        searchClearBtn.addEventListener('click', closeSuggest);
+
+        // Empty-state recommendations: closest-spelling matches + popular terms.
+        var words = {};
+        items.forEach(function (item) {
+          titleOf(item).toLowerCase().split(/\s+/).forEach(function (w) { if (w.length > 2) words[w] = true; });
+        });
+        termList.forEach(function (t) { words[t] = true; });
+        var wordList = Object.keys(words);
+        var dist = function (a, b) {
+          var prev = [], cur, i, j;
+          for (j = 0; j <= b.length; j++) prev[j] = j;
+          for (i = 1; i <= a.length; i++) {
+            cur = [i];
+            for (j = 1; j <= b.length; j++) {
+              cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+            }
+            prev = cur;
+          }
+          return prev[b.length];
+        };
+        var recsBox = document.createElement('div');
+        recsBox.className = 'filter-recs';
+        recsBox.hidden = true;
+        if (emptyState) emptyState.parentNode.insertBefore(recsBox, emptyState.nextSibling);
+
+        renderRecs = function (visibleCount) {
+          if (visibleCount !== 0) { recsBox.hidden = true; return; }
+          var close = [];
+          if (state.search) {
+            state.search.split(/\s+/).forEach(function (tok) {
+              var best = null, bestD = 99;
+              wordList.forEach(function (w) {
+                var d = dist(tok, w);
+                if (d < bestD) { bestD = d; best = w; }
+              });
+              if (best && bestD <= Math.max(1, Math.floor(tok.length / 3)) && close.indexOf(best) === -1) close.push(best);
+            });
+          }
+          recsBox.innerHTML = '';
+          var group = function (title, values) {
+            if (!values.length) return;
+            var p = document.createElement('p');
+            p.className = 'filter-recs__title';
+            p.textContent = title;
+            var row = document.createElement('div');
+            row.className = 'filter-recs__row';
+            values.forEach(function (v) {
+              var btn = document.createElement('button');
+              btn.type = 'button';
+              btn.className = 'chip';
+              btn.textContent = cap(v);
+              btn.addEventListener('click', function () {
+                activeFilters().forEach(function (f) { f.remove(); });
+                commit(v);
+              });
+              row.appendChild(btn);
+            });
+            recsBox.appendChild(p);
+            recsBox.appendChild(row);
+          };
+          group('Did you mean', close);
+          group('Popular searches', termList);
+          recsBox.hidden = !recsBox.firstChild;
+        };
+      }
     }
 
     selects.forEach(function (select) {
@@ -499,7 +706,7 @@ function enhanceSelect(select, key, items, itemMatches) {
       } else {
         items.forEach(function (item) {
           if (!itemMatches(item, key)) return;
-          if (normalise(item.getAttribute('data-' + key)) === normalise(value)) n++;
+          if (normalise(item.getAttribute('data-' + key)).split(/\s+/).indexOf(normalise(value)) !== -1) n++;
         });
       }
       entry.count.textContent = String(n);

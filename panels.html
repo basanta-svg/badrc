@@ -110,7 +110,7 @@
   <section class="section">
     <div class="container">
 
-      <div class="filter-bar" data-filter-bar data-filter-target="#panel-results" data-filter-empty-target="#panel-empty" data-filter-count-target="#panel-count">
+      <div class="filter-bar" data-filter-bar data-filter-suggest data-filter-target="#panel-results" data-filter-empty-target="#panel-empty" data-filter-count-target="#panel-count">
         <div class="filter-bar__search">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           <label class="visually-hidden" for="panel-search">Search professionals by name or expertise</label>
@@ -123,7 +123,6 @@
             <option value="domestic-arbitrator">Domestic arbitrator</option>
             <option value="bhutanese-international-arbitrator">Bhutanese international arbitrator</option>
             <option value="international-arbitrator">International arbitrator</option>
-            <option value="mediator">Mediator</option>
           </select>
         </div>
         <div class="filter-bar__group">
@@ -133,6 +132,14 @@
             <option value="english">English</option>
             <option value="dzongkha">Dzongkha</option>
             <option value="hindi">Hindi</option>
+            <option value="nepali">Nepali</option>
+            <option value="sharchop">Sharchop</option>
+            <option value="bangla">Bangla</option>
+            <option value="kurtoep">Kurtoep</option>
+            <option value="khangkha">Khangkha</option>
+            <option value="bumtangkha">Bumtangkha</option>
+            <option value="chalipkha">Chalipkha</option>
+            <option value="lhotshamkha">Lhotshamkha</option>
           </select>
         </div>
         <div class="filter-bar__chips">
@@ -145,83 +152,118 @@
 
       <div class="grid grid--4" id="panel-results" style="margin-top:var(--space-7)">
 
-        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-role="domestic-arbitrator" data-language="english" data-expertise="commercial" data-search="domestic arbitrator commercial english placeholder name one">
-          <div class="pro-card__photo" style="display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:var(--fs-small);text-align:center;padding:var(--space-3)">[Photo]</div>
-          <h3 class="pro-card__name">[Arbitrator Name — placeholder]</h3>
+        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-language="english dzongkha sharchop hindi chalipkha khangkha bumtangkha kurtoep" data-role="domestic-arbitrator" data-expertise="commercial" data-search="dorji gyeltshen domestic arbitrator commercial lawyer, vajra legal chamber">
+          <div class="pro-card__photo"><img src="assets/images/panels/dorji-gyeltshen.jpg" alt="Portrait of Dorji Gyeltshen" loading="lazy" style="object-position:center top"></div>
+          <h3 class="pro-card__name">Dorji Gyeltshen</h3>
           <p class="pro-card__role">Domestic Arbitrator</p>
-          <p class="pro-card__meta">[Nationality] · English, Dzongkha</p>
-          <div class="pro-card__tags"><span class="tag">Commercial</span><span class="tag">[XX yrs experience]</span></div>
-          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="#">View profile →</a>
+          <p class="pro-card__meta">Lawyer, Vajra Legal Chamber<br>B.A. LL.B., University of Kolkata<br>English, Dzongkha, Sharchop +5</p>
+          <div class="pro-card__tags"><span class="tag">Commercial</span><span class="tag">Contract law</span></div>
+          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="assets/cvs/dorji-gyeltshen.pdf" target="_blank" rel="noopener">View profile →</a>
         </div>
 
-        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-role="mediator" data-language="english" data-expertise="construction" data-search="mediator construction english placeholder name two">
-          <div class="pro-card__photo" style="display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:var(--fs-small);text-align:center;padding:var(--space-3)">[Photo]</div>
-          <h3 class="pro-card__name">[Mediator Name — placeholder]</h3>
-          <p class="pro-card__role">Mediator</p>
-          <p class="pro-card__meta">[Nationality] · English</p>
-          <div class="pro-card__tags"><span class="tag">Construction</span><span class="tag">[XX yrs experience]</span></div>
-          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="#">View profile →</a>
-        </div>
-
-        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-role="international-arbitrator" data-language="hindi" data-expertise="investment" data-search="international arbitrator investment hindi placeholder name three">
-          <div class="pro-card__photo" style="display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:var(--fs-small);text-align:center;padding:var(--space-3)">[Photo]</div>
-          <h3 class="pro-card__name">[Arbitrator Name — placeholder]</h3>
-          <p class="pro-card__role">International Arbitrator</p>
-          <p class="pro-card__meta">[Nationality] · Hindi, English</p>
-          <div class="pro-card__tags"><span class="tag">Investment</span><span class="tag">[XX yrs experience]</span></div>
-          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="#">View profile →</a>
-        </div>
-
-        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-role="mediator" data-language="dzongkha" data-expertise="commercial" data-search="mediator commercial dzongkha placeholder name four">
-          <div class="pro-card__photo" style="display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:var(--fs-small);text-align:center;padding:var(--space-3)">[Photo]</div>
-          <h3 class="pro-card__name">[Mediator Name — placeholder]</h3>
-          <p class="pro-card__role">Mediator</p>
-          <p class="pro-card__meta">[Nationality] · Dzongkha, English</p>
-          <div class="pro-card__tags"><span class="tag">Commercial</span><span class="tag">[XX yrs experience]</span></div>
-          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="#">View profile →</a>
-        </div>
-
-        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-role="bhutanese-international-arbitrator" data-language="english" data-expertise="construction" data-search="bhutanese international arbitrator construction english placeholder name five">
-          <div class="pro-card__photo" style="display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:var(--fs-small);text-align:center;padding:var(--space-3)">[Photo]</div>
-          <h3 class="pro-card__name">[Arbitrator Name — placeholder]</h3>
-          <p class="pro-card__role">Bhutanese International Arbitrator</p>
-          <p class="pro-card__meta">[Nationality] · English</p>
-          <div class="pro-card__tags"><span class="tag">Construction</span><span class="tag">[XX yrs experience]</span></div>
-          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="#">View profile →</a>
-        </div>
-
-        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-role="mediator" data-language="english" data-expertise="investment" data-search="mediator investment english placeholder name six">
-          <div class="pro-card__photo" style="display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:var(--fs-small);text-align:center;padding:var(--space-3)">[Photo]</div>
-          <h3 class="pro-card__name">[Mediator Name — placeholder]</h3>
-          <p class="pro-card__role">Mediator</p>
-          <p class="pro-card__meta">[Nationality] · English</p>
-          <div class="pro-card__tags"><span class="tag">Investment</span><span class="tag">[XX yrs experience]</span></div>
-          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="#">View profile →</a>
-        </div>
-
-        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-role="domestic-arbitrator" data-language="dzongkha" data-expertise="commercial" data-search="domestic arbitrator commercial dzongkha placeholder name seven">
-          <div class="pro-card__photo" style="display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:var(--fs-small);text-align:center;padding:var(--space-3)">[Photo]</div>
-          <h3 class="pro-card__name">[Arbitrator Name — placeholder]</h3>
+        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-language="dzongkha english" data-role="domestic-arbitrator" data-expertise="commercial" data-search="dorji wangmo domestic arbitrator commercial chief legal officer, royal insurance corporation of bhutan">
+          <div class="pro-card__photo" style="display:flex;align-items:center;justify-content:center;color:var(--navy-primary);font-size:var(--fs-h3);font-weight:var(--fw-medium)"><span aria-hidden="true">DW</span></div>
+          <h3 class="pro-card__name">Dorji Wangmo</h3>
           <p class="pro-card__role">Domestic Arbitrator</p>
-          <p class="pro-card__meta">[Nationality] · Dzongkha, English</p>
-          <div class="pro-card__tags"><span class="tag">Commercial</span><span class="tag">[XX yrs experience]</span></div>
-          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="#">View profile →</a>
+          <p class="pro-card__meta">Chief Legal Officer, Royal Insurance Corporation of Bhutan<br>LL.M., George Washington University<br>Dzongkha, English</p>
+          <div class="pro-card__tags"><span class="tag">Commercial</span><span class="tag">International ADR</span></div>
+          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="assets/cvs/dorji-wangmo.pdf" target="_blank" rel="noopener">View profile →</a>
         </div>
 
-        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-role="mediator" data-language="hindi" data-expertise="construction" data-search="mediator construction hindi placeholder name eight">
-          <div class="pro-card__photo" style="display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:var(--fs-small);text-align:center;padding:var(--space-3)">[Photo]</div>
-          <h3 class="pro-card__name">[Mediator Name — placeholder]</h3>
-          <p class="pro-card__role">Mediator</p>
-          <p class="pro-card__meta">[Nationality] · Hindi, English</p>
-          <div class="pro-card__tags"><span class="tag">Construction</span><span class="tag">[XX yrs experience]</span></div>
-          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="#">View profile →</a>
+        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-language="dzongkha english" data-role="domestic-arbitrator" data-expertise="construction" data-search="kinley dorji domestic arbitrator construction general counsel and company secretary, construction development corporation">
+          <div class="pro-card__photo"><img src="assets/images/panels/kinley-dorji.jpg" alt="Portrait of Kinley Dorji" loading="lazy" style="object-position:center top"></div>
+          <h3 class="pro-card__name">Kinley Dorji</h3>
+          <p class="pro-card__role">Domestic Arbitrator</p>
+          <p class="pro-card__meta">General Counsel &amp; Company Secretary, Construction Development Corporation<br>LL.B., Symbiosis Law College<br>Dzongkha, English</p>
+          <div class="pro-card__tags"><span class="tag">Construction</span><span class="tag">18+ yrs experience</span></div>
+          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="assets/cvs/kinley-dorji.pdf" target="_blank" rel="noopener">View profile →</a>
+        </div>
+
+        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-language="dzongkha english nepali hindi" data-role="domestic-arbitrator" data-expertise="commercial" data-search="namgay dorji domestic arbitrator commercial managing partner, namgay dorji advisors">
+          <div class="pro-card__photo"><img src="assets/images/panels/namgay-dorji.jpg" alt="Portrait of Namgay Dorji" loading="lazy" style="object-position:center top"></div>
+          <h3 class="pro-card__name">Namgay Dorji</h3>
+          <p class="pro-card__role">Domestic Arbitrator</p>
+          <p class="pro-card__meta">Managing Partner, Namgay Dorji Advisors<br>LL.M., Queensland University of Technology<br>Dzongkha, English, Nepali +1</p>
+          <div class="pro-card__tags"><span class="tag">Commercial</span><span class="tag">Legislative drafting</span></div>
+          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="assets/cvs/namgay-dorji.pdf" target="_blank" rel="noopener">View profile →</a>
+        </div>
+
+        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-language="dzongkha english hindi nepali" data-role="domestic-arbitrator" data-expertise="commercial" data-search="namgay om domestic arbitrator commercial managing partner, namgay dorji advisors">
+          <div class="pro-card__photo"><img src="assets/images/panels/namgay-om.jpg" alt="Portrait of Namgay Om" loading="lazy" style="object-position:center top"></div>
+          <h3 class="pro-card__name">Namgay Om</h3>
+          <p class="pro-card__role">Domestic Arbitrator</p>
+          <p class="pro-card__meta">Managing Partner, Namgay Dorji Advisors<br>LL.M., University of Glasgow<br>Dzongkha, English, Hindi +1</p>
+          <div class="pro-card__tags"><span class="tag">Commercial</span><span class="tag">12 yrs experience</span></div>
+          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="assets/cvs/namgay-om.pdf" target="_blank" rel="noopener">View profile →</a>
+        </div>
+
+        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-language="dzongkha english hindi bangla nepali sharchop kurtoep lhotshamkha" data-role="domestic-arbitrator" data-expertise="commercial" data-search="sonam dhendup domestic arbitrator commercial chief executive attorney, samdhen legal firm">
+          <div class="pro-card__photo" style="display:flex;align-items:center;justify-content:center;color:var(--navy-primary);font-size:var(--fs-h3);font-weight:var(--fw-medium)"><span aria-hidden="true">SD</span></div>
+          <h3 class="pro-card__name">Sonam Dhendup</h3>
+          <p class="pro-card__role">Domestic Arbitrator</p>
+          <p class="pro-card__meta">Chief Executive Attorney, Samdhen Legal Firm<br>LL.M., University of Asia Pacific<br>Dzongkha, English, Hindi +5</p>
+          <div class="pro-card__tags"><span class="tag">Commercial</span><span class="tag">ADR &amp; mediation</span></div>
+          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="assets/cvs/sonam-dhendup.pdf" target="_blank" rel="noopener">View profile →</a>
+        </div>
+
+        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-language="dzongkha english" data-role="domestic-arbitrator" data-expertise="construction" data-search="sonam lhundrup domestic arbitrator construction attorney at law, peepul tree associates">
+          <div class="pro-card__photo" style="display:flex;align-items:center;justify-content:center;color:var(--navy-primary);font-size:var(--fs-h3);font-weight:var(--fw-medium)"><span aria-hidden="true">SL</span></div>
+          <h3 class="pro-card__name">Sonam Lhundrup</h3>
+          <p class="pro-card__role">Domestic Arbitrator</p>
+          <p class="pro-card__meta">Attorney at Law, Peepul Tree Associates<br>LL.M., George Washington University<br>Dzongkha, English</p>
+          <div class="pro-card__tags"><span class="tag">Construction</span><span class="tag">Corporate</span></div>
+          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="assets/cvs/sonam-lhundrup.pdf" target="_blank" rel="noopener">View profile →</a>
+        </div>
+
+        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-language="dzongkha english sharchop hindi" data-role="domestic-arbitrator" data-expertise="commercial" data-search="sonam tshering domestic arbitrator commercial associate professor and associate dean, jsw law">
+          <div class="pro-card__photo"><img src="assets/images/panels/sonam-tshering.jpg" alt="Portrait of Sonam Tshering" loading="lazy" style="object-position:center top"></div>
+          <h3 class="pro-card__name">Sonam Tshering</h3>
+          <p class="pro-card__role">Domestic Arbitrator</p>
+          <p class="pro-card__meta">Associate Professor &amp; Associate Dean, JSW Law<br>LL.M., George Washington University<br>Dzongkha, English, Sharchop +1</p>
+          <div class="pro-card__tags"><span class="tag">Commercial</span><span class="tag">15+ yrs experience</span></div>
+          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="assets/cvs/sonam-tshering.pdf" target="_blank" rel="noopener">View profile →</a>
+        </div>
+
+        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-language="dzongkha english hindi" data-role="domestic-arbitrator" data-expertise="commercial" data-search="tashi dema domestic arbitrator commercial lawyer; former legal officer / case manager, badrc">
+          <div class="pro-card__photo"><img src="assets/images/panels/tashi-dema.jpg" alt="Portrait of Tashi Dema" loading="lazy" style="object-position:center top"></div>
+          <h3 class="pro-card__name">Tashi Dema</h3>
+          <p class="pro-card__role">Domestic Arbitrator</p>
+          <p class="pro-card__meta">Lawyer; former Legal Officer / Case Manager, BADRC<br>LL.B., Bangalore University<br>Dzongkha, English, Hindi</p>
+          <div class="pro-card__tags"><span class="tag">Commercial</span><span class="tag">9+ yrs experience</span></div>
+          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="assets/cvs/tashi-dema.pdf" target="_blank" rel="noopener">View profile →</a>
+        </div>
+
+        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-language="dzongkha english" data-role="domestic-arbitrator" data-expertise="construction" data-search="yeshi lhendup domestic arbitrator construction managing partner, tendhey legal firm">
+          <div class="pro-card__photo" style="display:flex;align-items:center;justify-content:center;color:var(--navy-primary);font-size:var(--fs-h3);font-weight:var(--fw-medium)"><span aria-hidden="true">YL</span></div>
+          <h3 class="pro-card__name">Yeshi Lhendup</h3>
+          <p class="pro-card__role">Domestic Arbitrator</p>
+          <p class="pro-card__meta">Managing Partner, Tendhey Legal Firm<br>LL.B., Karnataka State Law University<br>Dzongkha, English</p>
+          <div class="pro-card__tags"><span class="tag">Construction</span><span class="tag">10+ yrs experience</span></div>
+          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="assets/cvs/yeshi-lhendup.pdf" target="_blank" rel="noopener">View profile →</a>
+        </div>
+
+        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-language="dzongkha english" data-role="domestic-arbitrator" data-expertise="construction" data-search="yeshi phuntsho domestic arbitrator construction senior legal officer, ministry of finance">
+          <div class="pro-card__photo"><img src="assets/images/panels/yeshi-phuntsho.jpg" alt="Portrait of Yeshi Phuntsho" loading="lazy" style="object-position:center top"></div>
+          <h3 class="pro-card__name">Yeshi Phuntsho</h3>
+          <p class="pro-card__role">Domestic Arbitrator</p>
+          <p class="pro-card__meta">Senior Legal Officer, Ministry of Finance<br>LL.B., Pune University<br>Dzongkha, English</p>
+          <div class="pro-card__tags"><span class="tag">Construction</span><span class="tag">Public procurement</span></div>
+          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="assets/cvs/yeshi-phuntsho.pdf" target="_blank" rel="noopener">View profile →</a>
+        </div>
+
+        <div class="pro-card card" style="padding:var(--space-5)" data-filter-item data-language="dzongkha english nepali hindi" data-role="domestic-arbitrator" data-expertise="commercial" data-search="younten dorji domestic arbitrator commercial managing partner, yd and associates">
+          <div class="pro-card__photo"><img src="assets/images/panels/younten-dorji.jpg" alt="Portrait of Younten Dorji" loading="lazy" style="object-position:center top"></div>
+          <h3 class="pro-card__name">Younten Dorji</h3>
+          <p class="pro-card__role">Domestic Arbitrator</p>
+          <p class="pro-card__meta">Managing Partner, YD &amp; Associates<br>LL.B., Pune University<br>Dzongkha, English, Nepali +1</p>
+          <div class="pro-card__tags"><span class="tag">Commercial</span><span class="tag">14 yrs experience</span></div>
+          <a class="btn btn--ghost btn--sm" style="margin-top:var(--space-3)" href="assets/cvs/younten-dorji.pdf" target="_blank" rel="noopener">View profile →</a>
         </div>
 
       </div>
 
       <p class="empty-state" id="panel-empty" hidden>No professionals match your filters. Try broadening your search.</p>
 
-      <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-top:var(--space-8)">All panel profiles shown are placeholders pending real BADRC-approved professional data (names, photographs, qualifications, approved contact details — anything published here is limited to what is on file in each professional's CV). No real individuals are represented above. <a href="https://drive.google.com/drive/folders/18HrndiBgm3qTQ7ce7kRwjiy7cKZlYJC7?usp=sharing" target="_blank" rel="noopener">BADRC's internal profile data folder →</a></p>
     </div>
   </section>
 
